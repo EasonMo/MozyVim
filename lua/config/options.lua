@@ -8,8 +8,6 @@
 -- local setopt = vim.opt
 local set = vim.opt
 
-set.clipboard = "unnamedplus"
-
 -- 缩进配置
 set.ts = 4
 set.shiftwidth = 4
@@ -22,14 +20,3 @@ set.smartindent = false
 
 -- setopt.conceallevel = 0
 set.backspace = "eol,start,indent"
-
--- 用自动命令组来设置缩进为2
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sh", "lua" },
-  callback = function()
-    vim.opt_local.tabstop = 2
-    vim.opt_local.shiftwidth = 2
-    vim.opt_local.expandtab = true
-  end,
-  group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
-})
