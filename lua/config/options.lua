@@ -2,21 +2,26 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
-------------   基础配置 ------------
-
--- local set = vim.o
--- local setopt = vim.opt
-local set = vim.opt
+-----------------------✂---------------------------
+--                 基础配置
+-----------------------✂---------------------------
 
 -- 缩进配置
-set.ts = 4
-set.shiftwidth = 4
-set.expandtab = true
-set.smartindent = false
+vim.opt.ts = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = false
 
 -- 显示空白字符
--- setopt.list = true
--- setopt.listchars = { space = "·" }
+-- vim.opt.list = true
+-- vim.opt.listchars = { space = "·" }
 
--- setopt.conceallevel = 0
-set.backspace = "eol,start,indent"
+-- vim.opt.conceallevel = 0
+vim.opt.backspace = "eol,start,indent"
+
+-----------------------✂---------------------------
+--                LazyVim配置
+-----------------------✂---------------------------
+
+-- 取消自动格式化
+vim.g.autoformat = false
