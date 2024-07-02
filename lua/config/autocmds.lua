@@ -14,17 +14,19 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 -- 实现复制时与系统剪贴板同步，支持tmux，ssh
-vim.g.clipboard = {
-  name = "OSC 52",
-  copy = {
-    ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-  },
-  paste = {
-    ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-    ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-  },
-}
+if vim.env.SSH_TTY then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
 vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = { "*" },
   callback = function()
@@ -33,4 +35,13 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end
   end,
   group = vim.api.nvim_create_augroup("YankToClipboard", { clear = true }),
+})
+
+-- 禁止拼写检查
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown" },
+  callback = function()
+    vim.opt_local.spell = false
+  end,
+  group = vim.api.nvim_create_augroup("filetype_spell_check", { clear = true }),
 })
