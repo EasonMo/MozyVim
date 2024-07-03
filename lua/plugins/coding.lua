@@ -128,4 +128,11 @@ return {
       })
     end,
   },
+  -- 解决sudo保存文件
+  {
+    "lambdalisue/vim-suda",
+    cmd = {
+      "SudaWrite",
+    },
+  },
 }
