@@ -12,6 +12,10 @@ return {
       -- float = {
       --   border = "rounded",
       -- },
+      term = {
+        -- 运行窗口的位置
+        position = "belowright",
+      },
       filetype = {
         java = {
           "cd $dir &&",
