@@ -3,7 +3,8 @@ return {
   config = true,
   event = "VeryLazy",
   keys = {
-    { "<leader>cx", "<cmd>RunCode<CR>", desc = "Run Code" },
+    { "<leader>rr", "<cmd>RunCode<CR>", desc = "runner: Run Code" },
+    { "<leader>rx", "<cmd>RunClose<CR>", desc = "runner: Run Close" },
   },
   opts = function(_, opts)
     return {
