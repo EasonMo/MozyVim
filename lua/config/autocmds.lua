@@ -59,6 +59,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = {
     "dap-float",
     "lazy_backdrop",
+    "crunner",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
