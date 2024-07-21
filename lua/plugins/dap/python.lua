@@ -4,7 +4,6 @@ return {
   {
     "mfussenegger/nvim-dap-python",
     opts = function(_, opts)
-      opts.pythonPath = vim.loop.os_uname().sysname == "Linux" and "/usr/bin/python3" or "/usr/local/bin/python3"
       opts.cwd = vim.fn.getcwd()
       opts.include_configs = false
       -- 修改mason-nvim-dap的python默认设置
@@ -40,8 +39,7 @@ return {
       --     },
       --   },
       -- }
-      -- 不需要python虚拟环境，直接设为nil，覆盖lazyvim的配置
-      require("dap-python").setup(nil, opts)
+      require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"), opts)
     end,
   },
 }
