@@ -4,13 +4,20 @@
 
 -- 设置缩进为2
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sh", "lua" },
+  pattern = { "sh", "lua", "json" },
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
     vim.opt_local.expandtab = true
   end,
   group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
+})
+-- 解决joson注释报错的问题
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "json" },
+  callback = function()
+    vim.o.filetype = "jsonc"
+  end,
 })
 
 -- 实现复制时与系统剪贴板同步，支持tmux，ssh
@@ -44,4 +51,17 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.spell = false
   end,
   group = vim.api.nvim_create_augroup("filetype_spell_check", { clear = true }),
+})
+
+-- close some filetypes with <q>，补充缺失的
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
+  pattern = {
+    "dap-float",
+    "lazy_backdrop",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
 })
