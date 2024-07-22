@@ -26,7 +26,8 @@ vim.opt.backspace = "eol,start,indent"
 vim.api.nvim_create_user_command("GetWinType", function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     if vim.api.nvim_win_get_config(win).relative ~= "" then
-      print(vim.api.nvim_buf_get_option(vim.api.nvim_win_get_buf(win), "filetype"))
+      -- print(vim.api.nvim_get_option_value(vim.api.nvim_win_get_buf(win), "filetype"))
+      print(vim.api.nvim_get_option_value("filetype", { buf = vim.api.nvim_win_get_buf(win) }))
     end
   end
 end, { desc = "Print float windows filetype" })
@@ -36,3 +37,14 @@ end, { desc = "Print float windows filetype" })
 
 -- 取消自动格式化
 vim.g.autoformat = false
+
+-----------------------✂---------------------------
+--                主题修改
+-----------------------✂---------------------------
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292929" })
+  end,
+})
