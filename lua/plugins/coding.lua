@@ -18,9 +18,17 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
     opts = function(_, opts)
+      local hooks = require("ibl.hooks")
+      -- create the highlight groups in the highlight setup hook, so they are reset
+      -- every time the colorscheme changes
+      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "custom_indent_highlight", { fg = "#313131" })
+      end)
+
       opts.indent = {
         char = "╎",
         tab_char = "╎",
+        highlight = "custom_indent_highlight",
       }
     end,
   },
@@ -61,15 +69,17 @@ return {
     tag = "v2.2",
     event = "VeryLazy",
     config = function()
+      local coerce_m = require("coerce")
       local selector_m = require("coerce.selector")
       local transformer_m = require("coerce.transformer")
       local coroutine_m = require("coerce.coroutine")
+      local keymap_m = require("coerce.keymap")
 
-      require("coerce").setup({
+      coerce_m.setup({
         modes = {
           {
             vim_mode = "n",
-            keymap_prefix = "<localleader>c",
+            keymap_prefix = "<LocalLeader>c",
             selector = selector_m.select_current_word,
             transformer = function(selected_region, apply)
               return coroutine_m.fire_and_forget(
@@ -79,15 +89,29 @@ return {
               )
             end,
           },
+          {
+            vim_mode = "n",
+            keymap_prefix = "<LocalLeader>cg",
+            selector = selector_m.select_with_motion,
+            transformer = transformer_m.transform_local,
+          },
+          {
+            vim_mode = "v",
+            keymap_prefix = "<localleader>c",
+            selector = selector_m.select_current_visual_selection,
+            transformer = transformer_m.transform_local,
+          },
         },
       })
-      require("coerce").register_case({
+      coerce_m.register_case({
         keymap = "l",
         case = function(str)
           return vim.fn.tolower(str)
         end,
         description = "lowercase",
       })
+      -- 覆盖默认的按键组说明
+      keymap_m.keymap_registry().register_keymap_group("n", "<LocalLeader>cg", "motion slection")
     end,
   },
 }
