@@ -20,18 +20,6 @@ vim.opt.smartindent = false
 vim.opt.backspace = "eol,start,indent"
 
 -----------------------✂---------------------------
---                 自定义命令
------------------------✂---------------------------
--- 获取浮窗类型
-vim.api.nvim_create_user_command("GetWinType", function()
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    if vim.api.nvim_win_get_config(win).relative ~= "" then
-      -- print(vim.api.nvim_get_option_value(vim.api.nvim_win_get_buf(win), "filetype"))
-      print(vim.api.nvim_get_option_value("filetype", { buf = vim.api.nvim_win_get_buf(win) }))
-    end
-  end
-end, { desc = "Print float windows filetype" })
------------------------✂---------------------------
 --                LazyVim配置
 -----------------------✂---------------------------
 
@@ -42,6 +30,7 @@ vim.g.autoformat = false
 --                主题修改
 -----------------------✂---------------------------
 
+-- 主题修改要放在options.lua里，否则会因执行顺序而被覆盖
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()

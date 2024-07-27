@@ -8,6 +8,14 @@ return {
       opts.include_configs = false
       -- 修改mason-nvim-dap的python默认设置
       local configurations = require("mason-nvim-dap.mappings.configurations")
+
+      local function get_python_packages_paths()
+        -- 此方法彻底解决python包路径的问题
+        local result = vim.fn.systemlist("python3 -c \"import sys; print('\\n'.join(sys.path))\"")
+        local python_paths = table.concat(result, ":")
+        return python_paths
+      end
+
       configurations.python = {
         {
           type = "python",
@@ -18,7 +26,7 @@ return {
           -- justMyCode = false,
           cwd = opts.cwd,
           env = {
-            PYTHONPATH = opts.cwd,
+            PYTHONPATH = get_python_packages_paths(),
           },
         },
       }
