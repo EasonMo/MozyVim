@@ -32,32 +32,28 @@ return {
         --     },
         --   },
         -- },
-        -- settings = {
-        --   python = {
-        --     analysis = {
-        --       autoImportCompletions = true,
-        --       autoSearchPaths = true,
-        --       -- diagnosticMode = "workspace", -- ["openFilesOnly", "workspace"]
-        --       useLibraryCodeForTypes = true,
-        --       -- typeCheckingMode = "off",
-        --       -- typeCheckingMode = "basic",
-        --       diagnosticSeverityOverrides = { -- "error," "warning," "information," "true," "false," or "none"
-        --         -- reportArgumentType = false,
-        --         reportUnusedCoroutine = false,
-        --       },
-        --     },
-        --   },
-        -- },
-      },
-      ruff_lsp = {
-        init_options = {
-          settings = {
-            format = {
-              args = {
-                "--line-length=100",
-                -- "--ignore=E501,E722,COM812",
+        settings = {
+          python = {
+            analysis = {
+              autoImportCompletions = true,
+              autoSearchPaths = true,
+              -- diagnosticMode = "workspace", -- ["openFilesOnly", "workspace"]
+              useLibraryCodeForTypes = true,
+              typeCheckingMode = "off",
+              -- typeCheckingMode = "basic", -- off, basic, strict
+              diagnosticSeverityOverrides = { -- "error," "warning," "information," "true," "false," or "none"
+                -- reportArgumentType = false,
+                reportUnusedCoroutine = false,
+                reportUnusedImport = false,
               },
             },
+          },
+        },
+      },
+      ruff = {
+        init_options = {
+          settings = {
+            configuration = vim.fn.expand("~/.config/nvim/pyproject.toml"),
           },
         },
       },

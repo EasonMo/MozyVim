@@ -1,7 +1,37 @@
 {
   "for": {
     "prefix": "fori",
-    "body": [ "for ${1:value} in ${2:iterable}:", "\t${3:pass}" ],
+    "body": [
+      "for ${1:value} in ${2:iterable}:",
+      "\t${3:pass}"
+    ],
     "description": "for loop"
+  },
+  "Function": {
+    "prefix": "defn",
+    "body": [
+      "def ${1:fname}($2):",
+      "\t${3:pass}"
+    ],
+    "description": "Function definition"
+  },
+  "try/except": {
+    "prefix": "tryc",
+    "body": [
+      "try:",
+      "\t${1:pass}",
+      "except ${2:Exception} as ${3:e}:",
+      "\t${4:raise $3}"
+    ],
+    "description": "try/except blocks"
+  },
+  "doc":{
+    "prefix": "docstr",
+    "body":[
+      "\"\"\"",
+      "${1}",
+      "\"\"\""
+    ],
+    "description": "document"
   }
 }

@@ -1,0 +1,11 @@
+[tool.ruff]
+line-length = 120
+
+[tool.ruff.lint]
+# F401: unused-import
+# extend-ignore = ["F401"]
+
+[tool.pytest.ini_options]
+pythonpath = [
+    "."
+]

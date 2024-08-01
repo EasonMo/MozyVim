@@ -111,7 +111,7 @@ return {
         description = "lowercase",
       })
       -- 覆盖默认的按键组说明
-      keymap_m.keymap_registry().register_keymap_group("n", "<LocalLeader>cg", "motion slection")
+      keymap_m.keymap_registry().register_keymap_group("n", "<LocalLeader>cg", "motion slection (not lsp)")
     end,
   },
 }
