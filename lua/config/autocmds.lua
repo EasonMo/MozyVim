@@ -8,7 +8,7 @@
 
 -- 设置缩进为2
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sh", "lua", "json", "vue" },
+  pattern = { "sh", "lua", "json", "markdown", "vue" },
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
