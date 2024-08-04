@@ -25,3 +25,7 @@ git clone git@github.com:EasonMo/myLazyNvim.git  ~/.config/nvim
 - 等等...
 
 官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
+
+与官方同步的修改记录：
+
+- [x] LazyVim取消mason-nvim-dap关于python的dap默认配置，修改位置：extras/lang/python.lua#142，恢复配置nvim-dap-python

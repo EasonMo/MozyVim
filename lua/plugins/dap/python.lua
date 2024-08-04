@@ -13,11 +13,12 @@ return {
   {
     "mfussenegger/nvim-dap-python",
     opts = function(_, opts)
-      opts.cwd = vim.fn.getcwd()
+      -- 禁止nvim-dap-python默认添加的configurations
       opts.include_configs = false
-      -- 修改mason-nvim-dap的python默认设置
-      local configurations = require("mason-nvim-dap.mappings.configurations")
-      configurations.python = {
+    end,
+    config = function(_, opts)
+      -- 添加dap的运行配置
+      require("dap").configurations.python = {
         {
           type = "python",
           request = "launch",
@@ -26,29 +27,13 @@ return {
           -- 使用插件内置的Terminal，否则在调试窗口运行
           console = "integratedTerminal",
           justMyCode = false,
-          cwd = opts.cwd,
+          cwd = vim.fn.getcwd(),
           env = {
             PYTHONPATH = get_python_packages_paths(),
           },
         },
       }
-    end,
-    config = function(_, opts)
-      -- 添加launch的示例
-      -- require("dap").configurations.python = {
-      --   {
-      --     type = "python",
-      --     request = "launch",
-      --     name = "Python: Launch file (cwd)",
-      --     program = "${file}",
-      --     console = "integratedTerminal",
-      --     justMyCode = false,
-      --     cwd = opts.cwd,
-      --     env = {
-      --       PYTHONPATH = opts.cwd,
-      --     },
-      --   },
-      -- }
+      -- nvim-dap-python默认没有使用opts参数，在此处重新setup
       require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"), opts)
     end,
   },
