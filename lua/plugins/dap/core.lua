@@ -27,4 +27,26 @@ return {
       { "<leader>dx", function() require("dap").clear_breakpoints() end, desc = "Clear Breakpoint"},
     },
   },
+  {
+    "rcarriga/nvim-dap-ui",
+    -- stylua: ignore
+    keys = {
+      { "<leader>du", function() require("dapui").toggle({ layout = 2, reset = true }) end, desc = "Dap UI" },
+      { "<leader>dU", function() require("dapui").toggle({ layout = 1, reset = true }) end, desc = "Dap UI (all)" },
+    },
+    config = function(_, opts)
+      local dap = require("dap")
+      local dapui = require("dapui")
+      dapui.setup(opts)
+      dap.listeners.after.event_initialized["dapui_config"] = function()
+        dapui.open({ layout = 2, reset = true })
+      end
+      dap.listeners.before.event_terminated["dapui_config"] = function()
+        dapui.close({})
+      end
+      dap.listeners.before.event_exited["dapui_config"] = function()
+        dapui.close({})
+      end
+    end,
+  },
 }
