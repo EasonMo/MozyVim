@@ -38,3 +38,6 @@ map("v", "<leader>sg", function()
   local text = vim.getVisualSelection()
   tb.live_grep({ default_text = text })
 end, { desc = "selection for grep", noremap = true, silent = true })
+
+-- 合并行时，不加空格
+map({"n", "x"}, "J", "gJ", { desc = "Join line" })
