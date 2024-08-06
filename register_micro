@@ -1,3 +1,8 @@
+before use:
+1. edit in binary mode: `:set bin`
+2. reload current file: `:e`
+3. turn off: `:set nobin`
+
 how to use: "{register}yi`
 
 micros:
