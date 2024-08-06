@@ -25,6 +25,8 @@ return {
       { "<S-F11>", function() require("dap").step_out() end, desc = "DAP: Step Out" },
       { "<F23>", function() require("dap").step_out() end, desc = "DAP: Step Out" },
       { "<leader>dx", function() require("dap").clear_breakpoints() end, desc = "Clear Breakpoint"},
+      { "<leader>do", function() require("dap").step_over() end, desc = "Step Over" },
+      { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out" },
     },
   },
   {
