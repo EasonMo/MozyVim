@@ -4,6 +4,7 @@ return {
   event = "VeryLazy",
   keys = {
     { "<leader>rr", "<cmd>RunCode<CR>", desc = "runner: Run Code" },
+    { "<F8>", "<cmd>RunClose<CR><cmd>RunCode<CR>", desc = "runner: Run Code" },
     { "<leader>rx", "<cmd>RunClose<CR>", desc = "runner: Run Close" },
   },
   opts = function(_, opts)
