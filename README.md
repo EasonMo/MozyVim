@@ -5,7 +5,7 @@
 安装：
 
 ```sh
-git clone git@github.com:EasonMo/myLazyNvim.git  ~/.config/nvim
+git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
 ```
 
 主要的定制说明：
