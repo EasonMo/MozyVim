@@ -69,7 +69,15 @@ vim.api.nvim_create_autocmd("FileType", {
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    -- vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.keymap.set("n", "q", function()
+      -- 关闭code_runner运行窗口
+      local current_buf = vim.fn.bufname("%")
+      if string.find(current_buf, "crunner_") then
+        return "<cmd>RunClose<cr>"
+      end
+      return "<cmd>close<cr>"
+    end, { buffer = event.buf, silent = true, expr = true })
   end,
 })
 
