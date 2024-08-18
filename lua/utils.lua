@@ -33,4 +33,7 @@ function Close_all()
   -- vim.api.nvim_command("OutlineClose")
 end
 
+function M.log(obj)
+  print(vim.inspect(obj))
+end
 return M
