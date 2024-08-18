@@ -1,4 +1,10 @@
 return {
+  {
+    "akinsho/bufferline.nvim",
+    keys = {
+      { "<leader>bs", "<Cmd>BufferLinePick<CR>", desc = "Pick Buffer" },
+    },
+  },
   -- lualine, 修改状态栏
   {
     "nvim-lualine/lualine.nvim",
@@ -79,6 +85,9 @@ return {
           -- this supports the same val table as vim.api.nvim_set_hl
           -- use colors from this colorscheme by requiring vscode.colors!
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+          BufferLineIndicatorSelected = {
+            fg = "#8f8f8f",
+          },
         },
       })
     end,
