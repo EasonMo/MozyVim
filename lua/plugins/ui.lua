@@ -88,6 +88,7 @@ return {
           BufferLineIndicatorSelected = {
             fg = "#8f8f8f",
           },
+          NeoTreeCursorLine = { bg = "#292929" },
         },
       })
     end,
