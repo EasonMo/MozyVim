@@ -41,3 +41,5 @@ end, { desc = "selection for grep", noremap = true, silent = true })
 
 -- 合并行时，不加空格
 map({"n", "x"}, "J", "gJ", { desc = "Join line" })
+
+map({"n", "x"}, "<C-A>", "ggVG", { desc = "Select All" })
