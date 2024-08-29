@@ -142,7 +142,7 @@ return {
     optional = true,
     opts = {
       spec = {
-        { "<localleader>s", group = "whitespace", mode = "n" },
+        { "<localleader>s", group = "Strip whitespace", mode = "n" },
       },
     },
   },
