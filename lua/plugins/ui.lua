@@ -137,4 +137,13 @@ return {
       require("colorizer").setup()
     end,
   },
+  {
+    "folke/which-key.nvim",
+    optional = true,
+    opts = {
+      spec = {
+        { "<localleader>s", group = "whitespace", mode = "n" },
+      },
+    },
+  },
 }
