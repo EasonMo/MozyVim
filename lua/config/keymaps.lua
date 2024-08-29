@@ -47,17 +47,17 @@ map({ "n", "x" }, "<C-A>", "ggVG", { desc = "Select All" })
 
 -- 去掉头尾空白行
 map("n", "<localleader>ss", function()
-  vim.cmd("%s/\\v^\\s+//g")
-  vim.cmd("%s/\\v\\s+$//g")
+  vim.cmd("%s/\\v^\\s+//ge")
+  vim.cmd("%s/\\v\\s+$//ge")
   vim.cmd("nohl")
 end, { desc = "Strip Whitespace", noremap = true })
 -- 合并空格
 map("n", "<localleader>sj", function()
-  vim.cmd("%s/\\s\\+/ /g")
+  vim.cmd("%s/\\s\\+/ /ge")
   vim.cmd("nohl")
 end, { desc = "Join Whitespace", noremap = true })
 -- 去掉空格
-map("n", "<localleader>sw", function()
-  vim.cmd("s/\\s//g")
+map("n","<localleader>sd",function()
+  vim.cmd("s/\\s//ge")
   vim.cmd("nohl")
 end, { desc = "Del Line Whitespace", noremap = true })
