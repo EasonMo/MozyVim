@@ -146,4 +146,22 @@ return {
       },
     },
   },
+  {
+    "Mr-LLLLL/interestingwords.nvim",
+    event = "VeryLazy",
+    opts = {
+      colors = { "#8CCBEA", "#A4E57E", "#FFDB72", "#FF7272", "#FFB3FF", "#9999FF", "#0087ff", "#b88823", "#FF00E7" },
+      search_count = false,
+      navigation = false,
+      search_key = "<localleader>m",
+      cancel_search_key = "<localleader>M",
+      color_key = "<localleader>k",
+      cancel_color_key = "<localleader>K",
+      select_mode = "random",
+      -- select_mode = "loop",
+    },
+    config = function(_, opts)
+      require("interestingwords").setup(opts)
+    end,
+  },
 }
