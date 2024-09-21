@@ -8,7 +8,7 @@
 
 -- 设置缩进为2
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sh", "lua", "json", "jsonc","markdown", "vue" },
+  pattern = { "sh", "lua", "json", "jsonc", "markdown", "vue" },
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
@@ -24,8 +24,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- 实现复制时与系统剪贴板同步，支持tmux，ssh
-if vim.env.SSH_TTY then
+-- 实现复制时与系统剪贴板同步，支持tmux，ssh，排除gnome环境
+if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
   vim.g.clipboard = {
     name = "OSC 52",
     copy = {
