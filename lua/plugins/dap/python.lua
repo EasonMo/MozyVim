@@ -9,6 +9,7 @@ local function get_python_packages_paths()
   local python_paths = table.concat(result, ":")
   return python_paths
 end
+local python_paths = get_python_packages_paths()
 return {
   {
     "mfussenegger/nvim-dap-python",
@@ -29,7 +30,7 @@ return {
           justMyCode = false,
           cwd = vim.fn.getcwd(),
           env = {
-            PYTHONPATH = get_python_packages_paths(),
+            PYTHONPATH = python_paths,
           },
         },
       }
@@ -51,7 +52,7 @@ return {
             -- justMyCode = false,
             console = "integratedTerminal",
             env = {
-              PYTHONPATH = get_python_packages_paths(),
+              PYTHONPATH = python_paths,
             },
           },
         },
