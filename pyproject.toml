@@ -3,7 +3,8 @@ line-length = 120
 
 [tool.ruff.lint]
 # F401: unused-import
-# extend-ignore = ["F401"]
+# F541: f-string without any placeholders
+extend-ignore = ["F541"]
 
 [tool.pytest.ini_options]
 pythonpath = [
