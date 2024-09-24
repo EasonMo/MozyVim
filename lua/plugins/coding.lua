@@ -52,6 +52,13 @@ return {
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
         -- 添加cmp补全的按键
         ["<M-/>"] = cmp.mapping.complete(),
+        -- 手动关闭补全: 关闭高亮
+        ["<C-e>"] = cmp.mapping(function()
+          if vim.snippet.active({ direction = 1 }) then
+            vim.snippet.stop()
+          end
+          cmp.mapping.abort()
+        end, { "i", "s" }),
       })
     end,
   },
