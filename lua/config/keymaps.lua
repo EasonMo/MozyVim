@@ -61,3 +61,9 @@ map("n","<localleader>sd",function()
   vim.cmd("s/\\s//ge")
   vim.cmd("nohl")
 end, { desc = "Del Line Whitespace", noremap = true })
+
+-- 支持nvim-surround的a、r别名的motion
+map("o", "ir", "i[")
+map("o", "ar", "a[")
+map("o", "ia", "i<")
+map("o", "aa", "a<")
