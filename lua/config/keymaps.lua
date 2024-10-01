@@ -57,7 +57,7 @@ map("n", "<localleader>sj", function()
   vim.cmd("nohl")
 end, { desc = "Join Whitespace", noremap = true })
 -- 去掉空格
-map("n","<localleader>sd",function()
+map("n", "<localleader>sd", function()
   vim.cmd("s/\\s//ge")
   vim.cmd("nohl")
 end, { desc = "Del Line Whitespace", noremap = true })
@@ -67,3 +67,67 @@ map("o", "ir", "i[")
 map("o", "ar", "a[")
 map("o", "ia", "i<")
 map("o", "aa", "a<")
+
+-- 高亮显示所标记的两行的最大相同部分
+map("n", "<localleader>l", function()
+  -- 获取标记处的文本
+  local function get_line(bufnr, mark)
+    local row, _ = unpack(vim.api.nvim_buf_get_mark(bufnr, mark))
+    -- 获取当前缓冲区中指定行的文本
+    local lines = vim.api.nvim_buf_get_lines(bufnr, row - 1, row, false)
+    return lines[1]
+  end
+
+  -- 求两个字符串的最长公共子串
+  local function longest_common_substring(str1, str2)
+    local len1 = #str1
+    local len2 = #str2
+    local max_len = 0
+    local ending_index = 0
+    local matrix = {}
+
+    -- 初始化矩阵
+    for i = 0, len1 do
+      matrix[i] = {}
+      for j = 0, len2 do
+        matrix[i][j] = 0
+      end
+    end
+
+    -- 动态规划计算最长公共子串
+    for i = 1, len1 do
+      for j = 1, len2 do
+        if str1:sub(i, i) == str2:sub(j, j) then
+          matrix[i][j] = matrix[i - 1][j - 1] + 1
+          if matrix[i][j] > max_len then
+            max_len = matrix[i][j]
+            ending_index = i
+          end
+        end
+      end
+    end
+
+    -- 返回最长公共子串
+    if max_len > 0 then
+      return str1:sub(ending_index - max_len + 1, ending_index)
+    else
+      return ""
+    end
+  end
+
+  -- 获取当前缓冲区号
+  local bufnr = vim.api.nvim_get_current_buf()
+  -- 获取两行文本
+  local text1 = get_line(bufnr, "a")
+  local text2 = get_line(bufnr, "b")
+  if text1 == nil or text2 == nil then
+    vim.notify("高亮公共子串前，请先标记行")
+    return
+  end
+  -- 计算并输出最长公共子串
+  local lcs = longest_common_substring(text1, text2)
+  lcs = string.gsub(lcs, "]", "\\]")
+  -- 高亮公共子串
+  vim.fn.setreg("/", lcs)
+  vim.cmd("normal! n")
+end, { desc = "Longest Common Substring", noremap = true })
