@@ -1,11 +1,35 @@
 return {
   {
     "mfussenegger/nvim-lint",
+    optional = true,
     opts = {
-      -- 去掉markdown烦人的诊断信息
-      linters_by_ft = {
-        markdown = {},
+      -- 直接去掉markdown的诊断信息，缺点：不能格式化
+      -- linters_by_ft = {
+      --   markdown = {},
+      -- },
+      linters = {
+        ["markdownlint-cli2"] = {
+          args = { "--config", vim.fn.expand("~/.config/nvim/.markdownlint.yaml"), "--" },
+        },
       },
     },
   },
+  -- 过滤markdown诊断信息，弃用，同样会导致不能格式化
+  -- {
+  --   "m-gail/diagnostic_manipulation.nvim",
+  --   init = function()
+  --     local function md_error(diagnostic)
+  --       -- print(diagnostic.message)
+  --       return diagnostic.source == "markdownlint"
+  --     end
+  --     require("diagnostic_manipulation").setup({
+  --       blacklist = {
+  --         md_error,
+  --       },
+  --       whitelist = {
+  --         -- Your whitelist here
+  --       },
+  --     })
+  --   end,
+  -- },
 }
