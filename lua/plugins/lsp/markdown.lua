@@ -9,6 +9,7 @@ return {
       -- },
       linters = {
         ["markdownlint-cli2"] = {
+          -- 注意：使用的是.markdownlint.yaml，而非.markdownlint-cli2.yaml，两者的配置格式有区别
           args = { "--config", vim.fn.expand("~/.config/nvim/.markdownlint.yaml"), "--" },
         },
       },

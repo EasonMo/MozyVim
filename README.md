@@ -2,11 +2,13 @@
 
 个人定制版[LazyVim](https://github.com/LazyVim/LazyVim)
 
-安装：
+## 安装
 
 ```sh
 git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
 ```
+
+## 说明
 
 主要的定制说明：
 
@@ -29,3 +31,14 @@ git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
 与官方同步的修改记录：
 
 - [x] LazyVim取消mason-nvim-dap关于python的dap默认配置，修改位置：extras/lang/python.lua#142，恢复配置nvim-dap-python
+
+需额外安装的依赖：
+
+- curl.nvim
+
+```sh
+# mac
+brew install jq
+# linux
+sudo apt install jq
+```
