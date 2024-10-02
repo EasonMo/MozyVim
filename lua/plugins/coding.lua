@@ -129,4 +129,24 @@ return {
       keymap_m.keymap_registry().register_keymap_group("n", "<LocalLeader>cg", "motion slection (not lsp)")
     end,
   },
+  -- 直接执行curl
+  {
+    "oysandvik94/curl.nvim",
+    -- enabled = false,
+    ft = "curl",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      mappings = {
+        execute_curl = "<localleader>h",
+      },
+    },
+    config = function(_, opts)
+      vim.api.nvim_set_hl(0, "CurlCommandHighlight", {
+        link = "Visual",
+      })
+      require("curl.config").setup(opts)
+    end,
+  },
 }
