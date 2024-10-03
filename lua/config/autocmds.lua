@@ -65,7 +65,8 @@ vim.api.nvim_create_autocmd("FileType", {
     "dap-float",
     "lazy_backdrop",
     "crunner",
-    "vim",
+    "vim", -- 历史命令窗口
+    "gitsigns-blame",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
