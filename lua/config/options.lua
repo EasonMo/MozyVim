@@ -24,7 +24,7 @@ if os.getenv("XDG_CURRENT_DESKTOP") == "GNOME" then
   vim.opt.clipboard = "unnamedplus"
 end
 
--- 添加文件类型
+-- 添加文件类型, 可设置别名
 vim.filetype.add({
   extension = {
     curl = "curl",
