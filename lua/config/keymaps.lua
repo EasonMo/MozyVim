@@ -43,7 +43,8 @@ end, { desc = "selection for grep", noremap = true, silent = true })
 -- 合并行时，不加空格
 map({ "n", "x" }, "J", "gJ", { desc = "Join line" })
 
-map({ "n", "x" }, "<C-A>", "ggVG", { desc = "Select All" })
+-- 全选，跟增加数字冲突，很少使用
+-- map({ "n", "x" }, "<C-A>", "ggVG", { desc = "Select All" })
 
 -- 去掉行尾空白
 map("n", "<localleader>st", function()
