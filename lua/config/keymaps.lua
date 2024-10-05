@@ -45,7 +45,12 @@ map({ "n", "x" }, "J", "gJ", { desc = "Join line" })
 
 map({ "n", "x" }, "<C-A>", "ggVG", { desc = "Select All" })
 
--- 去掉头尾空白行
+-- 去掉行尾空白
+map("n", "<localleader>st", function()
+  vim.cmd("%s/\\v\\s+$//ge")
+  vim.cmd("nohl")
+end, { desc = "Trail Whitespace", noremap = true })
+-- 去掉头尾空白
 map("n", "<localleader>ss", function()
   vim.cmd("%s/\\v^\\s+//ge")
   vim.cmd("%s/\\v\\s+$//ge")
