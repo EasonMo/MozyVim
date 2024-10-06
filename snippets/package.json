@@ -5,6 +5,10 @@
       {
         "language": "python",
         "path": "./init/python.json"
+      },
+      {
+        "language": "lua",
+        "path": "./init/lua.json"
       }
     ]
   }
