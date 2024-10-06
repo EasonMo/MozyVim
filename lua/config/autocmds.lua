@@ -67,6 +67,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "crunner",
     "vim", -- 历史命令窗口
     "gitsigns-blame",
+    "query",
   },
   callback = function(event)
     vim.bo[event.buf].buflisted = false
@@ -79,6 +80,22 @@ vim.api.nvim_create_autocmd("FileType", {
       end
       return "<cmd>close<cr>"
     end, { buffer = event.buf, silent = true, expr = true })
+  end,
+})
+
+-- 动态关闭smartcase：优化Cmdline补全
+vim.api.nvim_create_augroup("dynamic_smartcase", { clear = true })
+vim.api.nvim_create_autocmd("CmdLineEnter", {
+  group = "dynamic_smartcase",
+  callback = function()
+    vim.opt.smartcase = false
+  end,
+})
+vim.api.nvim_create_autocmd("CmdLineLeave", {
+  group = "dynamic_smartcase",
+  callback = function()
+    -- smartcase为true时，有大写则case-sensitive
+    vim.opt.smartcase = true
   end,
 })
 
