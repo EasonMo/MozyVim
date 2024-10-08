@@ -16,6 +16,12 @@ return {
           if mode == "c" then
             return false
           end
+          local filetype = vim.opt_local.filetype:get()
+          -- 解决dap-repl按回车不触发命令
+          if filetype == "dap-repl" then
+            return false
+          end
+
           return true
         end,
       },
