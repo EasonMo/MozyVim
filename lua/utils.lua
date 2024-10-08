@@ -33,7 +33,30 @@ function Close_all()
   -- vim.api.nvim_command("OutlineClose")
 end
 
-function M.log(obj)
+M.log = function(obj)
   print(vim.inspect(obj))
 end
+
+M.find_buffer_by_name = function(name)
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    local buf_name = vim.api.nvim_buf_get_name(buf)
+    if buf_name == name then
+      return buf
+    end
+  end
+  return -1
+end
+
+M.find_buffers_by_filetype = function(filetype)
+  local buffers = {}
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) then
+      if vim.api.nvim_buf_get_option(buf, "filetype") == filetype then
+        table.insert(buffers, buf)
+      end
+    end
+  end
+  return buffers
+end
+
 return M
