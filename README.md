@@ -42,3 +42,17 @@ brew install jq
 # linux
 sudo apt install jq
 ```
+
+## 寄存器宏分配
+
+宏分配：
+
+1. 搜索替换，搜索a，替换为b，宏为m
+2. 粘贴：p
+3. 整词粘贴：o
+
+nvim启动时把宏设置到寄存器里：
+
+1. hex编辑register_micro文件：`:%!xxd`
+2. `的ascii码为：60，定位宏的位置
+3. 把数据复制出来，以字节数据的方式给寄存器赋值：`"\x00\xFF\xAB\xCD"`
