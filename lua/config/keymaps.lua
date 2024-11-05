@@ -137,3 +137,14 @@ map("n", "<localleader>l", function()
   vim.fn.setreg("/", lcs)
   vim.cmd("normal! n")
 end, { desc = "Longest Common Substring", noremap = true })
+
+-- 切换paste模式
+LazyVim.toggle.map("<leader>uP", {
+  name = "Paste Mode",
+  get = function()
+    return vim.o.paste
+  end,
+  set = function(state)
+    vim.o.paste = state
+  end,
+})
