@@ -16,7 +16,7 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
 })
--- 解决joson注释报错的问题
+-- 解决json注释报错的问题
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "json" },
   callback = function()
