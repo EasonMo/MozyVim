@@ -155,4 +155,10 @@ return {
       require("curl.config").setup(opts)
     end,
   },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    keys = {
+      { "<leader>r", "", desc = "+refactor/runner", mode = { "n", "v" } },
+    },
+  },
 }
