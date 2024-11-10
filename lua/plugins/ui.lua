@@ -1,4 +1,5 @@
 return {
+  -- buffer栏
   {
     "akinsho/bufferline.nvim",
     keys = {
@@ -93,6 +94,7 @@ return {
       })
     end,
   },
+  -- 指定要使用的主题
   {
     "LazyVim/LazyVim",
     opts = {
@@ -104,15 +106,18 @@ return {
     "folke/noice.nvim",
     keys = {
       -- stylua: ignore
+      -- 弹窗执行命令行的命令，同shift+回车, 按Esc跳至弹窗
       { "<A-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline", },
     },
   },
+  -- 彩虹括号
   {
     "HiPhish/rainbow-delimiters.nvim",
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     main = "rainbow-delimiters.setup",
   },
+  -- tmux窗口切换
   {
     "christoomey/vim-tmux-navigator",
     event = "VeryLazy",
@@ -131,6 +136,7 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  -- 显示#{RGB}的颜色
   {
     "norcalli/nvim-colorizer.lua",
     event = "VeryLazy",
@@ -138,6 +144,7 @@ return {
       require("colorizer").setup()
     end,
   },
+  -- 按键提示
   {
     "folke/which-key.nvim",
     optional = true,
@@ -147,6 +154,7 @@ return {
       },
     },
   },
+  -- 文本高亮
   {
     "Mr-LLLLL/interestingwords.nvim",
     event = "VeryLazy",
