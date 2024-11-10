@@ -10,6 +10,8 @@ git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
 
 ## 说明
 
+LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
+
 主要的定制说明：
 
 - 修改缩进线的样式
@@ -26,15 +28,9 @@ git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
   - vim-tmux-navigator
 - 等等...
 
-官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
+额外的依赖：
 
-与官方同步的修改记录：
-
-- [x] LazyVim取消mason-nvim-dap关于python的dap默认配置，修改位置：extras/lang/python.lua#142，恢复配置nvim-dap-python
-
-需额外安装的依赖：
-
-- curl.nvim
+- 安装jq：curl.nvim
 
 ```sh
 # mac
@@ -47,7 +43,7 @@ sudo apt install jq
 
 宏分配：
 
-1. 搜索替换，搜索a，替换为b，宏为m
+1. 搜索替换：搜索a，替换为b，宏为m
 2. 粘贴：p
 3. 整词粘贴：o
 
