@@ -27,7 +27,7 @@ return {
       },
     },
   },
-  -- 修改配置，只修改单一项
+  -- 缩进线显示
   {
     "lukas-reineke/indent-blankline.nvim",
     event = "LazyFile",
@@ -46,6 +46,7 @@ return {
       }
     end,
   },
+  -- 补全
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
@@ -155,6 +156,7 @@ return {
       require("curl.config").setup(opts)
     end,
   },
+  -- 重构
   {
     "ThePrimeagen/refactoring.nvim",
     keys = {
