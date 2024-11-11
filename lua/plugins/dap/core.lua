@@ -19,16 +19,19 @@ return {
     keys = {
       -- 启动调试前，关闭其他窗口
       { "<leader>da", function() Close_all();require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
-      { "<leader>dc", function() Close_all();require("dap").continue() end, desc = "Continue" },
+      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint Condition" },
+      { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Toggle Breakpoint (F9)" },
+      { "<leader>dc", function() Close_all();require("dap").continue() end, desc = "Continue (F5)" },
       { "<F5>", function() Close_all(); require("dap").continue() end, desc = "DAP: Continue" },
-      { "<F9>", function() require("dap").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
-      { "<leader>do", function() require("dap").step_over() end, desc = "DAP: Step Over" },
-      { "<F10>", function() require("dap").step_over() end, desc = "DAP: Step Over" },
-      { "<F11>", function() require("dap").step_into() end, desc = "DAP: Step Into" },
-      { "<leader>dO", function() require("dap").step_out() end, desc = "DAP: Step Out" },
-      { "<S-F11>", function() require("dap").step_out() end, desc = "DAP: Step Out" },
-      { "<F23>", function() require("dap").step_out() end, desc = "DAP: Step Out" },  -- 即shift+F11
-      { "<leader>dx", function() require("dap").clear_breakpoints() end, desc = "Clear Breakpoint"},
+      { "<F9>", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
+      { "<leader>di", function() require("dap").step_into() end, desc = "Step Into (F11)" },
+      { "<F11>", function() require("dap").step_into() end, desc = "Step Into" },
+      { "<leader>do", function() require("dap").step_over() end, desc = "Step Over (F10)" },
+      { "<F10>", function() require("dap").step_over() end, desc = "Step Over" },
+      { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out (S+F11)" },
+      { "<S-F11>", function() require("dap").step_out() end, desc = "Step Out" },
+      { "<F23>", function() require("dap").step_out() end, desc = "Step Out" },  -- 即shift+F11
+      { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, desc = "Clear Breakpoint"},
     },
   },
   {
@@ -91,5 +94,12 @@ return {
     config = function()
       require("nvim-dap-repl-highlights").setup()
     end,
+  },
+  {
+    "Weissle/persistent-breakpoints.nvim",
+    event = "VeryLazy",
+    opts = {
+      load_breakpoints_event = { "BufReadPost" },
+    },
   },
 }
