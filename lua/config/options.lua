@@ -28,6 +28,7 @@ end
 vim.filetype.add({
   extension = {
     curl = "curl",
+    json = "jsonc", -- 解决json注释报错
   },
 })
 
