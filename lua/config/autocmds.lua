@@ -16,13 +16,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
   group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
 })
--- 解决json注释报错的问题
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "json" },
-  callback = function()
-    vim.o.filetype = "jsonc"
-  end,
-})
 
 -- 实现复制时与系统剪贴板同步，支持tmux，ssh，排除gnome环境
 if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
