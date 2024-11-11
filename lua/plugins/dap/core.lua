@@ -19,11 +19,12 @@ return {
     keys = {
       -- 启动调试前，关闭其他窗口
       { "<leader>da", function() Close_all();require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
-      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint Condition" },
       { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Toggle Breakpoint (F9)" },
+      { "<F9>", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
+      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint Condition" },
       { "<leader>dc", function() Close_all();require("dap").continue() end, desc = "Continue (F5)" },
-      { "<F5>", function() Close_all(); require("dap").continue() end, desc = "DAP: Continue" },
-      { "<F9>", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "DAP: Toggle Breakpoint" },
+      { "<F5>", function() Close_all(); require("dap").continue() end, desc = "Continue" },
+      { "<leader>dL", function() require("persistent-breakpoints.api").set_log_point() end, desc = "Breakpoint Log" },
       { "<leader>di", function() require("dap").step_into() end, desc = "Step Into (F11)" },
       { "<F11>", function() require("dap").step_into() end, desc = "Step Into" },
       { "<leader>do", function() require("dap").step_over() end, desc = "Step Over (F10)" },
