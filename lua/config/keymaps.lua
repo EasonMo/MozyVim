@@ -1,7 +1,7 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-
+local snacks = require("snacks")
 local tb = require("telescope.builtin")
 local map = vim.keymap.set
 function vim.getVisualSelection()
@@ -133,12 +133,14 @@ map("n", "<localleader>l", function()
 end, { desc = "Longest Common Substring", noremap = true })
 
 -- 切换paste模式
-LazyVim.toggle.map("<leader>uP", {
-  name = "Paste Mode",
-  get = function()
-    return vim.o.paste
-  end,
-  set = function(state)
-    vim.o.paste = state
-  end,
-})
+snacks
+  .toggle({
+    name = "Paste Mode",
+    get = function()
+      return vim.o.paste
+    end,
+    set = function(state)
+      vim.o.paste = state
+    end,
+  })
+  :map("<leader>uP")
