@@ -163,4 +163,36 @@ return {
       { "<leader>r", "", desc = "+refactor/runner", mode = { "n", "v" } },
     },
   },
+  {
+    "stevearc/overseer.nvim",
+    event = "VeryLazy",
+    -- stylua: ignore
+    keys = {
+      { "<leader>or", "<cmd>OverseerRun<cr>", desc = "task: run" },
+      { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "task: toggle" },
+      { "<leader>oa", "<cmd>OverseerQuickAction<cr>", desc = "task: quick action" },
+      { "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "task: restart last" },
+    },
+    --- @type overseer.Config Configuration options
+    opts = {
+      -- overseer与dap不同时初始化
+      dap = false,
+      templates = {
+        "builtin",
+        "user",
+      },
+    },
+    config = function(_, opts)
+      vim.api.nvim_create_user_command("OverseerRestartLast", function()
+        local overseer = require("overseer")
+        local tasks = overseer.list_tasks({ recent_first = true })
+        if vim.tbl_isempty(tasks) then
+          vim.notify("No tasks found", vim.log.levels.WARN)
+        else
+          overseer.run_action(tasks[1], "restart")
+        end
+      end, {})
+      require("overseer").setup(opts)
+    end,
+  },
 }
