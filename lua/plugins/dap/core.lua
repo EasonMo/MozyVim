@@ -55,6 +55,8 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close({})
       end
+      -- 使用launch.json时，用overseer执行preLaunchTask
+      require("overseer").enable_dap()
     end,
   },
   -- dap补全
