@@ -151,6 +151,7 @@ return {
     opts = {
       spec = {
         { "<localleader>s", group = "Strip whitespace", mode = "n" },
+        { "<leader>o", "", desc = "+overseer", mode = {"n"}},
       },
     },
   },
