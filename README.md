@@ -28,17 +28,6 @@ LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
   - vim-tmux-navigator
 - 等等...
 
-额外的依赖：
-
-- 安装jq：curl.nvim
-
-```sh
-# mac
-brew install jq
-# linux
-sudo apt install jq
-```
-
 ## 寄存器宏分配
 
 宏分配：

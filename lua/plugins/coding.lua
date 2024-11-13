@@ -142,7 +142,12 @@ return {
     -- enabled = false,
     ft = "curl",
     dependencies = {
-      "nvim-lua/plenary.nvim",
+      { "nvim-lua/plenary.nvim" },
+      {
+        "williamboman/mason.nvim",
+        optional = true,
+        opts = { ensure_installed = { "jq" } },
+      },
     },
     opts = {
       mappings = {
