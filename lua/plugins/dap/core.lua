@@ -45,12 +45,22 @@ return {
     config = function(_, opts)
       local dap = require("dap")
       local dapui = require("dapui")
+      local function clear_dap_ui()
+        local bufs = utils.find_buffers_by_filetype("dap-repl")
+        for _, buf in ipairs(bufs) do
+          vim.bo[buf].buflisted = false
+        end
+        dapui.close({})
+      end
       dapui.setup(opts)
       dap.listeners.after.event_initialized["dapui_config"] = function()
         dapui.open({ layout = 2, reset = true })
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
-        dapui.close({})
+        clear_dap_ui()
+      end
+      dap.listeners.after.disconnect["dapui_config"] = function()
+        clear_dap_ui()
       end
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close({})
@@ -76,14 +86,6 @@ return {
           { name = "dap" },
         },
       })
-      local dap = require("dap")
-      -- 修正dap-repl buffer不关闭
-      dap.listeners.before["event_terminated"]["hide-dap-repl"] = function()
-        local bufs = utils.find_buffers_by_filetype("dap-repl")
-        for _, buf in ipairs(bufs) do
-          vim.bo[buf].buflisted = false
-        end
-      end
     end,
   },
   -- dap高亮

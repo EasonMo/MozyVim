@@ -4,7 +4,7 @@ return {
     local file = vim.fn.expand("%:.")
     local filetype = vim.fn.expand("%:e")
     local gcc_cmd = "gcc"
-    if filetype == "c" then
+    if filetype == "cpp" then
       gcc_cmd = "g++"
     end
     local out = vim.fn.expand("%:r") .. ".out"

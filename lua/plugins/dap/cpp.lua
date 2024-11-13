@@ -1,39 +1,60 @@
 return {
   {
+    "jay-babu/mason-nvim-dap.nvim",
+    optional = true,
+    opts = {
+      handlers = {
+        -- 删除mason的默认配置
+        cppdbg = function() end,
+        codelldb = function() end,
+      },
+    },
+  },
+  {
     "mfussenegger/nvim-dap",
     opts = function()
       local dap = require("dap")
-      table.insert(dap.configurations["c"], {
-        name = "LLDB: Launch active file",
-        type = "codelldb",
-        request = "launch",
-        program = function()
-          -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-          return "${fileDirname}/${fileBasenameNoExtension}.out"
-        end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
-        stopAtBeginningOfMainSubprogram = false,
-        -- args = {},
-      })
-      -- gdb参考文档：https://github.com/mfussenegger/nvim-dap/wiki/Debug-Adapter-installation#ccrust-via-gdb
-      dap.adapters.gdb = {
+      dap.adapters.cppdbg = {
+        id = "cppdbg",
         type = "executable",
-        command = "gdb",
-        args = { "-i", "dap" },
-        -- args = { "--interpreter=dap", "--eval-command", "set print pretty on" },
+        command = vim.fn.exepath("OpenDebugAD7"),
+        -- setupCommands = {
+        --   {
+        --     text = "-enable-pretty-printing",
+        --     description = "enable pretty printing",
+        --     ignoreFailures = true,
+        --   },
+        -- },
+        options = { detached = false },
       }
-      table.insert(dap.configurations["c"], {
-        name = "GDB: Launch active file",
-        type = "gdb",
-        request = "launch",
-        program = function()
-          return "${fileDirname}/${fileBasenameNoExtension}.out"
-        end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = false,
-        stopAtBeginningOfMainSubprogram = false,
-      })
+      -- 覆盖lazyVim的配置
+      dap.configurations.c = {
+        {
+          name = "cppdbg: Launch active file",
+          type = "cppdbg",
+          request = "launch",
+          program = function()
+            return "${fileDirname}/${fileBasenameNoExtension}.out"
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+          stopAtBeginningOfMainSubprogram = false,
+        },
+        {
+          name = "LLDB: Launch active file",
+          type = "codelldb",
+          request = "launch",
+          program = function()
+            -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            return "${fileDirname}/${fileBasenameNoExtension}.out"
+          end,
+          cwd = "${workspaceFolder}",
+          stopOnEntry = false,
+          stopAtBeginningOfMainSubprogram = false,
+          -- args = {},
+        },
+      }
+      dap.configurations.cpp = dap.configurations.c
     end,
   },
 }
