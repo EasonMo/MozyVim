@@ -18,14 +18,6 @@ return {
         id = "cppdbg",
         type = "executable",
         command = vim.fn.exepath("OpenDebugAD7"),
-        -- setupCommands = {
-        --   {
-        --     text = "-enable-pretty-printing",
-        --     description = "enable pretty printing",
-        --     ignoreFailures = true,
-        --   },
-        -- },
-        options = { detached = false },
       }
       -- 覆盖lazyVim的配置
       dap.configurations.c = {
@@ -39,6 +31,15 @@ return {
           cwd = "${workspaceFolder}",
           stopOnEntry = false,
           stopAtBeginningOfMainSubprogram = false,
+          miDebuggerArgs = "--quiet",
+          targetArchitecture = "x64",
+          setupCommands = {
+            {
+              text = "-enable-pretty-printing",
+              description = "enable pretty printing",
+              ignoreFailures = false,
+            },
+          },
         },
         {
           name = "LLDB: Launch active file",
