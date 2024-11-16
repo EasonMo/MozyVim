@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- 实现复制时与系统剪贴板同步，支持tmux，ssh，排除gnome环境
 if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
   vim.g.clipboard = {
-    name = "OSC 52",
+    name = "OSC 52", -- name不能修改，否则ssh下iterm2会弹剪贴板访问的警告
     copy = {
       ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
       ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
