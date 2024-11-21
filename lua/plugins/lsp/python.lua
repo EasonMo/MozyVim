@@ -17,7 +17,7 @@ return {
   ---@class PluginLspOpts
   opts = {
     servers = {
-      pyright = {
+      pyright = { -- basedpyright只是订制版的pyright
         -- 修复root dir错误设置的问题
         root_dir = function(fname)
           return util.root_pattern(unpack(vim.tbl_extend("force", py_root, general_root)))(fname)

@@ -23,9 +23,7 @@ LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
 - 添加可视化选择搜索
 - 添加补全支持tab
 - 添加alt+Enter执行命令
-- 添加插件：
-  - nvim-surround
-  - vim-tmux-navigator
+- 定制dap、lsp、任务系统等一大堆插件
 - 等等...
 
 ## 寄存器宏分配
@@ -39,5 +37,5 @@ LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
 nvim启动时把宏设置到寄存器里：
 
 1. hex编辑register_micro文件：`:%!xxd`
-2. `的ascii码为：60，定位宏的位置
+2. 反引号`的ascii码为：60，查找60定位宏的开始位置和结束位置
 3. 把数据复制出来，以字节数据的方式给寄存器赋值：`"\x00\xFF\xAB\xCD"`
