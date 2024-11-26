@@ -27,6 +27,7 @@ require("lazy").setup({
     -- { import = "lazyvim.plugins.extras.linting.eslint" },
     -- { import = "lazyvim.plugins.extras.ui.mini-indentscope" },
     -- { import = "lazyvim.plugins.extras.formatting.black" },
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
     { import = "plugins" },
     { import = "plugins.dap" },
     { import = "plugins.lsp" },
