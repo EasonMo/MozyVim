@@ -12,6 +12,16 @@ local function get_args(config)
   return config
 end
 
+local layout_3_list = { "javascript", "typescript", "typescriptreact", "javascriptreact" }
+local function get_layout()
+  for _, element in ipairs(layout_3_list) do
+    if vim.bo.filetype == element then
+      return 3
+    end
+  end
+  return 2
+end
+
 return {
   {
     "mfussenegger/nvim-dap",
@@ -39,8 +49,35 @@ return {
     "rcarriga/nvim-dap-ui",
     -- stylua: ignore
     keys = {
-      { "<leader>du", function() require("dapui").toggle({ layout = 2, reset = true }) end, desc = "Dap UI" },
-      { "<leader>dU", function() require("dapui").toggle({ layout = 1, reset = true }) end, desc = "Dap UI (all)" },
+      { "<leader>du", function() require("dapui").toggle({ layout = get_layout(), reset = true }) end, desc = "Dap UI" },
+      { "<leader>dU", function() require("dapui").toggle({ layout = 1, reset = true }) end, desc = "Dap UI (left)" },
+    },
+    opts = {
+      layouts = {
+        {
+          elements = {
+            { id = "scopes", size = 0.25 },
+            { id = "breakpoints", size = 0.25 },
+            { id = "stacks", size = 0.25 },
+            { id = "watches", size = 0.25 },
+          },
+          position = "left",
+          size = 40,
+        },
+        {
+          elements = {
+            { id = "repl", size = 0.5 },
+            { id = "console", size = 0.5 },
+          },
+          position = "bottom",
+          size = 10,
+        },
+        {
+          elements = { { id = "repl", size = 10 } },
+          position = "bottom",
+          size = 10,
+        },
+      },
     },
     config = function(_, opts)
       local dap = require("dap")
@@ -54,7 +91,7 @@ return {
       end
       dapui.setup(opts)
       dap.listeners.after.event_initialized["dapui_config"] = function()
-        dapui.open({ layout = 2, reset = true })
+        dapui.open({ layout = get_layout(), reset = true })
       end
       dap.listeners.before.event_terminated["dapui_config"] = function()
         clear_dap_ui()
