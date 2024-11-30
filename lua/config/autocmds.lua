@@ -105,3 +105,10 @@ vim.api.nvim_create_user_command("GetWinType", function()
     end
   end
 end, { desc = "Print float windows filetype" })
+
+-- 代码处理
+vim.api.nvim_create_user_command("ReplaceRequireToImport", function()
+  vim.cmd([[
+    %s/const \(.*\) = require(\(.*\))/import \1 from \2/g
+  ]])
+end, { nargs = 0, desc = "Replace require to import" })
