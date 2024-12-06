@@ -108,7 +108,9 @@ return {
   },
   -- dap补全
   {
-    "rcarriga/cmp-dap",
+    -- "rcarriga/cmp-dap",
+    "EasonMo/cmp-dap",
+    branch = "fix_cppdbg",
     event = "VeryLazy",
     config = function()
       require("cmp").setup({
