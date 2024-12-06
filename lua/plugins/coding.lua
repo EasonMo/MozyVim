@@ -200,4 +200,12 @@ return {
       require("overseer").setup(opts)
     end,
   },
+  {
+    "folke/flash.nvim",
+    -- stylua: ignore
+    keys = {
+      -- 删除x、o模式，与nvim-surround的S冲突
+      { "S", mode = { "n" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    },
+  },
 }
