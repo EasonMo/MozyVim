@@ -29,45 +29,29 @@ return {
   },
   -- 缩进线显示
   {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "LazyFile",
-    opts = function(_, opts)
-      local hooks = require("ibl.hooks")
-      -- create the highlight groups in the highlight setup hook, so they are reset
-      -- every time the colorscheme changes
-      hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "custom_indent_highlight", { fg = "#313131" })
-      end)
-
-      opts.indent = {
-        char = "╎",
-        tab_char = "╎",
-        highlight = "custom_indent_highlight",
-      }
-    end,
+    "snacks.nvim",
+    opts = {
+      indent = {
+        indent = {
+          char = "╎",
+          hl = "custom_indent_highlight",
+        },
+      },
+    },
   },
   -- 补全
   {
-    "hrsh7th/nvim-cmp",
-    dependencies = {
-      "hrsh7th/cmp-emoji",
+    "saghen/blink.cmp",
+    ---@module 'blink.cmp'
+    ---@type blink.cmp.Config
+    opts = {
+      keymap = {
+        ["<M-/>"] = { "show", "show_documentation", "hide_documentation" },
+      },
+      enabled = function()
+        return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false or require("cmp_dap").is_dap_buffer()
+      end,
     },
-    ---@param opts cmp.ConfigSchema
-    opts = function(_, opts)
-      local cmp = require("cmp")
-      -- NOTE: 没相到合并按键映射这样搞的
-      opts.mapping = vim.tbl_extend("force", opts.mapping, {
-        -- 添加cmp补全的按键
-        ["<M-/>"] = cmp.mapping.complete(),
-        -- 手动关闭补全: 关闭高亮
-        ["<C-e>"] = cmp.mapping(function()
-          if vim.snippet.active({ direction = 1 }) then
-            vim.snippet.stop()
-          end
-          cmp.mapping.abort()
-        end, { "i", "s" }),
-      })
-    end,
   },
   -- 解决sudo保存文件
   {
