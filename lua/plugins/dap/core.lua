@@ -108,24 +108,32 @@ return {
   },
   -- dap补全
   {
-    -- "rcarriga/cmp-dap",
-    "EasonMo/cmp-dap",
-    branch = "fix_cppdbg",
-    event = "VeryLazy",
-    config = function()
-      require("cmp").setup({
-        enabled = function()
-          ---@diagnostic disable-next-line: deprecated
-          return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-        end,
-      })
-
-      require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
-        sources = {
-          { name = "dap" },
+    "saghen/blink.compat",
+    version = "*",
+    lazy = true,
+    opts = {},
+  },
+  {
+    "saghen/blink.cmp",
+    dependencies = {
+      -- add source
+      { "rcarriga/cmp-dap" },
+    },
+    sources = {
+      completion = {
+        -- remember to enable your providers here
+        enabled_providers = { "dap" },
+      },
+      providers = {
+        -- create provider
+        dap = {
+          name = "dap",
+          module = "blink.compat.source",
+          -- all blink.cmp source config options work as normal:
+          score_offset = -3,
         },
-      })
-    end,
+      },
+    },
   },
   -- dap高亮
   {

@@ -2,7 +2,6 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 local snacks = require("snacks")
-local tb = require("telescope.builtin")
 local map = vim.keymap.set
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy"')
@@ -27,18 +26,6 @@ map("v", "//", function()
   vim.fn.setreg("/", text)
   vim.cmd("normal! n")
 end, { desc = "Search By Block", noremap = true })
-
--- 用选中的文本搜索buffer
-map("v", "<space>sb", function()
-  local text = vim.getVisualSelection()
-  tb.current_buffer_fuzzy_find({ default_text = text })
-end, { desc = "selection for buffer", noremap = true, silent = true })
-
--- 用选中的文本grep搜索
-map("v", "<leader>sg", function()
-  local text = vim.getVisualSelection()
-  tb.live_grep({ default_text = text })
-end, { desc = "selection for grep", noremap = true, silent = true })
 
 -- 合并行时，不加空格
 map({ "n", "x" }, "J", "gJ", { desc = "Join line" })
