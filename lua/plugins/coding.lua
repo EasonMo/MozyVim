@@ -152,20 +152,15 @@ return {
       { "<leader>r", "", desc = "+refactor/runner", mode = { "n", "v" } },
     },
   },
+  -- 任务系统
   {
     "stevearc/overseer.nvim",
-    event = "VeryLazy",
     -- stylua: ignore
     keys = {
-      { "<leader>or", "<cmd>OverseerRun<cr>", desc = "task: run" },
-      { "<leader>ot", "<cmd>OverseerToggle<cr>", desc = "task: toggle" },
-      { "<leader>oa", "<cmd>OverseerQuickAction<cr>", desc = "task: quick action" },
-      { "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "task: restart last" },
+      { "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "Restart last" },
     },
     --- @type overseer.Config Configuration options
     opts = {
-      -- overseer与dap不同时初始化
-      dap = false,
       templates = {
         "builtin",
         "user",

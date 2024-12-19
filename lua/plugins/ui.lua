@@ -180,14 +180,6 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
-  -- 显示#{RGB}的颜色
-  {
-    "norcalli/nvim-colorizer.lua",
-    event = "VeryLazy",
-    config = function()
-      require("colorizer").setup()
-    end,
-  },
   -- 按键提示
   {
     "folke/which-key.nvim",
@@ -195,7 +187,6 @@ return {
     opts = {
       spec = {
         { "<localleader>s", group = "Strip whitespace", mode = "n" },
-        { "<leader>o", "", desc = "+overseer", mode = { "n" } },
       },
     },
   },
