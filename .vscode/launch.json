@@ -18,7 +18,7 @@
       // "MIMode": "lldb",
       // "preLaunchTask": "gcc build c"
       // "preLaunchTask": "C/C++: clang build active file"
-      "preLaunchTask": "C/C++: clang build active file for nvim"
+      "preLaunchTask": "C/C++: clang build active file (nvim test)"
     }
   ]
 }
