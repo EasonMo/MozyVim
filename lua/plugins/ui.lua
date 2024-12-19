@@ -89,7 +89,7 @@ return {
           vim.ui.select(options, {
             prompt = "Choose to copy to clipboard:",
             format_item = function(item)
-              return ("%s: %s"):format(item, vals[item])
+              return ("%s: %s"):format(string.sub(item, 3), vals[item])
             end,
           }, function(choice)
             local result = vals[choice]
