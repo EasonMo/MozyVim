@@ -187,4 +187,15 @@ return {
       { "S", mode = { "n" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
     },
   },
+  -- 增强增量/减量
+  {
+    "monaqa/dial.nvim",
+    opts = function(_, opts)
+      local augend = require("dial.augend")
+      vim.list_extend(opts.groups.default, {
+        augend.date.alias["%Y-%m-%d"],
+        augend.date.new({ pattern = "%Y年%m月%d日", default_kind = "day", only_valid = true }),
+      })
+    end,
+  },
 }

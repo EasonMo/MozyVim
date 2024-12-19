@@ -11,6 +11,7 @@
   "coerce.nvim": { "branch": "main", "commit": "bad4f5ef5c2477d72a58379624baeebc4977ac75" },
   "conform.nvim": { "branch": "master", "commit": "f4e8837878fc5712d053ba3091a73d27d96a09e2" },
   "curl.nvim": { "branch": "main", "commit": "6b64f67cf033b12b4e8249afe03def55ffc9b6cb" },
+  "dial.nvim": { "branch": "master", "commit": "46b4375e84e8eb771129bff6b2b1e47746601ef9" },
   "flash.nvim": { "branch": "main", "commit": "34c7be146a91fec3555c33fe89c7d643f6ef5cf1" },
   "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "fzf-lua": { "branch": "main", "commit": "29e8180cd395f4a2e8871ad45ef9767bbe8d381b" },
