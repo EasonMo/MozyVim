@@ -28,29 +28,29 @@ return {
     -- stylua: ignore
     keys = {
       -- 启动调试前，关闭其他窗口
-      { "<leader>da", function() Close_all();require("dap").continue({ before = get_args }) end, desc = "Run with Args" },
-      { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Toggle Breakpoint (F9)" },
-      { "<F9>", function() require("persistent-breakpoints.api").toggle_breakpoint() end, desc = "Toggle Breakpoint" },
-      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end, desc = "Breakpoint Condition" },
-      { "<leader>dc", function() Close_all();require("dap").continue() end, desc = "Continue (F5)" },
-      { "<F5>", function() Close_all(); require("dap").continue() end, desc = "Continue" },
-      { "<leader>dL", function() require("persistent-breakpoints.api").set_log_point() end, desc = "Breakpoint Log" },
-      { "<leader>di", function() require("dap").step_into() end, desc = "Step Into (F11)" },
-      { "<F11>", function() require("dap").step_into() end, desc = "Step Into" },
-      { "<leader>do", function() require("dap").step_over() end, desc = "Step Over (F10)" },
-      { "<F10>", function() require("dap").step_over() end, desc = "Step Over" },
-      { "<leader>dO", function() require("dap").step_out() end, desc = "Step Out (S+F11)" },
-      { "<S-F11>", function() require("dap").step_out() end, desc = "Step Out" },
-      { "<F23>", function() require("dap").step_out() end, desc = "Step Out" },  -- 即shift+F11
-      { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end, desc = "Clear Breakpoint"},
+      { "<leader>da", function() Close_all();require("dap").continue({ before = get_args }) end,          desc = "Run with Args" },
+      { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end,           desc = "Toggle Breakpoint (F9)" },
+      { "<F9>", function() require("persistent-breakpoints.api").toggle_breakpoint() end,                 desc = "Toggle Breakpoint" },
+      { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end,  desc = "Breakpoint Condition" },
+      { "<leader>dc", function() Close_all();require("dap").continue() end,                               desc = "Continue (F5)" },
+      { "<F5>", function() Close_all(); require("dap").continue() end,                                    desc = "Continue" },
+      { "<leader>dL", function() require("persistent-breakpoints.api").set_log_point() end,               desc = "Breakpoint Log" },
+      { "<leader>di", function() require("dap").step_into() end,                                          desc = "Step Into (F11)" },
+      { "<F11>", function() require("dap").step_into() end,                                               desc = "Step Into" },
+      { "<leader>do", function() require("dap").step_over() end,                                          desc = "Step Over (F10)" },
+      { "<F10>", function() require("dap").step_over() end,                                               desc = "Step Over" },
+      { "<leader>dO", function() require("dap").step_out() end,                                           desc = "Step Out (S+F11)" },
+      { "<S-F11>", function() require("dap").step_out() end,                                              desc = "Step Out" },
+      { "<F23>", function() require("dap").step_out() end,                                                desc = "Step Out" },  -- 即shift+F11
+      { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end,       desc = "Clear Breakpoint"},
     },
   },
   {
     "rcarriga/nvim-dap-ui",
     -- stylua: ignore
     keys = {
-      { "<leader>du", function() require("dapui").toggle({ layout = get_layout(), reset = true }) end, desc = "Dap UI" },
-      { "<leader>dU", function() require("dapui").toggle({ layout = 1, reset = true }) end, desc = "Dap UI (left)" },
+      { "<leader>du", function() require("dapui").toggle({ layout = get_layout(), reset = true }) end,  desc = "Dap UI" },
+      { "<leader>dU", function() require("dapui").toggle({ layout = 1, reset = true }) end,             desc = "Dap UI (left)" },
     },
     opts = {
       layouts = {
@@ -102,8 +102,6 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close({})
       end
-      -- 使用launch.json时，用overseer执行preLaunchTask
-      require("overseer").enable_dap()
     end,
   },
   -- dap补全
