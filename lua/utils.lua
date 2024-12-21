@@ -2,13 +2,11 @@ local M = {}
 M.general_root = { ".project.*", ".git/", "README.md" }
 
 -- 定义一个函数，用于执行按键序列
+--   示例：执行一个按键序列，比如 "ggdG", execute_key_sequence("ggdG")
 function Execute_key_sequence(keys)
   -- 将按键序列传递给 nvim_feedkeys 函数
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", true)
 end
-
--- 示例：执行一个按键序列，比如 "ggdG"
--- execute_key_sequence("ggdG")
 
 function Close_other_windows()
   local current_win = vim.api.nvim_get_current_win()
