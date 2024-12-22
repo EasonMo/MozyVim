@@ -1,4 +1,44 @@
 return {
+  -- code runner
+  {
+    "CRAG666/code_runner.nvim",
+    config = true,
+    event = "VeryLazy",
+    keys = {
+      { "<leader>rr", "<cmd>RunCode<CR>", desc = "runner: Run Code" },
+      { "<F8>", "<cmd>RunClose<CR><cmd>RunCode<CR>", desc = "runner: Run Code" },
+      { "<leader>rx", "<cmd>RunClose<CR>", desc = "runner: Run Close" },
+    },
+    opts = function()
+      return {
+        term = {
+          -- 运行窗口的位置
+          position = "belowright",
+        },
+        filetype = {
+          java = {
+            "cd $dir &&",
+            "javac $fileName &&",
+            "java $fileNameWithoutExt",
+          },
+          python = { 'export PYTHONPATH="." &&', "python3 -u" },
+          typescript = "deno run",
+          rust = {
+            "cd $dir &&",
+            "rustc $fileName &&",
+            "$dir/$fileNameWithoutExt",
+          },
+          c = {
+            "cd $dir &&",
+            "gcc $fileName -o",
+            "/tmp/$fileNameWithoutExt",
+            "&& /tmp/$fileNameWithoutExt &&",
+            "rm /tmp/$fileNameWithoutExt",
+          },
+        },
+      }
+    end,
+  },
   -- 修改区块选择
   {
     "nvim-treesitter/nvim-treesitter",
