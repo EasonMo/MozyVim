@@ -187,7 +187,6 @@ return {
     opts = {
       spec = {
         { "<localleader>s", group = "Strip Whitespace", mode = "n" },
-        { "<localleader>h", desc = "Execute Curl", mode = "n" },
       },
     },
   },
