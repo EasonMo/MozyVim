@@ -219,6 +219,7 @@ return {
       require("overseer").setup(opts)
     end,
   },
+  -- flash
   {
     "folke/flash.nvim",
     -- stylua: ignore
