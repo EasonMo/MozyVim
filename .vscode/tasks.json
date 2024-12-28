@@ -10,7 +10,7 @@
       "args": [
         "-g",
         "-O0",
-        "${file}",
+        "${relativeFile}",
         "-o",
         "${fileDirname}/${fileBasenameNoExtension}.out"
       ],
