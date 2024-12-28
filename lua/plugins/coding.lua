@@ -205,6 +205,12 @@ return {
         "builtin",
         "user",
       },
+      component_aliases = {
+        default_vscode = {
+          "default",
+          { "user.on_output_quickfix_trouble", open = true },
+        },
+      },
     },
     config = function(_, opts)
       vim.api.nvim_create_user_command("OverseerRestartLast", function()
