@@ -57,4 +57,77 @@ M.find_buffers_by_filetype = function(filetype)
   return buffers
 end
 
+M.file_exists = function(filepath)
+  return vim.fn.glob(filepath) ~= ""
+end
+
+M.get_parent_dir = function(path)
+  return path:match("(.+)/")
+end
+
+M.copy_file = function(source_file, target_file)
+  local target_file_parent_path = M.get_parent_dir(target_file)
+  local cmd = string.format("mkdir -p %s", vim.fn.shellescape(target_file_parent_path))
+  os.execute(cmd)
+  cmd = string.format("cp %s %s", vim.fn.shellescape(source_file), vim.fn.shellescape(target_file))
+  os.execute(cmd)
+  vim.schedule(function()
+    vim.notify("File " .. target_file .. " created success.", vim.log.levels.INFO)
+  end)
+end
+
+M.get_launch_json_by_source_file = function(source_file)
+  local target_file = vim.fn.getcwd() .. "/.vscode/launch.json"
+  local file_exist = M.file_exists(target_file)
+  if file_exist then
+    local confirm = vim.fn.confirm("File `.vscode/launch.json` Exist, Overwrite it?", "&Yes\n&No", 1, "Question")
+    if confirm == 1 then
+      M.copy_file(source_file, target_file)
+    end
+  else
+    M.copy_file(source_file, target_file)
+  end
+end
+
+M.get_tasks_json_by_source_file = function(source_file)
+  local target_file = vim.fn.getcwd() .. "/.vscode/tasks.json"
+  local file_exist = M.file_exists(target_file)
+  if file_exist then
+    local confirm = vim.fn.confirm("File `.vscode/tasks.json` Exist, Overwrite it?", "&Yes\n&No", 1, "Question")
+    if confirm == 1 then
+      M.copy_file(source_file, target_file)
+    end
+  else
+    M.copy_file(source_file, target_file)
+  end
+end
+
+M.create_launch_json = function()
+  vim.ui.select({
+    "go",
+    "node",
+    "rust",
+    "python",
+  }, { prompt = "Select Language Debug Template", default = "go" }, function(select)
+    if not select then
+      return
+    end
+    if select == "go" then
+      local source_file = vim.fn.stdpath("config") .. "/templates/vscode/go_launch.json"
+      M.get_launch_json_by_source_file(source_file)
+    elseif select == "node" then
+      local source_file = vim.fn.stdpath("config") .. "/templates/vscode/node_launch.json"
+      M.get_launch_json_by_source_file(source_file)
+    elseif select == "rust" then
+      local source_file = vim.fn.stdpath("config") .. "/templates/vscode/rust_launch.json"
+      M.get_launch_json_by_source_file(source_file)
+      source_file = vim.fn.stdpath("config") .. "/templates/vscode/rust_tasks.json"
+      M.get_tasks_json_by_source_file(source_file)
+    elseif select == "python" then
+      local source_file = vim.fn.stdpath("config") .. "/templates/vscode/python_launch.json"
+      M.get_launch_json_by_source_file(source_file)
+    end
+  end)
+end
+
 return M
