@@ -43,6 +43,7 @@ return {
       { "<S-F11>",    function() require("dap").step_out() end,                                           desc = "Step Out" },
       { "<F23>",      function() require("dap").step_out() end,                                           desc = "Step Out" },  -- 即shift+F11
       { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end,       desc = "Clear Breakpoint"},
+      { "<leader>dG", function() require("utils").create_launch_json() end,                               desc = "Generate launch.json"},
     },
   },
   {
