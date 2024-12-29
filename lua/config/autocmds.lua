@@ -17,30 +17,6 @@ vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
 })
 
--- 实现复制时与系统剪贴板同步，支持tmux，ssh，排除gnome环境
-if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
-  vim.g.clipboard = {
-    name = "OSC 52", -- name不能修改，否则ssh下iterm2会弹剪贴板访问的警告
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-  }
-end
-vim.api.nvim_create_autocmd("TextYankPost", {
-  pattern = { "*" },
-  callback = function()
-    if vim.v.event.operator == "y" then
-      vim.fn.setreg("+", vim.fn.getreg("0"))
-    end
-  end,
-  group = vim.api.nvim_create_augroup("YankToClipboard", { clear = true }),
-})
-
 -- 禁止拼写检查
 -- 获取filetype: echo &filetype
 vim.api.nvim_create_autocmd("FileType", {
@@ -74,6 +50,30 @@ vim.api.nvim_create_autocmd("FileType", {
       return "<cmd>close<cr>"
     end, { buffer = event.buf, silent = true, expr = true })
   end,
+})
+
+-- 实现复制时与系统剪贴板同步，支持tmux，ssh，排除gnome环境
+if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
+  vim.g.clipboard = {
+    name = "OSC 52", -- name不能修改，否则ssh下iterm2会弹剪贴板访问的警告
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
+vim.api.nvim_create_autocmd("TextYankPost", {
+  pattern = { "*" },
+  callback = function()
+    if vim.v.event.operator == "y" then
+      vim.fn.setreg("+", vim.fn.getreg("0"))
+    end
+  end,
+  group = vim.api.nvim_create_augroup("YankToClipboard", { clear = true }),
 })
 
 -- 动态关闭smartcase：优化Cmdline补全
