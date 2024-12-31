@@ -133,6 +133,21 @@ return {
           BufferLineIndicatorSelected = {
             fg = "#8f8f8f",
           },
+          -- BufferLineFill = {
+          --   bg = "#171717",
+          -- },
+          -- BufferLineSeparator = {
+          --   fg = "#2b2b2b",
+          --   bg = "#171717",
+          -- },
+          -- BufferLineTabSeparator = {
+          --   fg = "#2b2b2b",
+          --   bg = "#171717",
+          -- },
+          -- BufferLineTabSeparatorSelected = {
+          --   fg = "#2b2b2b",
+          --   bg = "#1f1f1f",
+          -- },
           NeoTreeCursorLine = { bg = "#292929" },
         },
       })

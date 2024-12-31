@@ -43,4 +43,4 @@ nvim启动时把宏设置到寄存器里：
 ## 妥协的配置
 
 - 不需要设置markdown diagnostics的自动开关，因为enable/disable diagnostics是全局的，只能手动
-- 不要尝试单独修改bufferline的主题，因联动要改的东西太多，使用默认
+- 不要尝试单独修改bufferline插件的主题，因联动要改的东西太多，如：标签数量hl、未选中buffer跟注释hl一致。使用默认即可
