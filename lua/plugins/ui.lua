@@ -112,6 +112,9 @@ return {
     "mofiqul/vscode.nvim",
     config = function()
       vim.o.background = "dark"
+      -- local vscode_editer_bg = "#1F1F1F"
+      -- local vscode_buffer_bg = "#181818"
+      -- local vscode_buffer_separator = "#2B2B2B"
 
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -134,19 +137,19 @@ return {
             fg = "#8f8f8f",
           },
           -- BufferLineFill = {
-          --   bg = "#171717",
+          --   bg = vscode_buffer_bg,
           -- },
           -- BufferLineSeparator = {
-          --   fg = "#2b2b2b",
-          --   bg = "#171717",
+          --   fg = vscode_buffer_separator,
+          --   bg = vscode_buffer_bg,
           -- },
           -- BufferLineTabSeparator = {
-          --   fg = "#2b2b2b",
-          --   bg = "#171717",
+          --   fg = vscode_buffer_separator,
+          --   bg = vscode_buffer_bg,
           -- },
           -- BufferLineTabSeparatorSelected = {
-          --   fg = "#2b2b2b",
-          --   bg = "#1f1f1f",
+          --   fg = vscode_buffer_separator,
+          --   bg = vscode_editer_bg,
           -- },
           NeoTreeCursorLine = { bg = "#292929" },
         },
