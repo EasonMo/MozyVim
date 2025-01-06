@@ -31,7 +31,7 @@ LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
 宏分配：
 
 1. 搜索替换：搜索a，替换为b，宏为m
-2. 粘贴：p
+2. 选择后粘贴：p
 3. 整词粘贴：o
 
 nvim启动时把宏设置到寄存器里：
