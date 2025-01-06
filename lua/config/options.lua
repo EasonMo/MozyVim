@@ -35,8 +35,8 @@ vim.filetype.add({
 -- 初始化宏
 -- 1. 搜索替换: /<C-R>a<CR>viw"bp
 vim.fn.setreg("m", "\x2f\x80\xfc\x04\x52\x61\x0d\x76\x69\x77\x22\x62\x70")
--- 2. 粘贴："0p
-vim.fn.setreg("p", "\x22\x30\x70")
+-- 2. 粘贴：<Esc>gv"0p
+vim.fn.setreg("p", "\x1b\x67\x76\x22\x30\x70")
 -- 3. 整词粘贴：viw"0p
 vim.fn.setreg("o", "\x76\x69\x77\x22\x30\x70")
 
