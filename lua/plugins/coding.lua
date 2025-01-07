@@ -1,4 +1,16 @@
 return {
+  -- formatter
+  {
+    "stevearc/conform.nvim",
+    opts = function(_, opts)
+      if not require("utils").file_exists("stylua.toml") then
+        opts.formatters_by_ft.lua = {
+          command = "stylua",
+          args = { "--config-path", vim.fn.expand("~/.config/nvim/stylua.toml") },
+        }
+      end
+    end,
+  },
   -- code runner
   {
     "CRAG666/code_runner.nvim",
