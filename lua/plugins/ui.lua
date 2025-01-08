@@ -152,6 +152,7 @@ return {
           --   bg = vscode_editer_bg,
           -- },
           NeoTreeCursorLine = { bg = "#292929" },
+          FlashBackdrop = { fg = c.vscGray },
         },
       })
     end,
