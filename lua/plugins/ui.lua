@@ -164,6 +164,8 @@ return {
       colorscheme = { "vscode" },
     },
   },
+  { "folke/tokyonight.nvim", enabled = false },
+  { "catppuccin", enabled = false },
   -- noice
   {
     "folke/noice.nvim",
