@@ -103,6 +103,8 @@ return {
       dap.listeners.before.event_exited["dapui_config"] = function()
         dapui.close({})
       end
+      -- dap补全放在这里初始化
+      require("cmp").register_source("dap", require("cmp_dap").new())
     end,
   },
   -- dap补全
@@ -116,7 +118,7 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       -- add source
-      { "rcarriga/cmp-dap" },
+      { "EasonMo/cmp-dap", branch = "fix-start-time" },
     },
     sources = {
       completion = {
