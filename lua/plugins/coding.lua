@@ -86,7 +86,7 @@ return {
       indent = {
         indent = {
           char = "╎",
-          hl = "custom_indent_highlight",
+          hl = "IndentHighlight",
         },
       },
     },

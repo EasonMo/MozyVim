@@ -111,6 +111,8 @@ return {
   {
     "mofiqul/vscode.nvim",
     config = function()
+      -- 颜色值采用P3色彩空间
+
       vim.o.background = "dark"
       -- local vscode_editer_bg = "#1F1F1F"
       -- local vscode_buffer_bg = "#181818"
@@ -152,7 +154,14 @@ return {
           --   bg = vscode_editer_bg,
           -- },
           NeoTreeCursorLine = { bg = "#292929" },
+          -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
+          -- 修复lualine中trouble面包屑空格的背景颜色不一致
+          StatusLine = { link = "lualine_c_normal" },
+          -- 修正弹窗的颜色不一致，如行号、标题
+          LineNr = { fg = c.vscLineNumber },
+          CursorLineNr = { fg = "#bbbbbb" },
+          FloatTitle = { link = "NormalFloat" },
         },
       })
     end,
