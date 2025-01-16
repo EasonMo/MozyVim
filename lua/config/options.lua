@@ -56,6 +56,6 @@ vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
     vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292929" })
-    vim.api.nvim_set_hl(0, "custom_indent_highlight", { fg = "#313131" })
+    vim.api.nvim_set_hl(0, "IndentHighlight", { fg = "#313131" })
   end,
 })
