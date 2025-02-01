@@ -33,7 +33,8 @@ return {
             "javac $fileName &&",
             "java $fileNameWithoutExt",
           },
-          python = { 'export PYTHONPATH="." &&', "python3 -u" },
+          -- 在 ~/.bash_profile 中添加 export PYTHONPATH=".:$PYTHONPATH"
+          python = { "python3 -u" },
           typescript = "deno run",
           rust = {
             "cd $dir &&",
@@ -99,6 +100,7 @@ return {
     opts = {
       keymap = {
         ["<M-/>"] = { "show", "show_documentation", "hide_documentation" },
+        ["<C-n>"] = { "show", "select_next" },
       },
       enabled = function()
         return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false or require("cmp_dap").is_dap_buffer()
