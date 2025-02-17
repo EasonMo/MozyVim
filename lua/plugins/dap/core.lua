@@ -88,6 +88,10 @@ return {
         for _, buf in ipairs(bufs) do
           vim.bo[buf].buflisted = false
         end
+        bufs = utils.find_buffers_by_filetype("dapui_watches")
+        for _, buf in ipairs(bufs) do
+          vim.bo[buf].buflisted = false
+        end
         dapui.close({})
       end
       dapui.setup(opts)
@@ -118,20 +122,22 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       -- add source
-      { "EasonMo/cmp-dap", branch = "fix-start-time" },
-    },
-    sources = {
-      completion = {
-        -- remember to enable your providers here
-        enabled_providers = { "dap" },
+      {
+        -- "rcarriga/cmp-dap",
+        "EasonMo/cmp-dap",
+        branch = "fix-start-time",
       },
-      providers = {
-        -- create provider
-        dap = {
-          name = "dap",
-          module = "blink.compat.source",
-          -- all blink.cmp source config options work as normal:
-          score_offset = -3,
+    },
+    opts = {
+      sources = {
+        per_filetype = {
+          ["dap-repl"] = { "lsp", "path", "snippets", "buffer", "dap" },
+        },
+        providers = {
+          dap = {
+            name = "dap",
+            module = "blink.compat.source",
+          },
         },
       },
     },

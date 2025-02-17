@@ -101,6 +101,7 @@ return {
       keymap = {
         ["<M-/>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-n>"] = { "show", "select_next" },
+        ["<C-p>"] = { "show", "select_prev" },
       },
       enabled = function()
         return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false or require("cmp_dap").is_dap_buffer()
