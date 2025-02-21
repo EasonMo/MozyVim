@@ -32,6 +32,7 @@ return {
       { "<leader>db", function() require("persistent-breakpoints.api").toggle_breakpoint() end,           desc = "Toggle Breakpoint (F9)" },
       { "<F9>",       function() require("persistent-breakpoints.api").toggle_breakpoint() end,           desc = "Toggle Breakpoint" },
       { "<leader>dB", function() require("persistent-breakpoints.api").set_conditional_breakpoint() end,  desc = "Breakpoint Condition" },
+      { "<leader>d.", function() require('persistent-breakpoints.api').reload_breakpoints() end,          desc = "Reload Breakpoint" },
       { "<leader>dc", function() Close_all();require("dap").continue() end,                               desc = "Run/Continue (F5)" },
       { "<F5>",       function() Close_all(); require("dap").continue() end,                              desc = "Run/Continue" },
       { "<leader>dL", function() require("persistent-breakpoints.api").set_log_point() end,               desc = "Breakpoint Log" },
