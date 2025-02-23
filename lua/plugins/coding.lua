@@ -90,6 +90,7 @@ return {
           hl = "IndentHighlight",
         },
       },
+      image = {},
     },
   },
   -- 补全
