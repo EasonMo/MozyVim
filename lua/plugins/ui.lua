@@ -162,6 +162,13 @@ return {
           LineNr = { fg = c.vscLineNumber },
           CursorLineNr = { fg = "#bbbbbb" },
           FloatTitle = { link = "NormalFloat" },
+          -- dashboard配置参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
+          SnacksDashboardDesc = { fg = "#7dcfff" },
+          SnacksDashboardHeader = { fg = "#7aa2f7" },
+          SnacksDashboardFooter = { fg = "#2ac3de" },
+          SnacksDashboardIcon = { fg = "#2ac3de" },
+          SnacksDashboardKey = { fg = "#ff9e64" },
+          SnacksDashboardSpecial = { fg = "#9d7cd8" },
         },
       })
     end,
