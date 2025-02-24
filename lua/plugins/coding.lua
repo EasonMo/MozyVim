@@ -83,15 +83,15 @@ return {
   -- 缩进线显示
   {
     "snacks.nvim",
-    opts = {
-      indent = {
-        indent = {
-          char = "╎",
-          hl = "IndentHighlight",
-        },
-      },
-      image = {},
-    },
+    opts = function(_, opts)
+      opts.indent.indent = {
+        char = "╎",
+        hl = "IndentHighlight",
+      }
+      if string.find(vim.fn.getenv("TERM"), "kitty") then
+        opts.image = {}
+      end
+    end,
   },
   -- 补全
   {
