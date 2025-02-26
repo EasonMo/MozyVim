@@ -107,6 +107,15 @@ return {
       },
     },
   },
+  -- 大纲导航
+  {
+    "hedyhli/outline.nvim",
+    opts = {
+      outline_window = {
+        width = 20,
+      },
+    },
+  },
   -- vscode, 主题
   {
     "mofiqul/vscode.nvim",
