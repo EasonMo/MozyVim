@@ -144,9 +144,7 @@ return {
           -- this supports the same val table as vim.api.nvim_set_hl
           -- use colors from this colorscheme by requiring vscode.colors!
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-          BufferLineIndicatorSelected = {
-            fg = "#8f8f8f",
-          },
+          BufferLineIndicatorSelected = { fg = "#8f8f8f" },
           -- BufferLineFill = {
           --   bg = vscode_buffer_bg,
           -- },
@@ -162,7 +160,9 @@ return {
           --   fg = vscode_buffer_separator,
           --   bg = vscode_editer_bg,
           -- },
+          -- neo-tree修正
           NeoTreeCursorLine = { bg = "#292929" },
+          NeoTreeDimText = { fg = "#a0a0a0", bg = "NONE" },
           -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
           -- 修复lualine中trouble面包屑空格的背景颜色不一致
