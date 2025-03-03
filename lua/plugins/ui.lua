@@ -141,10 +141,22 @@ return {
 
         -- Override highlight groups (see ./lua/vscode/theme.lua)
         group_overrides = {
+          -- 查询光标处的 Highlight 信息：:Inspect或:lua print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
+
           -- this supports the same val table as vim.api.nvim_set_hl
           -- use colors from this colorscheme by requiring vscode.colors!
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
           BufferLineIndicatorSelected = { fg = "#8f8f8f" },
+          -- 代码高亮：
+          -- lua: 区分vim，table等内置类型和模块
+          -- ["@variable.builtin"] = { fg = c.vscBlueGreen },
+          -- ["@module.builtin"] = { link = "@variable.builtin" },
+          -- ["@namespace.builtin"] = { link = "@variable.builtin" },
+          -- ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
+          -- ["@lsp.type.selfTypeKeyword"] = { link = "@variable.builtin" },
+          -- ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
+          -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
+
           -- BufferLineFill = {
           --   bg = vscode_buffer_bg,
           -- },
