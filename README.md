@@ -1,4 +1,4 @@
-# 💤 LazyVim
+# 💤 MozyVim
 
 个人定制版[LazyVim](https://github.com/LazyVim/LazyVim)
 
