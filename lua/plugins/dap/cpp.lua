@@ -19,9 +19,11 @@ return {
         type = "executable",
         command = vim.fn.exepath("OpenDebugAD7"),
       }
-      -- 覆盖lazyVim的配置
-      dap.configurations.c = {
-        {
+      -- 覆盖lazyVim的c/cpp配置
+      local c_config = {}
+      -- mac不支持gdb
+      if vim.uv.os_uname().sysname ~= "Darwin" then
+        table.insert(c_config, 1, {
           name = "cppdbg: Launch active file",
           type = "cppdbg",
           request = "launch",
@@ -40,21 +42,22 @@ return {
               ignoreFailures = false,
             },
           },
-        },
-        {
-          name = "LLDB: Launch active file",
-          type = "codelldb",
-          request = "launch",
-          program = function()
-            -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-            return "${fileDirname}/${fileBasenameNoExtension}.out"
-          end,
-          cwd = "${workspaceFolder}",
-          stopOnEntry = false,
-          stopAtBeginningOfMainSubprogram = false,
-          -- args = {},
-        },
-      }
+        })
+      end
+      table.insert(c_config, {
+        name = "LLDB: Launch active file",
+        type = "codelldb",
+        request = "launch",
+        program = function()
+          -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+          return "${fileDirname}/${fileBasenameNoExtension}.out"
+        end,
+        cwd = "${workspaceFolder}",
+        stopOnEntry = false,
+        stopAtBeginningOfMainSubprogram = false,
+        -- args = {},
+      })
+      dap.configurations.c = c_config
       dap.configurations.cpp = dap.configurations.c
     end,
   },
