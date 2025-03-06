@@ -21,7 +21,7 @@ Snacks.config.style("output", {
   noautocmd = false,
   zindex = 100,
   ft = "output",
-  wo = { winhighlight = "NormalFloat:Normal", colorcolumn = "" },
+  wo = { winhighlight = "NormalFloat:Normal", colorcolumn = "", number = false, relativenumber = false },
 })
 
 --- Show lines in a floating buffer at the bottom.
