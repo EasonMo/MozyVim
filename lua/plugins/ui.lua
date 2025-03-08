@@ -121,11 +121,14 @@ return {
     "mofiqul/vscode.nvim",
     config = function()
       -- 颜色值采用P3色彩空间
+      -- 参考颜色：
+      --   "#8f8f8f"
 
       vim.o.background = "dark"
       -- local vscode_editer_bg = "#1F1F1F"
       -- local vscode_buffer_bg = "#181818"
       -- local vscode_buffer_separator = "#2B2B2B"
+      local bufferLine_diagnostic = "#5a5a5a"
 
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -146,7 +149,6 @@ return {
           -- this supports the same val table as vim.api.nvim_set_hl
           -- use colors from this colorscheme by requiring vscode.colors!
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-          BufferLineIndicatorSelected = { fg = "#8f8f8f" },
           -- 代码高亮：
           -- lua: 区分vim，table等内置类型和模块
           -- ["@variable.builtin"] = { fg = c.vscBlueGreen },
@@ -157,22 +159,43 @@ return {
           -- ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
           -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
 
-          -- BufferLineFill = {
-          --   bg = vscode_buffer_bg,
-          -- },
-          -- BufferLineSeparator = {
-          --   fg = vscode_buffer_separator,
-          --   bg = vscode_buffer_bg,
-          -- },
-          -- BufferLineTabSeparator = {
-          --   fg = vscode_buffer_separator,
-          --   bg = vscode_buffer_bg,
-          -- },
-          -- BufferLineTabSeparatorSelected = {
-          --   fg = vscode_buffer_separator,
-          --   bg = vscode_editer_bg,
-          -- },
-          -- neo-tree修正
+          -- bufferLine
+          BufferLineIndicatorSelected = { fg = "#0070D7" },
+
+          BufferLineBuffer = { fg = c.vscGray, bg = "#171717" },
+          BufferLineWarningVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineBackground = { fg = c.vscGray, bg = "#171717" },
+          BufferLineInfoVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineHintVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineNumbersVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineNumbers = { fg = c.vscGray, bg = "#171717" },
+          BufferLineBufferVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineCloseButtonVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineCloseButton = { fg = c.vscGray, bg = "#171717" },
+          BufferLineTabClose = { fg = c.vscGray, bg = "#171717" },
+          BufferLineGroupSeparator = { fg = c.vscGray, bg = "#111111" },
+          BufferLineTruncMarker = { fg = c.vscGray, bg = "#111111" },
+          BufferLineWarning = { fg = c.vscGray, bg = "#171717", sp = "#dcdcaa" },
+          BufferLineError = { fg = c.vscGray, bg = "#171717", sp = "#f44747" },
+          BufferLineInfo = { fg = c.vscGray, bg = "#171717", sp = "#569cd6" },
+          BufferLineHint = { fg = c.vscGray, bg = "#171717", sp = "#569cd6" },
+          BufferLineTab = { fg = c.vscGray, bg = "#171717" },
+          BufferLineErrorVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineTabSelected = { fg = "#82AAFF" },
+
+          -- 非选中下，语法检查标记要比vscGray稍暗一点
+          BufferLineWarningDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+          BufferLineWarningDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#a5a57f" },
+          BufferLineInfoDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#4075a0" },
+          BufferLineHintDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+          BufferLineHintDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#4075a0" },
+          BufferLineDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+          BufferLineErrorDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#b73535" },
+          BufferLineInfoDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+          BufferLineDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717" },
+          BufferLineErrorDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+
+          -- neo-tree
           NeoTreeCursorLine = { bg = "#292929" },
           NeoTreeDimText = { fg = "#a0a0a0", bg = "NONE" },
           -- flash搜索时，背景变灰色
