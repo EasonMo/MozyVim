@@ -192,6 +192,8 @@ return {
           SnacksDashboardSpecial = { fg = "#9d7cd8" },
           -- snacks-picker
           SnacksPickerDir = { fg = c.vscLineNumber },
+          -- blink
+          BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
         },
       })
     end,
@@ -203,7 +205,6 @@ return {
       colorscheme = { "vscode" },
     },
   },
-  { "folke/tokyonight.nvim", enabled = false },
   { "catppuccin", enabled = false },
   -- noice
   {
