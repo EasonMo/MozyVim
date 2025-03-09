@@ -16,7 +16,14 @@ Snacks.config.style("output", {
   backdrop = false,
   row = vim.api.nvim_get_option_value("lines", {}) - output_height,
   border = "top",
-  bo = { buftype = "nofile", buflisted = false, bufhidden = "wipe", swapfile = false, undofile = false },
+  bo = {
+    buftype = "nofile",
+    buflisted = false,
+    bufhidden = "wipe",
+    swapfile = false,
+    undofile = false,
+    modifiable = false, -- 不可修改
+  },
   minimal = false,
   noautocmd = false,
   zindex = 100,
