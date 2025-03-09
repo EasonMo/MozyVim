@@ -143,6 +143,13 @@ return {
         hl = "IndentHighlight",
       },
     },
+    lazygit = {
+      ---@diagnostic disable-next-line: missing-fields
+      theme = {
+        activeBorderColor = { fg = "LazyGitActiveBorderColor", bold = true },
+        inactiveBorderColor = { fg = "LazyGitInactiveBorderColor" },
+      },
+    },
     scratch = {
       filekey = {
         branch = false,
