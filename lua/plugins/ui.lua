@@ -214,6 +214,7 @@ return {
           SnacksDashboardKey = { fg = "#ff9e64" },
           SnacksDashboardSpecial = { fg = "#9d7cd8" },
           -- snacks-picker
+          SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
           -- blink
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
