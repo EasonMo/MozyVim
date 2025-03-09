@@ -170,6 +170,9 @@ return {
           -- ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
           -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
 
+          -- blink
+          BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
+
           -- bufferLine
           BufferLineIndicatorSelected = { fg = "#0070D7" },
 
@@ -206,11 +209,14 @@ return {
           BufferLineDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717" },
           BufferLineErrorDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
 
+          -- flash搜索时，背景变灰色
+          FlashBackdrop = { fg = c.vscGray },
+          -- lazygit
+          LazyGitActiveBorderColor = { fg = c.vscBlueGreen },
+          LazyGitInactiveBorderColor = { fg = c.vscGray },
           -- neo-tree
           NeoTreeCursorLine = { bg = "#292929" },
           NeoTreeDimText = { fg = "#a0a0a0", bg = "NONE" },
-          -- flash搜索时，背景变灰色
-          FlashBackdrop = { fg = c.vscGray },
           -- dashboard配置，参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
           SnacksDashboardDesc = { fg = "#7dcfff" },
           SnacksDashboardHeader = { fg = "#7aa2f7" },
@@ -222,8 +228,8 @@ return {
           SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
           SnacksPickerBorder = { link = "WinSeparator" },
-          -- blink
-          BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
+          -- which-key
+          WhichKeyBorder = { fg = c.vscGray },
         },
       })
     end,
