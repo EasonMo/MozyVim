@@ -9,19 +9,24 @@ local defaults = {
   win = { style = "output" },
 }
 
-local height = 20
+local output_height = 20
 Snacks.config.style("output", {
   width = 0,
-  height = height,
+  height = output_height,
   backdrop = false,
-  row = vim.api.nvim_get_option_value("lines", {}) - height,
+  row = vim.api.nvim_get_option_value("lines", {}) - output_height,
   border = "top",
   bo = { buftype = "nofile", buflisted = false, bufhidden = "wipe", swapfile = false, undofile = false },
   minimal = false,
   noautocmd = false,
   zindex = 100,
   ft = "output",
-  wo = { winhighlight = "NormalFloat:Normal", colorcolumn = "", number = false, relativenumber = false },
+  wo = {
+    winhighlight = "NormalFloat:Normal,FloatBorder:WinSeparator",
+    colorcolumn = "",
+    number = false,
+    relativenumber = false,
+  },
 })
 
 --- Show lines in a floating buffer at the bottom.
@@ -141,6 +146,10 @@ return {
     scratch = {
       filekey = {
         branch = false,
+      },
+      ---@diagnostic disable-next-line: missing-fields
+      win = {
+        wo = { winhighlight = "NormalFloat:Normal,FloatBorder:WinSeparator" },
       },
       win_by_ft = {
         python = {

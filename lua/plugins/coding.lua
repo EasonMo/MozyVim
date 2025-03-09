@@ -80,7 +80,7 @@ return {
       },
     },
   },
-  -- 图片显示
+  -- snacks定制: 图片显示
   {
     "snacks.nvim",
     opts = function(_, opts)
