@@ -148,7 +148,18 @@ return {
 
           -- this supports the same val table as vim.api.nvim_set_hl
           -- use colors from this colorscheme by requiring vscode.colors!
+
+          -- nvim内置
           Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+          CursorLine = { bg = "#292929" },
+          IndentHighlight = { fg = "#313131" },
+          -- 修正弹窗的颜色不一致，如行号、标题
+          LineNr = { fg = c.vscLineNumber },
+          CursorLineNr = { fg = "#bbbbbb" },
+          FloatTitle = { link = "NormalFloat" },
+          -- 修复lualine中trouble面包屑空格的背景颜色不一致
+          StatusLine = { link = "lualine_c_normal" },
+
           -- 代码高亮：
           -- lua: 区分vim，table等内置类型和模块
           -- ["@variable.builtin"] = { fg = c.vscBlueGreen },
@@ -200,12 +211,6 @@ return {
           NeoTreeDimText = { fg = "#a0a0a0", bg = "NONE" },
           -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
-          -- 修复lualine中trouble面包屑空格的背景颜色不一致
-          StatusLine = { link = "lualine_c_normal" },
-          -- 修正弹窗的颜色不一致，如行号、标题
-          LineNr = { fg = c.vscLineNumber },
-          CursorLineNr = { fg = "#bbbbbb" },
-          FloatTitle = { link = "NormalFloat" },
           -- dashboard配置，参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
           SnacksDashboardDesc = { fg = "#7dcfff" },
           SnacksDashboardHeader = { fg = "#7aa2f7" },
