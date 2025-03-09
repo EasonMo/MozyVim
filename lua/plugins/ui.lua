@@ -221,6 +221,7 @@ return {
           -- snacks-picker
           SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
+          SnacksPickerBorder = { link = "WinSeparator" },
           -- blink
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
         },
