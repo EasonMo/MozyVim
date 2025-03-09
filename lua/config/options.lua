@@ -46,16 +46,3 @@ vim.fn.setreg("o", "\x76\x69\x77\x22\x30\x70")
 
 -- 取消自动格式化
 vim.g.autoformat = false
-
------------------------✂---------------------------
---                主题修改
------------------------✂---------------------------
-
--- 主题修改要放在options.lua里，否则会因执行顺序而被覆盖
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "CursorLine", { bg = "#292929" })
-    vim.api.nvim_set_hl(0, "IndentHighlight", { fg = "#313131" })
-  end,
-})
