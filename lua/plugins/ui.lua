@@ -216,7 +216,7 @@ return {
           LazyGitInactiveBorderColor = { fg = c.vscGray },
           -- neo-tree
           NeoTreeCursorLine = { bg = "#292929" },
-          NeoTreeDimText = { fg = "#a0a0a0", bg = "NONE" },
+          NeoTreeDimText = { fg = "#a0a0a0" },
           -- dashboard配置，参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
           SnacksDashboardDesc = { fg = "#7dcfff" },
           SnacksDashboardHeader = { fg = "#7aa2f7" },
