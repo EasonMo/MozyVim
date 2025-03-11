@@ -3,13 +3,16 @@
 --   1. github搜索 nvim-dap-python include_configs
 --   2. https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
 
+local python_paths
 local function get_python_packages_paths()
+  if python_paths ~= nil then
+    return python_paths
+  end
   -- 此方法彻底解决python包路径的问题
   local result = vim.fn.systemlist("python3 -c \"import sys; print('\\n'.join(sys.path))\"")
-  local python_paths = table.concat(result, ":")
+  python_paths = table.concat(result, ":")
   return python_paths
 end
-local python_paths = get_python_packages_paths()
 return {
   {
     "mfussenegger/nvim-dap-python",
@@ -30,7 +33,7 @@ return {
           justMyCode = false,
           cwd = vim.fn.getcwd(),
           env = {
-            PYTHONPATH = python_paths,
+            PYTHONPATH = get_python_packages_paths(),
           },
         },
       }
@@ -44,19 +47,18 @@ return {
     dependencies = {
       "nvim-neotest/neotest-python",
     },
-    opts = {
-      adapters = {
-        ["neotest-python"] = {
-          -- 启动debug时传过去的配置
-          dap = {
-            -- justMyCode = false,
-            console = "integratedTerminal",
-            env = {
-              PYTHONPATH = python_paths,
-            },
+    opts = function(_, opts)
+      -- 移到funtion里初始化PYTHONPATH，可实现延迟运行get_python_packages_paths()
+      opts.adapters["neotest-python"] = {
+        -- 启动debug时传过去的配置
+        dap = {
+          -- justMyCode = false,
+          console = "integratedTerminal",
+          env = {
+            PYTHONPATH = get_python_packages_paths(),
           },
         },
-      },
-    },
+      }
+    end,
   },
 }
