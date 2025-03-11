@@ -306,4 +306,47 @@ return {
       require("interestingwords").setup(opts)
     end,
   },
+  -- snacks
+  {
+    "folke/snacks.nvim",
+    ---@type snacks.Config
+    opts = {
+      -- logo
+      dashboard = {
+        preset = {
+          header = [[
+          ███╗   ███╗ ██████╗ ███████╗██╗   ██╗██╗   ██╗██╗███╗   ███╗          Z
+          ████╗ ████║██╔═══██╗╚══███╔╝╚██╗ ██╔╝██║   ██║██║████╗ ████║      Z    
+          ██╔████╔██║██║   ██║  ███╔╝  ╚████╔╝ ██║   ██║██║██╔████╔██║   z       
+          ██║╚██╔╝██║██║   ██║ ███╔╝    ╚██╔╝  ╚██╗ ██╔╝██║██║╚██╔╝██║ z         
+          ██║ ╚═╝ ██║╚██████╔╝███████╗   ██║    ╚████╔╝ ██║██║ ╚═╝ ██║           
+          ╚═╝     ╚═╝ ╚═════╝ ╚══════╝   ╚═╝     ╚═══╝  ╚═╝╚═╝     ╚═╝           
+          ]],
+        },
+      },
+      -- 缩进线
+      indent = {
+        indent = {
+          char = "╎",
+          hl = "IndentHighlight",
+        },
+      },
+      lazygit = {
+        ---@diagnostic disable-next-line: missing-fields
+        theme = {
+          activeBorderColor = { fg = "LazyGitActiveBorderColor", bold = true },
+          inactiveBorderColor = { fg = "LazyGitInactiveBorderColor" },
+        },
+      },
+      scratch = {
+        filekey = {
+          branch = false,
+        },
+        ---@diagnostic disable-next-line: missing-fields
+        win = {
+          wo = { winhighlight = "NormalFloat:Normal,FloatBorder:WinSeparator" },
+        },
+      },
+    },
+  },
 }
