@@ -349,4 +349,26 @@ return {
       },
     },
   },
+  {
+    "s1n7ax/nvim-window-picker",
+    name = "window-picker",
+    event = "VeryLazy",
+    version = "2.*",
+    keys = {
+      {
+        "<leader>wp",
+        function()
+          print("win_id: " .. (require("window-picker").pick_window() or "not pick"))
+        end,
+        desc = "Window Picker",
+      },
+    },
+    opts = {
+      hint = "floating-big-letter",
+      show_prompt = false,
+      filter_rules = {
+        include_current_win = true,
+      },
+    },
+  },
 }
