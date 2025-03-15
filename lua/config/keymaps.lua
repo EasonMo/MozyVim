@@ -4,7 +4,7 @@
 local snacks = require("snacks")
 local map = vim.keymap.set
 function vim.getVisualSelection()
-  vim.cmd('noau normal! "vy"')
+  vim.cmd('noau normal! "vy')
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
 
