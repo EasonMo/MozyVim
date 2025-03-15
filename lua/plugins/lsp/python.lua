@@ -21,8 +21,8 @@ return {
         -- 修复root dir错误设置的问题
         root_dir = function(fname)
           return util.root_pattern(unpack(vim.tbl_extend("force", py_root, general_root)))(fname)
-            or util.find_git_ancestor(fname)
-            or util.path.dirname(fname)
+            or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            or vim.fs.dirname(fname)
         end,
         single_file_support = true,
         -- capabilities = {
