@@ -23,7 +23,7 @@ return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
-      { "<C-n>", "<cmd>Neotree toggle<cr>", desc = "Toggle NeoTree" },
+      { "<C-n>", "<leader>fE", desc = "Explorer NeoTree (cwd)", remap = true },
     },
     opts = {
       close_if_last_window = true,
@@ -309,6 +309,9 @@ return {
   -- snacks
   {
     "folke/snacks.nvim",
+    keys = {
+      { "<leader><space>", LazyVim.pick("files", { root = false }), desc = "Find Files (cwd)" },
+    },
     ---@type snacks.Config
     opts = {
       -- logo
