@@ -3,12 +3,12 @@ M.general_root = { ".project.*", ".git/", "README.md" }
 
 -- 定义一个函数，用于执行按键序列
 --   示例：执行一个按键序列，比如 "ggdG", execute_key_sequence("ggdG")
-function Execute_key_sequence(keys)
+M.execute_key_sequence = function(keys)
   -- 将按键序列传递给 nvim_feedkeys 函数
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", true)
 end
 
-function Close_other_windows()
+M.close_other_windows = function()
   local current_win = vim.api.nvim_get_current_win()
   local wins = vim.api.nvim_list_wins()
 
@@ -126,6 +126,42 @@ M.create_launch_json = function()
     elseif select == "python" then
       local source_file = vim.fn.stdpath("config") .. "/templates/vscode/python_launch.json"
       M.get_launch_json_by_source_file(source_file)
+    end
+  end)
+end
+
+M.file_name_copy_selector = function(filename, filepath)
+  local modify = vim.fn.fnamemodify
+
+  local vals = {
+    ["1.FILENAME"] = filename,
+    ["2.BASENAME"] = modify(filename, ":r"),
+    ["3.EXTENSION"] = modify(filename, ":e"),
+    ["4.PATH (CWD)"] = modify(filepath, ":."),
+    ["5.PATH (HOME)"] = modify(filepath, ":~"),
+    ["6.PATH (ABS)"] = filepath,
+    ["7.URI"] = vim.uri_from_fname(filepath),
+  }
+
+  local options = vim.tbl_filter(function(val)
+    return vals[val] ~= ""
+  end, vim.tbl_keys(vals))
+  if vim.tbl_isempty(options) then
+    vim.notify("No values to copy", vim.log.levels.WARN)
+    return
+  end
+  table.sort(options)
+  vim.ui.select(options, {
+    prompt = "Choose to copy to clipboard:",
+    format_item = function(item)
+      return ("%s: %s"):format(string.sub(item, 3), vals[item])
+    end,
+  }, function(choice)
+    local result = vals[choice]
+    if result then
+      vim.notify(("Copied: `%s`"):format(result))
+      vim.fn.setreg("+", result)
+      vim.fn.setreg("0", result)
     end
   end)
 end
