@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 local snacks = require("snacks")
 local map = vim.keymap.set
+local expand = vim.fn.expand
 function vim.getVisualSelection()
   vim.cmd('noau normal! "vy')
   local text = vim.fn.getreg("v")
@@ -20,6 +21,11 @@ end
 map("n", "<c-/>", function()
   Snacks.terminal()
 end, { desc = "Terminal (cwd)" })
+
+-- 复制文件名
+map("n", "<leader>fy", function()
+  require("utils").file_name_copy_selector(expand("%:t"), expand("%:p"))
+end, { desc = "Copy File Name" })
 
 -- 可视化选择搜索
 -- map("v", "//", 'y/<c-r>"<cr>', { desc = "Search By Block", noremap = true })
