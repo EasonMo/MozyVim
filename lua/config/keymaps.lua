@@ -16,6 +16,11 @@ function vim.getVisualSelection()
   end
 end
 
+-- 在当前工作目录下打开terminal
+map("n", "<c-/>", function()
+  Snacks.terminal()
+end, { desc = "Terminal (cwd)" })
+
 -- 可视化选择搜索
 -- map("v", "//", 'y/<c-r>"<cr>', { desc = "Search By Block", noremap = true })
 map("v", "//", function()
