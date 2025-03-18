@@ -1,10 +1,24 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-local snacks = require("snacks")
 local map = vim.keymap.set
 local expand = vim.fn.expand
-function vim.getVisualSelection()
+local exclusive_filetype = {
+  "lazy",
+  "lazy_backdrop",
+  "crunner",
+  "dap-float",
+  "dap-repl",
+  "dapui_console",
+  "gitsigns-blame",
+  "mason",
+  "neo-tree",
+  "Outline",
+  "snacks_terminal",
+  "vim", -- 历史命令窗口
+  "query",
+}
+local function getVisualSelection()
   vim.cmd('noau normal! "vy')
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
@@ -24,13 +38,17 @@ end, { desc = "Terminal (cwd)" })
 
 -- 复制文件名
 map("n", "<leader>fy", function()
+  if vim.tbl_contains(exclusive_filetype, vim.bo.filetype) then
+    Snacks.notify.warn("not supported filetype", { title = "FilePath Copy Selector" })
+    return
+  end
   require("utils").file_name_copy_selector(expand("%:t"), expand("%:p"))
 end, { desc = "Copy File Name" })
 
 -- 可视化选择搜索
 -- map("v", "//", 'y/<c-r>"<cr>', { desc = "Search By Block", noremap = true })
 map("v", "//", function()
-  local text = vim.getVisualSelection()
+  local text = getVisualSelection()
   -- 实际上不需要转义
   -- text = text:gsub("/", "\\/")
   -- 修改搜索寄存器
@@ -135,14 +153,12 @@ map("n", "<localleader>l", function()
 end, { desc = "Longest Common Substring", noremap = true })
 
 -- 切换paste模式
-snacks
-  .toggle({
-    name = "Paste Mode",
-    get = function()
-      return vim.o.paste
-    end,
-    set = function(state)
-      vim.o.paste = state
-    end,
-  })
-  :map("<leader>uP")
+Snacks.toggle({
+  name = "Paste Mode",
+  get = function()
+    return vim.o.paste
+  end,
+  set = function(state)
+    vim.o.paste = state
+  end,
+}):map("<leader>uP")
