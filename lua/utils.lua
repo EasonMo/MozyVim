@@ -47,10 +47,10 @@ end
 
 M.find_buffers_by_filetype = function(filetype)
   local buffers = {}
-  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
-    if vim.api.nvim_buf_is_loaded(buf) then
-      if vim.api.nvim_buf_get_option(buf, "filetype") == filetype then
-        table.insert(buffers, buf)
+  for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(bufnr) then
+      if vim.api.nvim_get_option_value("filetype", { buf = bufnr }) == filetype then
+        table.insert(buffers, bufnr)
       end
     end
   end
