@@ -2,9 +2,21 @@ return {
   -- buffer栏
   {
     "akinsho/bufferline.nvim",
+    -- enabled = false,
     keys = {
       { "<leader>bs", "<Cmd>BufferLinePick<CR>", desc = "Pick Buffer" },
     },
+  },
+  {
+    dir = "~/Documents/project_nvim/tabline.nvim",
+    enabled = false,
+    config = function()
+      require("tabline").setup({
+        separator = "fire",
+        iseparator = "arrow",
+        -- show_index = true,
+      })
+    end,
   },
   -- lualine, 修改状态栏
   {
@@ -166,6 +178,9 @@ return {
           BufferLineTab = { fg = c.vscGray, bg = "#171717" },
           BufferLineErrorVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineTabSelected = { fg = "#82AAFF" },
+          BufferLineDuplicate = { fg = c.vscGray, bg = "#171717" },
+          BufferLineDuplicateVisible = { fg = c.vscGray, bg = "#1c1c1c" },
+          BufferLineDuplicateSelected = { fg = c.vscGray, bg = "#1c1c1c" },
 
           -- 非选中下，语法检查标记要比vscGray稍暗一点
           BufferLineWarningDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
