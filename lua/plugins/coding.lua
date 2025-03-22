@@ -48,6 +48,10 @@ return {
             "/tmp/$fileNameWithoutExt &&",
             "rm /tmp/$fileNameWithoutExt",
           },
+          go = {
+            "cd $dir &&",
+            "go run $fileName",
+          },
         },
       }
     end,
