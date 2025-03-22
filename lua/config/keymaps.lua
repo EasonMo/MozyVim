@@ -31,11 +31,6 @@ local function getVisualSelection()
   end
 end
 
--- 在当前工作目录下打开terminal
-map("n", "<c-/>", function()
-  Snacks.terminal()
-end, { desc = "Terminal (cwd)" })
-
 -- 复制文件名
 map("n", "<leader>fy", function()
   if vim.tbl_contains(exclusive_filetype, vim.bo.filetype) then
@@ -152,13 +147,16 @@ map("n", "<localleader>l", function()
   vim.cmd("normal! n")
 end, { desc = "Longest Common Substring", noremap = true })
 
+-- stylua: ignore start
+
+-- 在当前工作目录下打开terminal
+-- 在tmux下，ctrl-/、ctrl--、ctrl-_等价，都是^_
+map("n", "<c-/>", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
+map("n", "<c-_>", function() Snacks.terminal() end, { desc = "which_key_ignore" })
+
 -- 切换paste模式
 Snacks.toggle({
   name = "Paste Mode",
-  get = function()
-    return vim.o.paste
-  end,
-  set = function(state)
-    vim.o.paste = state
-  end,
+  get = function() return vim.o.paste end,
+  set = function(state) vim.o.paste = state end,
 }):map("<leader>uP")
