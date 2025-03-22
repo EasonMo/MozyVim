@@ -1,5 +1,5 @@
 return {
-  name = "nvim: gcc clean",
+  name = "nvim: clean build files",
   builder = function()
     local cmd_file = vim.fn.stdpath("config") .. "/tools/rm_gcc_build.sh"
     return {
@@ -11,6 +11,6 @@ return {
     }
   end,
   condition = {
-    filetype = { "c", "cpp" },
+    filetype = { "c", "cpp", "rust" },
   },
 }
