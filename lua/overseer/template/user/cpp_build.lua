@@ -7,7 +7,7 @@ return {
     if filetype == "cpp" then
       gcc_cmd = "g++"
     end
-    local out = vim.fn.expand("%:r") .. ".out"
+    local out = vim.fn.expand("%:.:r") .. ".out"
     return {
       cmd = { gcc_cmd },
       args = { "-g", file, "-o", out },
