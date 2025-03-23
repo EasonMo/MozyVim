@@ -132,7 +132,8 @@ return {
     opts = {
       sources = {
         per_filetype = {
-          ["dap-repl"] = { "lsp", "path", "snippets", "buffer", "dap" },
+          -- 常规补全类型: lsp, path, snippets, buffer
+          ["dap-repl"] = { "buffer", "lsp", "dap", "path", "snippets" },
         },
         providers = {
           dap = {

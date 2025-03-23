@@ -250,7 +250,15 @@ return {
         ["<C-p>"] = { "show", "select_prev" },
       },
       enabled = function()
-        return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false or require("cmp_dap").is_dap_buffer()
+        local normal = vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+        if not normal then
+          local dap = require("cmp_dap").is_dap_buffer()
+          if dap then
+            vim.b.completion = true
+            return true
+          end
+        end
+        return normal
       end,
     },
   },
