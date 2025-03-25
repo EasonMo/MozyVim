@@ -289,6 +289,9 @@ return {
     },
     ---@type snacks.Config
     opts = {
+      bigfile = {
+        notify = false,
+      },
       -- logo
       dashboard = {
         preset = {
