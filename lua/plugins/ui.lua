@@ -184,9 +184,10 @@ return {
 
           -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
-          -- lazygit
+          -- lazygit, 在此定义highlight，在snacks.nvim中配置
           LazyGitActiveBorderColor = { fg = c.vscBlueGreen },
           LazyGitInactiveBorderColor = { fg = c.vscGray },
+          LazyGitSearchingActiveBorderColor = { fg = c.vscBlueGreen },
           -- neo-tree
           NeoTreeCursorLine = { bg = "#292929" },
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
@@ -318,6 +319,7 @@ return {
         theme = {
           activeBorderColor = { fg = "LazyGitActiveBorderColor", bold = true },
           inactiveBorderColor = { fg = "LazyGitInactiveBorderColor" },
+          searchingActiveBorderColor = { fg = "LazyGitSearchingActiveBorderColor", bold = true },
         },
       },
       scratch = {
