@@ -231,6 +231,7 @@ return {
     dependencies = "nvim-treesitter/nvim-treesitter",
     event = "VeryLazy",
     main = "rainbow-delimiters.setup",
+    submodules = false,
   },
   -- tmux窗口切换
   {
