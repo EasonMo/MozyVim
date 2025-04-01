@@ -153,6 +153,8 @@ end, { desc = "Longest Common Substring", noremap = true })
 -- 在tmux下，ctrl-/、ctrl--、ctrl-_等价，都是^_
 map("n", "<c-/>", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 map("n", "<c-_>", function() Snacks.terminal() end, { desc = "which_key_ignore" })
+map("n", "<localleader>dd", "<cmd>diffthis<cr>", { desc = "diff this" })
+map("n", "<localleader>do", "<cmd>diffoff!<cr>", { desc = "diff off!" })
 
 -- 切换paste模式
 Snacks.toggle({
