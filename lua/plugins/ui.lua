@@ -260,6 +260,7 @@ return {
     opts = {
       spec = {
         { "<localleader>s", group = "Strip Whitespace", mode = "n" },
+        { "<localleader>d", group = "Diff", mode = "n" },
       },
     },
   },
