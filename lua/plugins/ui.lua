@@ -144,7 +144,7 @@ return {
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
 
           -- bufferLine
-          BufferLineIndicatorSelected = { fg = "#0070D7" },
+          BufferLineIndicatorSelected = { fg = "#0070D7", bg = "#1F1F1F" },
 
           BufferLineBuffer = { fg = c.vscGray, bg = "#171717" },
           BufferLineWarningVisible = { fg = c.vscGray, bg = "#1c1c1c" },
