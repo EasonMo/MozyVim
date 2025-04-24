@@ -93,6 +93,8 @@ return {
       -- 颜色值采用P3色彩空间
       -- 参考颜色：
       --   "#8f8f8f"
+      -- 注：
+      --   1. hover使用NormalFloat
 
       vim.o.background = "dark"
       -- local vscode_editer_bg = "#1F1F1F"
@@ -129,6 +131,7 @@ return {
           FloatTitle = { link = "NormalFloat" },
           -- 修复lualine中trouble面包屑空格的背景颜色不一致
           StatusLine = { link = "lualine_c_normal" },
+          NormalFloat = { bg = "#1a1a1a" },
 
           -- 代码高亮：
           -- lua: 区分vim，table等内置类型和模块
@@ -141,7 +144,12 @@ return {
           -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
 
           -- blink
+          BlinkCmpMenu = { fg = "#bbbbbb", bg = "#1a1a1a" },
+          BlinkCmpDoc = { fg = "#bbbbbb", bg = "#1a1a1a" },
+          BlinkCmpDocBorder = { bg = "#1a1a1a" },
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
+          BlinkCmpDocSeparator = { bg = "#1a1a1a" },
+          BlinkCmpSignatureHelp = { bg = "#1a1a1a" },
 
           -- bufferLine
           BufferLineIndicatorSelected = { fg = "#0070D7", bg = "#1F1F1F" },
@@ -203,8 +211,9 @@ return {
           SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
           SnacksPickerBorder = { link = "WinSeparator" },
+          SnacksPickerTitle = { bg = "#1F1F1F" },
           -- which-key
-          WhichKeyBorder = { fg = c.vscGray },
+          WhichKeyBorder = { fg = c.vscGray, bg = "#1a1a1a" },
         },
       })
     end,
