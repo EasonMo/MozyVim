@@ -2,6 +2,21 @@ return {
   -- buffer栏
   {
     "akinsho/bufferline.nvim",
+    opts = {
+      options = {
+        offsets = { -- NOTE: 需要同步LazyVim的配置, LazyVim/lua/lazyvim/plugins/ui.lua
+          {
+            filetype = "neo-tree",
+            text = "Neo-tree",
+            highlight = "NeoTreeTopTitle", -- 初始值是"Directory"
+            text_align = "left",
+          },
+          {
+            filetype = "snacks_layout_box",
+          },
+        },
+      },
+    },
     keys = {
       { "<leader>bs", "<Cmd>BufferLinePick<CR>", desc = "Pick Buffer" },
     },
@@ -152,7 +167,7 @@ return {
           BlinkCmpSignatureHelp = { bg = "#1a1a1a" },
 
           -- bufferLine
-          -- BufferLineFill = { bg = vscodeBufferBg }, -- 空白条填充
+          -- BufferLineFill = { bg = bufferBg }, -- 空白条填充
           BufferLineIndicatorSelected = { fg = "#0070D7", bg = editerBg },
 
           BufferLineBuffer = { fg = c.vscGray, bg = bufferBg },
@@ -200,10 +215,11 @@ return {
           -- neo-tree
           NeoTreeNormal = { bg = bufferBg },
           NeoTreeNormalNC = { bg = bufferBg },
-          Directory = { bg = "#101010", fg = c.vscBlue }, -- 标题栏的颜色，bufferline控制
+          NeoTreeTopTitle = { bg = "#101010", fg = c.vscBlue, bold = true }, -- 标题栏的颜色，bufferline控制
           NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
           NeoTreeExpander = { fg = "#a0a0a0" },
+          NeoTreeDimText = { bg = bufferBg }, -- filter的标题
           -- dashboard配置，参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
           SnacksDashboardDesc = { fg = "#7dcfff" },
           SnacksDashboardHeader = { fg = "#7aa2f7" },
