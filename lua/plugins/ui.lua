@@ -97,10 +97,10 @@ return {
       --   1. hover使用NormalFloat
 
       vim.o.background = "dark"
-      -- local vscode_editer_bg = "#1F1F1F"
-      -- local vscode_buffer_bg = "#181818"
-      -- local vscode_buffer_separator = "#2B2B2B"
-      local bufferLine_diagnostic = "#5a5a5a"
+      local editerBg = "#1F1F1F"
+      local bufferBg = "#171717" -- vscode的值是"#181818", 调更黑一点
+      -- local bufferSeparator = "#2B2B2B"
+      local bufferlineDiagnostic = "#5a5a5a"
 
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -152,43 +152,44 @@ return {
           BlinkCmpSignatureHelp = { bg = "#1a1a1a" },
 
           -- bufferLine
-          BufferLineIndicatorSelected = { fg = "#0070D7", bg = "#1F1F1F" },
+          -- BufferLineFill = { bg = vscodeBufferBg }, -- 空白条填充
+          BufferLineIndicatorSelected = { fg = "#0070D7", bg = editerBg },
 
-          BufferLineBuffer = { fg = c.vscGray, bg = "#171717" },
+          BufferLineBuffer = { fg = c.vscGray, bg = bufferBg },
           BufferLineWarningVisible = { fg = c.vscGray, bg = "#1c1c1c" },
-          BufferLineBackground = { fg = c.vscGray, bg = "#171717" },
+          BufferLineBackground = { fg = c.vscGray, bg = bufferBg },
           BufferLineInfoVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineHintVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineNumbersVisible = { fg = c.vscGray, bg = "#1c1c1c" },
-          BufferLineNumbers = { fg = c.vscGray, bg = "#171717" },
+          BufferLineNumbers = { fg = c.vscGray, bg = bufferBg },
           BufferLineBufferVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineCloseButtonVisible = { fg = c.vscGray, bg = "#1c1c1c" },
-          BufferLineCloseButton = { fg = c.vscGray, bg = "#171717" },
-          BufferLineTabClose = { fg = c.vscGray, bg = "#171717" },
+          BufferLineCloseButton = { fg = c.vscGray, bg = bufferBg },
+          BufferLineTabClose = { fg = c.vscGray, bg = bufferBg },
           BufferLineGroupSeparator = { fg = c.vscGray, bg = "#111111" },
           BufferLineTruncMarker = { fg = c.vscGray, bg = "#111111" },
-          BufferLineWarning = { fg = c.vscGray, bg = "#171717", sp = "#dcdcaa" },
-          BufferLineError = { fg = c.vscGray, bg = "#171717", sp = "#f44747" },
-          BufferLineInfo = { fg = c.vscGray, bg = "#171717", sp = "#569cd6" },
-          BufferLineHint = { fg = c.vscGray, bg = "#171717", sp = "#569cd6" },
-          BufferLineTab = { fg = c.vscGray, bg = "#171717" },
+          BufferLineWarning = { fg = c.vscGray, bg = bufferBg, sp = "#dcdcaa" },
+          BufferLineError = { fg = c.vscGray, bg = bufferBg, sp = "#f44747" },
+          BufferLineInfo = { fg = c.vscGray, bg = bufferBg, sp = "#569cd6" },
+          BufferLineHint = { fg = c.vscGray, bg = bufferBg, sp = "#569cd6" },
+          BufferLineTab = { fg = c.vscGray, bg = bufferBg },
           BufferLineErrorVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineTabSelected = { fg = "#82AAFF" },
-          BufferLineDuplicate = { fg = c.vscGray, bg = "#171717" },
+          BufferLineDuplicate = { fg = c.vscGray, bg = bufferBg },
           BufferLineDuplicateVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineDuplicateSelected = { fg = c.vscGray, bg = "#1c1c1c" },
 
           -- 非选中下，语法检查标记要比vscGray稍暗一点
-          BufferLineWarningDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
-          BufferLineWarningDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#a5a57f" },
-          BufferLineInfoDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#4075a0" },
-          BufferLineHintDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
-          BufferLineHintDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#4075a0" },
-          BufferLineDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
-          BufferLineErrorDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717", sp = "#b73535" },
-          BufferLineInfoDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
-          BufferLineDiagnostic = { fg = bufferLine_diagnostic, bg = "#171717" },
-          BufferLineErrorDiagnosticVisible = { fg = bufferLine_diagnostic, bg = "#1c1c1c" },
+          BufferLineWarningDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
+          BufferLineWarningDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#a5a57f" },
+          BufferLineInfoDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#4075a0" },
+          BufferLineHintDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
+          BufferLineHintDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#4075a0" },
+          BufferLineDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
+          BufferLineErrorDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#b73535" },
+          BufferLineInfoDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
+          BufferLineDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg },
+          BufferLineErrorDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
 
           -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
