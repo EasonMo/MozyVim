@@ -167,7 +167,7 @@ return {
           BufferLineCloseButton = { fg = c.vscGray, bg = bufferBg },
           BufferLineTabClose = { fg = c.vscGray, bg = bufferBg },
           BufferLineGroupSeparator = { fg = c.vscGray, bg = "#111111" },
-          BufferLineTruncMarker = { fg = c.vscGray, bg = "#111111" },
+          BufferLineTruncMarker = { fg = c.vscGray, bg = "#141414" },
           BufferLineWarning = { fg = c.vscGray, bg = bufferBg, sp = "#dcdcaa" },
           BufferLineError = { fg = c.vscGray, bg = bufferBg, sp = "#f44747" },
           BufferLineInfo = { fg = c.vscGray, bg = bufferBg, sp = "#569cd6" },
@@ -200,7 +200,7 @@ return {
           -- neo-tree
           NeoTreeNormal = { bg = bufferBg },
           NeoTreeNormalNC = { bg = bufferBg },
-          Directory = { bg = "#121212", fg = c.vscBlue }, -- 标题栏的颜色，bufferline控制
+          Directory = { bg = "#101010", fg = c.vscBlue }, -- 标题栏的颜色，bufferline控制
           NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
           NeoTreeExpander = { fg = "#a0a0a0" },
