@@ -198,7 +198,10 @@ return {
           LazyGitInactiveBorderColor = { fg = c.vscGray },
           LazyGitSearchingActiveBorderColor = { fg = c.vscBlueGreen },
           -- neo-tree
-          NeoTreeCursorLine = { bg = "#292929" },
+          NeoTreeNormal = { bg = bufferBg },
+          NeoTreeNormalNC = { bg = bufferBg },
+          Directory = { bg = "#121212", fg = c.vscBlue }, -- 标题栏的颜色，bufferline控制
+          NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
           NeoTreeExpander = { fg = "#a0a0a0" },
           -- dashboard配置，参考: lua/tokyonight/groups/snacks.lua, extras/helix/tokyonight_night.toml
