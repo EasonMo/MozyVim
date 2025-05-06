@@ -116,7 +116,8 @@ return {
         zindex = 100,
         ft = "output",
         wo = {
-          winhighlight = "NormalFloat:Normal,FloatBorder:WinSeparator",
+          -- 默认highlight: "NormalFloat:Normal,FloatBorder:WinSeparator",
+          winhighlight = "NormalFloat:NormalFloat,FloatBorder:WhichKeyBorder,CursorLine:NeoTreeCursorLine",
           colorcolumn = "",
           number = false,
           relativenumber = false,
