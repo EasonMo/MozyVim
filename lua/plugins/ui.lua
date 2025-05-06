@@ -108,14 +108,13 @@ return {
       -- 颜色值采用P3色彩空间
       -- 参考颜色：
       --   "#8f8f8f"
-      -- 注：
-      --   1. hover使用NormalFloat
 
       vim.o.background = "dark"
       local editerBg = "#1F1F1F"
       local bufferBg = "#171717" -- vscode的值是"#181818", 调更黑一点
       -- local bufferSeparator = "#2B2B2B"
       local bufferlineDiagnostic = "#5a5a5a"
+      local floatBg = "#1a1a1a"
 
       local c = require("vscode.colors").get_colors()
       require("vscode").setup({
@@ -146,7 +145,8 @@ return {
           FloatTitle = { link = "NormalFloat" },
           -- 修复lualine中trouble面包屑空格的背景颜色不一致
           StatusLine = { link = "lualine_c_normal" },
-          NormalFloat = { bg = "#1a1a1a" },
+          NormalFloat = { bg = floatBg }, -- 使用的地方: hover, terminal
+          SnacksWinBar = { bold = true, bg = floatBg }, -- terminal的标题栏, 来源: snacks.nvim/lua/snacks/win.lua
 
           -- 代码高亮：
           -- lua: 区分vim，table等内置类型和模块
@@ -159,12 +159,12 @@ return {
           -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
 
           -- blink
-          BlinkCmpMenu = { fg = "#bbbbbb", bg = "#1a1a1a" },
-          BlinkCmpDoc = { fg = "#bbbbbb", bg = "#1a1a1a" },
-          BlinkCmpDocBorder = { bg = "#1a1a1a" },
+          BlinkCmpMenu = { fg = "#bbbbbb", bg = floatBg },
+          BlinkCmpDoc = { fg = "#bbbbbb", bg = floatBg },
+          BlinkCmpDocBorder = { bg = floatBg },
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
-          BlinkCmpDocSeparator = { bg = "#1a1a1a" },
-          BlinkCmpSignatureHelp = { bg = "#1a1a1a" },
+          BlinkCmpDocSeparator = { bg = floatBg },
+          BlinkCmpSignatureHelp = { bg = floatBg },
 
           -- bufferLine
           -- BufferLineFill = { bg = bufferBg }, -- 空白条填充
@@ -233,7 +233,7 @@ return {
           SnacksPickerBorder = { link = "WinSeparator" },
           SnacksPickerTitle = { bg = "#1F1F1F" },
           -- which-key
-          WhichKeyBorder = { fg = c.vscGray, bg = "#1a1a1a" },
+          WhichKeyBorder = { fg = c.vscGray, bg = floatBg },
         },
       })
     end,
