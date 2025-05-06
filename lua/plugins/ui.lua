@@ -215,6 +215,9 @@ return {
           -- neo-tree
           NeoTreeNormal = { bg = bufferBg },
           NeoTreeNormalNC = { bg = bufferBg },
+          NeoTreeRootName = { fg = "#cccccc", bg = bufferBg },
+          NeoTreeDirectoryName = { fg = "#cccccc", bg = bufferBg },
+          NeoTreeFileName = { fg = "#cccccc", bg = bufferBg },
           NeoTreeTopTitle = { bg = "#101010", fg = c.vscBlue, bold = true }, -- 标题栏的颜色，bufferline控制
           NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
