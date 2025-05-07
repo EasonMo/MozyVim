@@ -188,9 +188,9 @@ return {
           BufferLineError = { fg = c.vscGray, bg = bufferBg, sp = "#f44747" },
           BufferLineInfo = { fg = c.vscGray, bg = bufferBg, sp = "#569cd6" },
           BufferLineHint = { fg = c.vscGray, bg = bufferBg, sp = "#569cd6" },
-          BufferLineTab = { fg = c.vscGray, bg = bufferBg },
           BufferLineErrorVisible = { fg = c.vscGray, bg = "#1c1c1c" },
-          BufferLineTabSelected = { fg = "#82AAFF" },
+          BufferLineTab = { fg = c.vscGray, bg = bufferBg },
+          BufferLineTabSelected = { fg = "#82AAFF", bg = editerBg },
           BufferLineDuplicate = { fg = c.vscGray, bg = bufferBg },
           BufferLineDuplicateVisible = { fg = c.vscGray, bg = "#1c1c1c" },
           BufferLineDuplicateSelected = { fg = c.vscGray, bg = "#1c1c1c" },
@@ -207,8 +207,8 @@ return {
           BufferLineDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg },
           BufferLineErrorDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
 
-          BufferLineSeparator = { bg = bufferBg, fg = "#313131" },
-          BufferLineOffsetSeparator = { bg = editerBg, fg = "#444444" },
+          BufferLineSeparator = { bg = bufferBg, fg = "#313131" }, -- fg与左侧neotree分隔线一致
+          BufferLineOffsetSeparator = { bg = editerBg, fg = "#444444" }, -- 改默认值的bg
           BufferLineTabSeparator = { bg = bufferBg, fg = "#313131" },
           BufferLineTabSeparatorSelected = { bg = editerBg, fg = editerBg },
           -- flash搜索时，背景变灰色
