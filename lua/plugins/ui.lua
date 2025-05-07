@@ -10,6 +10,7 @@ return {
             text = "Neo-tree",
             highlight = "NeoTreeTopTitle", -- 初始值是"Directory"
             text_align = "left",
+            separator = true,
           },
           {
             filetype = "snacks_layout_box",
@@ -206,6 +207,10 @@ return {
           BufferLineDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg },
           BufferLineErrorDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
 
+          BufferLineSeparator = { bg = bufferBg, fg = "#313131" },
+          BufferLineOffsetSeparator = { bg = editerBg, fg = "#444444" },
+          BufferLineTabSeparator = { bg = bufferBg, fg = "#313131" },
+          BufferLineTabSeparatorSelected = { bg = editerBg, fg = editerBg },
           -- flash搜索时，背景变灰色
           FlashBackdrop = { fg = c.vscGray },
           -- lazygit, 在此定义highlight，在snacks.nvim中配置
@@ -218,7 +223,7 @@ return {
           NeoTreeRootName = { fg = "#cccccc", bg = bufferBg },
           NeoTreeDirectoryName = { fg = "#cccccc", bg = bufferBg },
           NeoTreeFileName = { fg = "#cccccc", bg = bufferBg },
-          NeoTreeTopTitle = { bg = "#101010", fg = c.vscBlue, bold = true }, -- 标题栏的颜色，bufferline控制
+          NeoTreeTopTitle = { bg = bufferBg, fg = c.vscBlue, bold = true }, -- 标题栏的颜色，bufferline控制
           NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
           NeoTreeExpander = { fg = "#a0a0a0" },
