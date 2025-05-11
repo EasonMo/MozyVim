@@ -249,6 +249,8 @@ return {
         ["<M-/>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-n>"] = { "show", "select_next" },
         ["<C-p>"] = { "show", "select_prev" },
+        ["<C-d>"] = { "scroll_documentation_down", "fallback" },
+        ["<C-u>"] = { "scroll_documentation_up", "fallback" },
       },
       enabled = function()
         local normal = vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
