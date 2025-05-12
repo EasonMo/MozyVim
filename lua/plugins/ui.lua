@@ -145,7 +145,14 @@ return {
           -- use colors from this colorscheme by requiring vscode.colors!
 
           -- nvim内置
-          Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+
+          -- 定义光标颜色：
+          --   1. iTerm2 v3.4不起作用，需要在iTerm2的Profiles中将Cursor Text设为 10% Gray
+          --   2. 添加配置:
+          --     vim.opt.guicursor = "n-v-c-sm:block-Cursor/lCursor,i-ci-ve:ver25,r-cr-o:hor20,t:block-blinkon500-blinkoff500-TermCursor"
+          --   3. 查看帮助:
+          --     :h guicursor
+          -- Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
           CursorLine = { bg = "#292929" },
           IndentHighlight = { fg = "#313131" },
           -- 修正弹窗的颜色不一致，如行号、标题
