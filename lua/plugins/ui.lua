@@ -8,12 +8,20 @@ return {
           {
             filetype = "neo-tree",
             text = "Neo-tree",
-            highlight = "NeoTreeTopTitle", -- 初始值是"Directory"
+            highlight = "BufferLineOffsetText", -- 初始值是"Directory"
             text_align = "left",
             separator = true,
           },
           {
             filetype = "snacks_layout_box",
+            separator = true,
+          },
+          {
+            filetype = "dapui_scopes",
+            text = "DAP",
+            highlight = "BufferLineOffsetTextLight",
+            text_align = "left",
+            separator = true,
           },
         },
       },
@@ -208,6 +216,8 @@ return {
           BufferLineErrorDiagnosticVisible = { fg = bufferlineDiagnostic, bg = "#1c1c1c" },
 
           BufferLineSeparator = { bg = bufferBg, fg = "#313131" }, -- fg与左侧neotree分隔线一致
+          BufferLineOffsetText = { bg = bufferBg, fg = c.vscBlue, bold = true }, -- 左侧顶部标题栏的颜色
+          BufferLineOffsetTextLight = { bg = editerBg, fg = c.vscBlue, bold = true }, -- 浅色
           BufferLineOffsetSeparator = { bg = editerBg, fg = "#444444" }, -- 改默认值的bg
           BufferLineTabSeparator = { bg = bufferBg, fg = "#313131" },
           BufferLineTabSeparatorSelected = { bg = editerBg, fg = editerBg },
@@ -223,7 +233,6 @@ return {
           NeoTreeRootName = { fg = "#cccccc" },
           NeoTreeDirectoryName = { fg = "#cccccc" },
           NeoTreeFileName = { fg = "#cccccc" },
-          NeoTreeTopTitle = { bg = bufferBg, fg = c.vscBlue, bold = true }, -- 标题栏的颜色，bufferline控制
           NeoTreeCursorLine = { bg = "#212121" }, -- 深色背景，光标要更暗一点
           NeoTreeIndentMarker = { fg = "#5a5a5a" },
           NeoTreeExpander = { fg = "#a0a0a0" },
