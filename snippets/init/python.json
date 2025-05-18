@@ -7,5 +7,12 @@
       "\"\"\""
     ],
     "description": "document"
+  },
+  "format-skip":{
+    "prefix": "fmtskip",
+    "body":[
+      "# fmt: skip"
+    ],
+    "description": "format skip"
   }
 }
