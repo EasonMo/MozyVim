@@ -410,4 +410,9 @@ return {
       },
     },
   },
+  {
+    "nvim-treesitter/playground",
+    lazy = true,
+    cmd = { "TSHighlightCapturesUnderCursor", "TSNodeUnderCursor" },
+  },
 }
