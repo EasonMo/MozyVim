@@ -156,6 +156,8 @@ map("n", "<c-_>", function() Snacks.terminal() end, { desc = "which_key_ignore" 
 map("n", "<localleader>dd", "<cmd>diffthis<cr>", { desc = "diff this" })
 map("n", "<localleader>do", "<cmd>diffoff!<cr>", { desc = "diff off!" })
 map("n", "<leader>m", "<cmd>messages<cr>", { desc = "Messages" })
+map("n", "<leader>snc", "<cmd>messages clear<cr>", { desc = "Clear Messages" })
+map("n", "<leader>qu", "<cmd>q!<cr>", { desc = "Quit without writing" })
 
 -- 切换paste模式
 Snacks.toggle({
