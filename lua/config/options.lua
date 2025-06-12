@@ -16,6 +16,7 @@ vim.opt.smartindent = false
 -- vim.opt.list = true
 -- vim.opt.listchars = { space = "·" }
 
+-- 显示可隐藏文本
 -- vim.opt.conceallevel = 0
 vim.opt.backspace = "eol,start,indent"
 
