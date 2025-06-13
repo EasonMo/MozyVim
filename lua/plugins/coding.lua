@@ -417,6 +417,16 @@ return {
       vim.list_extend(opts.groups.default, {
         augend.date.alias["%Y-%m-%d"],
         augend.date.new({ pattern = "%Y年%m月%d日", default_kind = "day", only_valid = true }),
+        augend.constant.new({
+          elements = { "周一", "周二", "周三", "周四", "周五", "周六", "周日" },
+          word = false,
+          cyclic = true,
+        }),
+        augend.constant.new({
+          elements = { "星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日" },
+          word = false,
+          cyclic = true,
+        }),
       })
     end,
   },
