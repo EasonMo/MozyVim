@@ -430,6 +430,7 @@ return {
       })
     end,
   },
+  -- grug-far：搜索替换
   {
     "grug-far.nvim",
     opts = {

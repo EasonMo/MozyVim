@@ -390,6 +390,7 @@ return {
       scroll = { enabled = false },
     },
   },
+  -- nvim-window-picker
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
@@ -412,6 +413,7 @@ return {
       },
     },
   },
+  -- treesitter playground
   {
     "nvim-treesitter/playground",
     lazy = true,
