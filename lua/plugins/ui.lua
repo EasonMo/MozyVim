@@ -386,6 +386,8 @@ return {
           wo = { winhighlight = "NormalFloat:Normal,FloatBorder:WinSeparator" },
         },
       },
+      -- 取消平滑滚动，影响：查找引用时的picker首个结果的行数定位，搜索次数显示
+      scroll = { enabled = false },
     },
   },
   {
