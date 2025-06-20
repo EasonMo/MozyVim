@@ -31,6 +31,9 @@ vim.filetype.add({
     curl = "curl",
     json = "jsonc", -- 解决json注释报错
   },
+  filename = {
+    ["tmux.conf.sh"] = "tmux",
+  },
 })
 
 -- 初始化宏
