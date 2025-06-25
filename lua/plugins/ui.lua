@@ -419,4 +419,18 @@ return {
     lazy = true,
     cmd = { "TSHighlightCapturesUnderCursor", "TSNodeUnderCursor" },
   },
+  -- persistence.nvim
+  {
+    "folke/persistence.nvim",
+    keys = {
+      {
+        "<leader>qd",
+        function()
+          require("persistence").stop()
+          vim.cmd("qa")
+        end,
+        desc = "Quit without save Session",
+      },
+    },
+  },
 }
