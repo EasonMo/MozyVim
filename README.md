@@ -43,3 +43,14 @@ nvim启动时把宏设置到寄存器里：
 ## 妥协的配置
 
 - 不需要设置markdown diagnostics的自动开关，因为enable/disable diagnostics是全局的，只能手动
+
+## 插件调试
+
+1. 启动一个nvim调试实例A：
+
+```lua
+lua require"osv".launch({port=8086})
+```
+
+2. 在另一个nvim实例B中启动DAP attach debug，并打上断点
+3. 在实例A中进行操作，实例B就能进入断点，实际就是**远程调试**
