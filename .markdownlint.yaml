@@ -2,10 +2,12 @@
 # - https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
 # - https://github.com/LazyVim/LazyVim/discussions/4094#discussioncomment-10178217
 
-# MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading
-MD041: false
-# MD034/no-bare-urls Bare URL used
-MD034: false
 # MD009/no-trailing-spaces : Trailing space
 MD009:
   br_spaces: 0
+# MD029/ol-prefix Ordered list item prefix
+MD029: false
+# MD034/no-bare-urls Bare URL used
+MD034: false
+# MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading
+MD041: false
