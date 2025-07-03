@@ -7,8 +7,11 @@
 -----------------------✂---------------------------
 
 -- 缩进配置
+-- 一个 \t 显示为 4 个空格宽度
 vim.opt.ts = 4
+-- 使用 >> 或 << 缩进时，缩进 4 个空格
 vim.opt.shiftwidth = 4
+-- 将 <Tab> 转为空格插入
 vim.opt.expandtab = true
 vim.opt.smartindent = false
 
