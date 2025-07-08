@@ -256,6 +256,10 @@ return {
           SnacksPickerDir = { fg = c.vscLineNumber },
           SnacksPickerBorder = { link = "WinSeparator" },
           SnacksPickerTitle = { bg = "#1F1F1F" },
+          -- trouble
+          TroubleCount = { fg = c.vscFront },
+          TroubleFilename = { fg = c.vscBlue },
+          TroubleDirectory = { fg = c.vscBlue },
           -- which-key
           WhichKeyBorder = { fg = c.vscGray, bg = floatBg },
         },
