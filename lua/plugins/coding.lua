@@ -4,9 +4,17 @@ return {
     "stevearc/conform.nvim",
     opts = function(_, opts)
       if not require("utils").file_exists("stylua.toml") then
-        opts.formatters_by_ft.lua = {
+        opts.formatters.stylua = {
           command = "stylua",
-          args = { "--config-path", vim.fn.expand("~/.config/nvim/stylua.toml") },
+          args = {
+            "--config-path",
+            vim.fn.expand("~/.config/nvim/stylua.toml"),
+            "--search-parent-directories",
+            "--respect-ignores",
+            "--stdin-filepath",
+            "$FILENAME",
+            "-",
+          },
         }
       end
     end,
