@@ -139,6 +139,7 @@ return {
         },
 
         -- Override highlight groups (see ./lua/vscode/theme.lua)
+        ---@type table<string, vim.api.keyset.highlight>
         group_overrides = {
           -- 查询光标处的 Highlight 信息：:Inspect或:lua print(vim.inspect(vim.treesitter.get_captures_at_cursor(0)))
 
@@ -176,8 +177,8 @@ return {
           -- ["@lsp.typemod.variable.global"] = { link = "@variable.builtin" },
 
           -- blink
-          BlinkCmpMenu = { fg = "#bbbbbb", bg = floatBg },
-          BlinkCmpDoc = { fg = "#bbbbbb", bg = floatBg },
+          BlinkCmpMenu = { bg = floatBg, fg = "#bbbbbb" },
+          BlinkCmpDoc = { bg = floatBg, fg = "#bbbbbb" },
           BlinkCmpDocBorder = { bg = floatBg },
           BlinkCmpMenuSelection = { bg = c.vscPopupHighlightBlue },
           BlinkCmpDocSeparator = { bg = floatBg },
@@ -185,43 +186,43 @@ return {
 
           -- bufferLine
           -- BufferLineFill = { bg = bufferBg }, -- 空白条填充
-          BufferLineIndicatorSelected = { fg = "#0070D7", bg = editerBg },
-          BufferLineBuffer = { fg = c.vscGray, bg = bufferBg },
-          BufferLineBackground = { fg = c.vscGray, bg = bufferBg },
-          BufferLineNumbers = { fg = c.vscGray, bg = bufferBg },
-          BufferLineCloseButton = { fg = c.vscGray, bg = bufferBg },
-          BufferLineTabClose = { fg = c.vscGray, bg = bufferBg },
-          BufferLineGroupSeparator = { fg = c.vscGray, bg = "#111111" },
-          BufferLineTruncMarker = { fg = c.vscGray, bg = "#141414" },
-          BufferLineWarning = { fg = c.vscGray, bg = bufferBg, sp = "#dcdcaa" },
-          BufferLineError = { fg = c.vscGray, bg = bufferBg, sp = "#f44747" },
-          BufferLineInfo = { fg = c.vscGray, bg = bufferBg, sp = c.vscBlue },
-          BufferLineHint = { fg = c.vscGray, bg = bufferBg, sp = c.vscBlue },
-          BufferLineTab = { fg = c.vscGray, bg = bufferBg },
-          BufferLineTabSelected = { fg = "#82AAFF", bg = editerBg },
-          BufferLineDuplicate = { fg = c.vscGray, bg = bufferBg },
-          BufferLineDuplicateSelected = { fg = c.vscGray, bg = editerBgNC },
+          BufferLineIndicatorSelected = { bg = editerBg, fg = "#0070D7" },
+          BufferLineBuffer = { bg = bufferBg, fg = c.vscGray },
+          BufferLineBackground = { bg = bufferBg, fg = c.vscGray },
+          BufferLineNumbers = { bg = bufferBg, fg = c.vscGray },
+          BufferLineCloseButton = { bg = bufferBg, fg = c.vscGray },
+          BufferLineTabClose = { bg = bufferBg, fg = c.vscGray },
+          BufferLineGroupSeparator = { bg = "#111111", fg = c.vscGray },
+          BufferLineTruncMarker = { bg = "#141414", fg = c.vscGray },
+          BufferLineWarning = { bg = bufferBg, fg = c.vscGray, sp = "#dcdcaa" },
+          BufferLineError = { bg = bufferBg, fg = c.vscGray, sp = "#f44747" },
+          BufferLineInfo = { bg = bufferBg, fg = c.vscGray, sp = c.vscBlue },
+          BufferLineHint = { bg = bufferBg, fg = c.vscGray, sp = c.vscBlue },
+          BufferLineTab = { bg = bufferBg, fg = c.vscGray },
+          BufferLineTabSelected = { bg = editerBg, fg = "#82AAFF" },
+          BufferLineDuplicate = { bg = bufferBg, fg = c.vscGray },
+          BufferLineDuplicateSelected = { bg = editerBgNC, fg = c.vscGray },
 
           -- 区分非选中时切换的颜色变化，如在buffer和neotree之间切换bufferline标签颜色变化
-          BufferLineBufferVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineCloseButtonVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineDuplicateVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineErrorVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineHintVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineInfoVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineNumbersVisible = { fg = c.vscGray, bg = editerBgNC },
-          BufferLineWarningVisible = { fg = c.vscGray, bg = editerBgNC },
+          BufferLineBufferVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineCloseButtonVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineDuplicateVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineErrorVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineHintVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineInfoVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineNumbersVisible = { bg = editerBgNC, fg = c.vscGray },
+          BufferLineWarningVisible = { bg = editerBgNC, fg = c.vscGray },
           -- 非选中下，语法检查标记要比vscGray稍暗一点
-          BufferLineDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg },
-          BufferLineDiagnosticVisible = { fg = bufferlineDiagnostic, bg = editerBgNC },
-          BufferLineHintDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#4075a0" },
-          BufferLineHintDiagnosticVisible = { fg = bufferlineDiagnostic, bg = editerBgNC },
-          BufferLineInfoDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#4075a0" },
-          BufferLineInfoDiagnosticVisible = { fg = bufferlineDiagnostic, bg = editerBgNC },
-          BufferLineErrorDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#b73535" },
-          BufferLineErrorDiagnosticVisible = { fg = bufferlineDiagnostic, bg = editerBgNC },
-          BufferLineWarningDiagnostic = { fg = bufferlineDiagnostic, bg = bufferBg, sp = "#a5a57f" },
-          BufferLineWarningDiagnosticVisible = { fg = bufferlineDiagnostic, bg = editerBgNC },
+          BufferLineDiagnostic = { bg = bufferBg, fg = bufferlineDiagnostic },
+          BufferLineDiagnosticVisible = { bg = editerBgNC, fg = bufferlineDiagnostic },
+          BufferLineHintDiagnostic = { bg = bufferBg, fg = bufferlineDiagnostic, sp = "#4075a0" },
+          BufferLineHintDiagnosticVisible = { bg = editerBgNC, fg = bufferlineDiagnostic },
+          BufferLineInfoDiagnostic = { bg = bufferBg, fg = bufferlineDiagnostic, sp = "#4075a0" },
+          BufferLineInfoDiagnosticVisible = { bg = editerBgNC, fg = bufferlineDiagnostic },
+          BufferLineErrorDiagnostic = { bg = bufferBg, fg = bufferlineDiagnostic, sp = "#b73535" },
+          BufferLineErrorDiagnosticVisible = { bg = editerBgNC, fg = bufferlineDiagnostic },
+          BufferLineWarningDiagnostic = { bg = bufferBg, fg = bufferlineDiagnostic, sp = "#a5a57f" },
+          BufferLineWarningDiagnosticVisible = { bg = editerBgNC, fg = bufferlineDiagnostic },
 
           BufferLineSeparator = { bg = bufferBg, fg = "#313131" }, -- fg与左侧neotree分隔线一致
           BufferLineOffsetText = { bg = bufferBg, fg = c.vscBlue, bold = true }, -- 左侧顶部标题栏的颜色
@@ -262,7 +263,7 @@ return {
           TroubleFilename = { fg = c.vscBlue },
           TroubleDirectory = { fg = c.vscBlue },
           -- which-key
-          WhichKeyBorder = { fg = c.vscGray, bg = floatBg },
+          WhichKeyBorder = { bg = floatBg, fg = c.vscGray },
         },
       })
     end,
