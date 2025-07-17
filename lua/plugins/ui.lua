@@ -7,7 +7,7 @@ return {
         offsets = { -- NOTE: 需要同步LazyVim的配置, LazyVim/lua/lazyvim/plugins/ui.lua
           {
             filetype = "neo-tree",
-            text = "Neo-tree",
+            text = "Explorer",
             highlight = "BufferLineOffsetText", -- 初始值是"Directory"
             text_align = "left",
             separator = true,
