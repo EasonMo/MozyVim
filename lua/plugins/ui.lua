@@ -432,10 +432,15 @@ return {
       {
         "<leader>qd",
         function()
-          require("persistence").stop()
+          local persistence = require("persistence")
+          persistence.stop()
+          local file_name = persistence.current()
+          if require("utils").file_exists(file_name) then
+            os.execute("rm " .. file_name)
+          end
           vim.cmd("qa")
         end,
-        desc = "Quit without save Session",
+        desc = "Quit without Saving Session",
       },
     },
   },
