@@ -318,6 +318,8 @@ return {
     optional = true,
     opts = {
       spec = {
+        { "<leader>s", group = "search/noice" },
+        { "<leader>r", group = "+refactor/runner", mode = { "n", "v" } },
         { "<localleader>s", group = "Strip Whitespace", mode = "n" },
         { "<localleader>d", group = "Diff", mode = "n" },
         { "<localleader>r", group = "Replace", mode = "n" },
