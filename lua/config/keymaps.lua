@@ -165,3 +165,5 @@ Snacks.toggle({
   get = function() return vim.o.paste end,
   set = function(state) vim.o.paste = state end,
 }):map("<leader>uP")
+
+-- stylua: ignore end
