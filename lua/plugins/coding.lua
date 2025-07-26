@@ -368,13 +368,6 @@ return {
       require("curl.config").setup(opts)
     end,
   },
-  -- 重构
-  {
-    "ThePrimeagen/refactoring.nvim",
-    keys = {
-      { "<leader>r", "", desc = "+refactor/runner", mode = { "n", "v" } },
-    },
-  },
   -- 任务系统
   {
     "stevearc/overseer.nvim",
