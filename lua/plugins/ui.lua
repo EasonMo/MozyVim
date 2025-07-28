@@ -171,6 +171,7 @@ return {
           -- ["@variable.builtin"] = { fg = c.vscBlueGreen },
           -- ["@module.builtin"] = { link = "@variable.builtin" },
           -- ["@namespace.builtin"] = { link = "@variable.builtin" },
+          ["@lsp.type.variable"] = {}, -- Semantic Tokens 优先级比 treesitter 高，置空可让treesitter生效
           -- ["@lsp.type.selfKeyword"] = { link = "@variable.builtin" },
           -- ["@lsp.type.selfTypeKeyword"] = { link = "@variable.builtin" },
           -- ["@lsp.typemod.variable.defaultLibrary"] = { link = "@variable.builtin" },
