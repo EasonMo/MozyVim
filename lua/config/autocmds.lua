@@ -8,23 +8,23 @@
 
 -- 设置缩进为2
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
   pattern = { "sh", "lua", "json", "jsonc", "markdown", "vue" },
   callback = function()
     vim.opt_local.tabstop = 2
     vim.opt_local.shiftwidth = 2
     vim.opt_local.expandtab = true
   end,
-  group = vim.api.nvim_create_augroup("filetype_tab_width", { clear = true }),
 })
 
 -- 禁止拼写检查
 -- 获取filetype: echo &filetype
 vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("filetype_spell_check", { clear = true }),
   pattern = { "gitcommit", "markdown", "text" },
   callback = function()
     vim.opt_local.spell = false
   end,
-  group = vim.api.nvim_create_augroup("filetype_spell_check", { clear = true }),
 })
 
 -- close some filetypes with <q>，补充缺失的
@@ -67,13 +67,13 @@ if os.getenv("XDG_CURRENT_DESKTOP") ~= "GNOME" and vim.env.SSH_TTY then
   }
 end
 vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("YankToClipboard", { clear = true }),
   pattern = { "*" },
   callback = function()
     if vim.v.event.operator == "y" then
       vim.fn.setreg("+", vim.fn.getreg("0"))
     end
   end,
-  group = vim.api.nvim_create_augroup("YankToClipboard", { clear = true }),
 })
 
 -- 动态关闭smartcase：优化Cmdline补全
