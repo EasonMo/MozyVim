@@ -19,7 +19,7 @@ vim.opt.smartindent = false
 -- vim.opt.list = true
 -- vim.opt.listchars = { space = "·" }
 
--- 显示可隐藏文本
+-- 控制可隐藏文本，用于是否将某些文本替换显示为单个字符，需配合syntax match使用
 -- vim.opt.conceallevel = 0
 vim.opt.backspace = "eol,start,indent"
 
