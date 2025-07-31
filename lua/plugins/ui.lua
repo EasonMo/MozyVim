@@ -258,7 +258,8 @@ return {
           SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
           SnacksPickerBorder = { link = "WinSeparator" },
-          SnacksPickerTitle = { bg = "#1F1F1F" },
+          SnacksPickerTitle = { bg = editerBg },
+          SnacksPickerDimmed = { fg = c.vscFront },
           -- trouble
           TroubleCount = { fg = c.vscFront },
           TroubleFilename = { fg = c.vscBlue },
