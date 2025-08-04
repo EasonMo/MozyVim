@@ -387,6 +387,25 @@ return {
           searchingActiveBorderColor = { fg = "LazyGitSearchingActiveBorderColor", bold = true },
         },
       },
+      picker = {
+        win = {
+          input = {
+            keys = {
+              ["<c-l>"] = { "cycle_win", mode = { "i", "n" } },
+            },
+          },
+          list = {
+            keys = {
+              ["<c-l>"] = "cycle_win",
+            },
+          },
+          preview = {
+            keys = {
+              ["<c-l>"] = "cycle_win",
+            },
+          },
+        },
+      },
       scratch = {
         filekey = {
           branch = false,
