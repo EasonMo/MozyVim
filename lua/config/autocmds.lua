@@ -92,6 +92,16 @@ vim.api.nvim_create_autocmd("CmdLineLeave", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "curl",
+  callback = function()
+    -- stylua: ignore start
+    vim.bo.shiftwidth = 2   -- 自动缩进宽度
+    vim.bo.tabstop = 2      -- Tab 显示宽度
+    vim.bo.expandtab = true -- 用空格代替 Tab
+  end,
+})
+
 -----------------------✂---------------------------
 --                 自定义命令
 -----------------------✂---------------------------
