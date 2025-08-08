@@ -148,6 +148,7 @@ return {
 
           -- nvim内置
 
+          Conceal = { fg = c.vscFront },
           -- 定义光标颜色：
           --   1. iTerm2 v3.4不起作用，需要在iTerm2的Profiles中将Cursor Text设为 10% Gray
           --   2. 添加配置:
