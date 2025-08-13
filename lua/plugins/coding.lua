@@ -431,38 +431,4 @@ return {
       })
     end,
   },
-  -- grug-far：搜索替换
-  {
-    "grug-far.nvim",
-    opts = {
-      keymaps = {
-        replace = { n = "<localleader>rr" },
-        qflist = { n = "<localleader>rq" },
-        syncLocations = { n = "<localleader>rs" },
-        syncLine = { n = "<localleader>rl" },
-        close = { n = "<localleader>rc" },
-        historyOpen = { n = "<localleader>rt" },
-        historyAdd = { n = "<localleader>ra" },
-        refresh = { n = "<localleader>rf" },
-        openLocation = { n = "<localleader>ro" },
-        openNextLocation = { n = "<down>" },
-        openPrevLocation = { n = "<up>" },
-        gotoLocation = { n = "<enter>" },
-        pickHistoryEntry = { n = "<enter>" },
-        abort = { n = "<localleader>rb" },
-        help = { n = "g?" },
-        toggleShowCommand = { n = "<localleader>rw" },
-        swapEngine = { n = "<localleader>re" },
-        previewLocation = { n = "<localleader>ri" },
-        swapReplacementInterpreter = { n = "<localleader>rx" },
-        applyNext = { n = "<localleader>rj" },
-        applyPrev = { n = "<localleader>rk" },
-        syncNext = { n = "<localleader>rn" },
-        syncPrev = { n = "<localleader>rp" },
-        syncFile = { n = "<localleader>rv" },
-        nextInput = { n = "<tab>" },
-        prevInput = { n = "<s-tab>" },
-      },
-    },
-  },
 }

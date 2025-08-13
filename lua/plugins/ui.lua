@@ -1,3 +1,11 @@
+local function fix_keymap_desc(desc)
+  local filetypes = { "grug-far" }
+  if vim.tbl_contains(filetypes, vim.bo.filetype) then
+    return nil
+  end
+  return desc
+end
+
 return {
   -- buffer栏
   {
@@ -323,11 +331,14 @@ return {
     optional = true,
     opts = {
       spec = {
+        -- group用小写表示, desc以大写开头时则表示实际要执行指令，当指令以group显示时则表示有冲突
+        -- stylua: ignore start
+        { "<leader>r", group = "refactor/runner", mode = { "n", "v" } },
         { "<leader>s", group = "search/noice" },
-        { "<leader>r", group = "+refactor/runner", mode = { "n", "v" } },
-        { "<localleader>s", group = "Strip Whitespace", mode = "n" },
-        { "<localleader>d", group = "Diff", mode = "n" },
-        { "<localleader>r", group = "Replace", mode = "n" },
+        { "<localleader>c", group = function() return fix_keymap_desc("coerce") end, mode = "n" },
+        { "<localleader>d", group = "diff", mode = "n" },
+        { "<localleader>r", group = "replace", mode = "n" },
+        { "<localleader>s", group = function() return fix_keymap_desc("strip") end, mode = "n" },
       },
     },
   },
