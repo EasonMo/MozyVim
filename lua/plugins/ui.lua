@@ -477,7 +477,7 @@ return {
           end
           vim.cmd("qa")
         end,
-        desc = "Quit without Saving Session",
+        desc = "Quit and Delete Session",
       },
     },
   },
