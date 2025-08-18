@@ -1,5 +1,6 @@
 -- 用lsp来做的代码格式化和诊断
--- python: 诊断用pyright，格式化用ruff_lsp
+-- pyright: 诊断, 代码补全, 重构
+-- ruff: 格式化, 静态分析
 local general_root = require("utils").general_root
 local util = require("lspconfig.util")
 local py_root = {
@@ -21,7 +22,7 @@ return {
         -- 修复root dir错误设置的问题
         root_dir = function(fname)
           return util.root_pattern(unpack(vim.tbl_extend("force", py_root, general_root)))(fname)
-            or vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+            or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
             or vim.fs.dirname(fname)
         end,
         single_file_support = true,
