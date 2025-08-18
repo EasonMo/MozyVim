@@ -1,7 +1,7 @@
 -- 用lsp来做的代码格式化和诊断
 -- python: 诊断用pyright，格式化用ruff_lsp
 local general_root = require("utils").general_root
-local util = require("lspconfig/util")
+local util = require("lspconfig.util")
 local py_root = {
   "pyproject.toml",
   "setup.py",

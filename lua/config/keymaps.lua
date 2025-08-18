@@ -159,7 +159,7 @@ map("n", "<leader>m", "<cmd>messages<cr>", { desc = "Messages" })
 map("n", "<leader>snc", "<cmd>messages clear<cr>", { desc = "Clear Messages" })
 map("n", "<leader>qu", "<cmd>q!<cr>", { desc = "Quit without Writing" })
 
--- 切换paste模式
+-- 切换paste模式: CMD+V时不会乱缩进
 Snacks.toggle.option("paste", { name = "Paste Mode" }):map("<leader>uP")
 
 -- stylua: ignore end
