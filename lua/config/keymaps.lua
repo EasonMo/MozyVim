@@ -160,10 +160,6 @@ map("n", "<leader>snc", "<cmd>messages clear<cr>", { desc = "Clear Messages" })
 map("n", "<leader>qu", "<cmd>q!<cr>", { desc = "Quit without Writing" })
 
 -- 切换paste模式
-Snacks.toggle({
-  name = "Paste Mode",
-  get = function() return vim.o.paste end,
-  set = function(state) vim.o.paste = state end,
-}):map("<leader>uP")
+Snacks.toggle.option("paste", { name = "Paste Mode" }):map("<leader>uP")
 
 -- stylua: ignore end
