@@ -31,6 +31,12 @@ local function getVisualSelection()
   end
 end
 
+-- 新建tab页，并删除空白页，主要用来调试看代码
+map("n", "<leader><tab><tab>", function()
+  vim.cmd("tabnew")
+  Snacks.bufdelete()
+end, { desc = "New Tab" })
+
 -- 复制文件名
 map("n", "<leader>fy", function()
   if vim.tbl_contains(exclusive_filetype, vim.bo.filetype) then
