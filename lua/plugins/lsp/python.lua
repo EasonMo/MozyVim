@@ -1,17 +1,6 @@
 -- 用lsp来做的代码格式化和诊断
 -- pyright: 诊断, 代码补全, 重构
 -- ruff: 格式化, 静态分析
-local general_root = require("utils").general_root
-local util = require("lspconfig.util")
-local py_root = {
-  "pyproject.toml",
-  "setup.py",
-  "setup.cfg",
-  "requirements.txt",
-  "Pipfile",
-  "pyrightconfig.json",
-  "venv/",
-}
 return {
   "neovim/nvim-lspconfig",
   -- 直接写opts也能合并配置, 用有返回值的function才是override
@@ -21,6 +10,17 @@ return {
       pyright = { -- basedpyright只是订制版的pyright
         -- 修复root dir错误设置的问题
         root_dir = function(fname)
+          local general_root = require("utils").general_root
+          local util = require("lspconfig.util")
+          local py_root = {
+            "pyproject.toml",
+            "setup.py",
+            "setup.cfg",
+            "requirements.txt",
+            "Pipfile",
+            "pyrightconfig.json",
+            "venv/",
+          }
           return util.root_pattern(unpack(vim.tbl_extend("force", py_root, general_root)))(fname)
             or vim.fs.dirname(vim.fs.find(".git", { path = fname, upward = true })[1])
             or vim.fs.dirname(fname)
