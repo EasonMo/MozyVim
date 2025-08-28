@@ -43,7 +43,7 @@ map("n", "<leader>fy", function()
     Snacks.notify.warn("not supported filetype", { title = "FilePath Copy Selector" })
     return
   end
-  require("utils").file_name_copy_selector(expand("%:t"), expand("%:p"))
+  require("util").file_name_copy_selector(expand("%:t"), expand("%:p"))
 end, { desc = "Copy File Name" })
 
 -- 可视化选择搜索

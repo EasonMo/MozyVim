@@ -10,7 +10,7 @@ return {
       pyright = { -- basedpyright只是订制版的pyright
         -- 修复root dir错误设置的问题
         root_dir = function(fname)
-          local general_root = require("utils").general_root
+          local general_root = require("util").general_root
           local util = require("lspconfig.util")
           local py_root = {
             "pyproject.toml",

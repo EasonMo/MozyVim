@@ -1,5 +1,3 @@
-local utils = require("utils")
-
 ---@param config {args?:string[]|fun():string[]?}
 local function get_args(config)
   local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
@@ -12,8 +10,8 @@ local function get_args(config)
   return config
 end
 
-local layout_3_list = { "javascript", "typescript", "typescriptreact", "javascriptreact" }
 local function get_layout()
+  local layout_3_list = { "javascript", "typescript", "typescriptreact", "javascriptreact" }
   for _, element in ipairs(layout_3_list) do
     if vim.bo.filetype == element then
       return 3
@@ -44,7 +42,7 @@ return {
       { "<S-F11>",    function() require("dap").step_out() end,                                           desc = "Step Out" },
       { "<F23>",      function() require("dap").step_out() end,                                           desc = "Step Out" },  -- 即shift+F11
       { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end,       desc = "Clear Breakpoint"},
-      { "<leader>dG", function() require("utils").create_launch_json() end,                               desc = "Generate launch.json"},
+      { "<leader>dG", function() require("util").create_launch_json() end,                               desc = "Generate launch.json"},
     },
   },
   {
@@ -84,12 +82,13 @@ return {
     config = function(_, opts)
       local dap = require("dap")
       local dapui = require("dapui")
+      local util = require("util")
       local function clear_dap_ui()
-        local bufs = utils.find_buffers_by_filetype("dap-repl")
+        local bufs = util.find_buffers_by_filetype("dap-repl")
         for _, buf in ipairs(bufs) do
           vim.bo[buf].buflisted = false
         end
-        bufs = utils.find_buffers_by_filetype("dapui_watches")
+        bufs = util.find_buffers_by_filetype("dapui_watches")
         for _, buf in ipairs(bufs) do
           vim.bo[buf].buflisted = false
         end
