@@ -111,6 +111,8 @@ M.runPython = function(fopts)
   })
 
   local command = "echo " .. vim.fn.shellescape(table.concat(lines, "\n")) .. " | python3 2>&1"
+  -- 对字符串里的换行符转义
+  command = command:gsub("\\n", "\\\\n")
   local handle = io.popen(command)
   if not handle then
     Snacks.notify.error("Didn't get popen handle.", { title = name })
