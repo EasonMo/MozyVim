@@ -1,24 +1,7 @@
 local M = {}
 M.general_root = { ".project.*", ".git/", "README.md" }
 
--- 定义一个函数，用于执行按键序列
---   示例：执行一个按键序列，比如 "ggdG", execute_key_sequence("ggdG")
-M.execute_key_sequence = function(keys)
-  -- 将按键序列传递给 nvim_feedkeys 函数
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", true)
-end
-
-M.close_other_windows = function()
-  local current_win = vim.api.nvim_get_current_win()
-  local wins = vim.api.nvim_list_wins()
-
-  for _, win in ipairs(wins) do
-    if win ~= current_win then
-      vim.api.nvim_win_close(win, true)
-    end
-  end
-end
-
+-- 全局函数
 function Close_all()
   if vim.fn.exists(":Neotree") == 2 then
     vim.cmd("Neotree close")
@@ -31,11 +14,29 @@ function Close_all()
   -- vim.api.nvim_command("OutlineClose")
 end
 
-M.log = function(obj)
+-- 定义一个函数，用于执行按键序列
+--   示例：执行一个按键序列，比如 "ggdG", execute_key_sequence("ggdG")
+function M.execute_key_sequence(keys)
+  -- 将按键序列传递给 nvim_feedkeys 函数
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(keys, true, false, true), "n", true)
+end
+
+function M.close_other_windows()
+  local current_win = vim.api.nvim_get_current_win()
+  local wins = vim.api.nvim_list_wins()
+
+  for _, win in ipairs(wins) do
+    if win ~= current_win then
+      vim.api.nvim_win_close(win, true)
+    end
+  end
+end
+
+function M.log(obj)
   print(vim.inspect(obj))
 end
 
-M.find_buffer_by_name = function(name)
+function M.find_buffer_by_name(name)
   for _, buf in ipairs(vim.api.nvim_list_bufs()) do
     local buf_name = vim.api.nvim_buf_get_name(buf)
     if buf_name == name then
@@ -45,7 +46,7 @@ M.find_buffer_by_name = function(name)
   return -1
 end
 
-M.find_buffers_by_filetype = function(filetype)
+function M.find_buffers_by_filetype(filetype)
   local buffers = {}
   for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
     if vim.api.nvim_buf_is_loaded(bufnr) then
@@ -57,15 +58,15 @@ M.find_buffers_by_filetype = function(filetype)
   return buffers
 end
 
-M.file_exists = function(filepath)
+function M.file_exists(filepath)
   return vim.fn.glob(filepath) ~= ""
 end
 
-M.get_parent_dir = function(path)
+function M.get_parent_dir(path)
   return path:match("(.+)/")
 end
 
-M.copy_file = function(source_file, target_file)
+function M.copy_file(source_file, target_file)
   local target_file_parent_path = M.get_parent_dir(target_file)
   local cmd = string.format("mkdir -p %s", vim.fn.shellescape(target_file_parent_path))
   os.execute(cmd)
@@ -76,7 +77,7 @@ M.copy_file = function(source_file, target_file)
   end)
 end
 
-M.get_launch_json_by_source_file = function(source_file)
+function M.get_launch_json_by_source_file(source_file)
   local target_file = vim.fn.getcwd() .. "/.vscode/launch.json"
   local file_exist = M.file_exists(target_file)
   if file_exist then
@@ -89,7 +90,7 @@ M.get_launch_json_by_source_file = function(source_file)
   end
 end
 
-M.get_tasks_json_by_source_file = function(source_file)
+function M.get_tasks_json_by_source_file(source_file)
   local target_file = vim.fn.getcwd() .. "/.vscode/tasks.json"
   local file_exist = M.file_exists(target_file)
   if file_exist then
@@ -102,7 +103,7 @@ M.get_tasks_json_by_source_file = function(source_file)
   end
 end
 
-M.create_launch_json = function()
+function M.create_launch_json()
   vim.ui.select({
     "go",
     "node",
@@ -130,7 +131,7 @@ M.create_launch_json = function()
   end)
 end
 
-M.file_name_copy_selector = function(filename, filepath)
+function M.file_name_copy_selector(filename, filepath)
   local modify = vim.fn.fnamemodify
 
   local vals = {

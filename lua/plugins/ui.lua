@@ -101,7 +101,7 @@ return {
           local filepath = node:get_id()
           local filename = node.name
 
-          require("utils").file_name_copy_selector(filename, filepath)
+          require("util").file_name_copy_selector(filename, filepath)
         end,
       },
       window = {
@@ -472,7 +472,7 @@ return {
           local persistence = require("persistence")
           persistence.stop()
           local file_name = persistence.current()
-          if require("utils").file_exists(file_name) then
+          if require("util").file_exists(file_name) then
             os.execute("rm " .. file_name)
           end
           vim.cmd("qa")
