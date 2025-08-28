@@ -3,15 +3,17 @@
 --   1. github搜索 nvim-dap-python include_configs
 --   2. https://github.com/microsoft/debugpy/wiki/Debug-configuration-settings
 
-local python_paths
-local function get_python_packages_paths()
-  if python_paths ~= nil then
-    return python_paths
+local python_path
+local function get_python_path()
+  if python_path ~= nil then
+    return python_path
   end
   -- 此方法彻底解决python包路径的问题
-  local result = vim.fn.systemlist("python3 -c \"import sys; print('\\n'.join(sys.path))\"")
-  python_paths = table.concat(result, ":")
-  return python_paths
+  local paths = vim.tbl_filter(function(value)
+    return value:match("%S") ~= nil
+  end, vim.fn.systemlist("python3 -c \"import sys; print('\\n'.join(sys.path))\""))
+  python_path = table.concat(paths, ":")
+  return python_path
 end
 return {
   {
@@ -33,7 +35,7 @@ return {
           justMyCode = false,
           cwd = vim.fn.getcwd(),
           env = {
-            PYTHONPATH = get_python_packages_paths(),
+            PYTHONPATH = get_python_path(),
           },
         },
       }
@@ -55,7 +57,7 @@ return {
           -- justMyCode = false,
           console = "integratedTerminal",
           env = {
-            PYTHONPATH = get_python_packages_paths(),
+            PYTHONPATH = get_python_path(),
           },
         },
       }
