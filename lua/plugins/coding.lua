@@ -75,20 +75,6 @@ return {
           scope_incremental = "<tab>",
           node_decremental = "<bs>",
         },
-        is_supported = function()
-          local mode = vim.api.nvim_get_mode().mode
-          -- 解决命令窗口按回车报错
-          if mode == "c" then
-            return false
-          end
-          local filetype = vim.opt_local.filetype:get()
-          -- 解决dap-repl按回车不触发命令
-          if filetype == "dap-repl" then
-            return false
-          end
-
-          return true
-        end,
       },
     },
   },
