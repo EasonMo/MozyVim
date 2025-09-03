@@ -128,7 +128,6 @@ return {
       -- 参考颜色：
       --   "#8f8f8f"
 
-      vim.o.background = "dark"
       local editerBg = "#1F1F1F" -- 代码编辑区的颜色
       local editerBgNC = "#1C1C1C" -- 窗口非当前选择时
       local bufferBg = "#171717" -- buffer栏的颜色, vscode的值是"#181818", 调更黑一点
