@@ -77,7 +77,7 @@ return {
         },
         is_supported = function()
           local mode = vim.api.nvim_get_mode().mode
-          -- 解决命令窗口按回车报错
+          -- 解决q:命令窗口按回车报错或不执行命令
           if mode == "c" then
             return false
           end
