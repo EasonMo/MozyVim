@@ -65,6 +65,7 @@ map("n", "<leader>ft", function()
     end,
   }, function(choice)
     if choice then
+      vim.cmd("LspStop")
       if vals[choice] == "None" then
         local typed = vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
         if typed ~= "" then
