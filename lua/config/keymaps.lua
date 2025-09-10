@@ -52,7 +52,9 @@ map("n", "<leader>ft", function()
   local vals = {
     ["1.python"] = "python",
     ["2.shell script"] = "sh",
-    ["3.other"] = "None",
+    ["3.javascript"] = "javascript",
+    ["4.lua"] = "lua",
+    ["9.other"] = "None",
   }
   local options = vim.tbl_keys(vals)
   table.sort(options)
