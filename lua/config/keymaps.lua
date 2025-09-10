@@ -46,6 +46,27 @@ map("n", "<leader>fy", function()
   require("util").file_name_copy_selector(expand("%:t"), expand("%:p"))
 end, { desc = "Copy File Name" })
 
+-- 设置文件类型
+map("n", "<leader>ft", function()
+  -- 覆盖LazyVim的Terminal (Root Dir)快捷键，原<leader>ft改成<leader>fT
+  local vals = {
+    ["1.python"] = "python",
+    ["2.shell script"] = "sh",
+  }
+  local options = vim.tbl_keys(vals)
+  table.sort(options)
+  vim.ui.select(options, {
+    prompt = "Choose file type to set:",
+    format_item = function(item)
+      return ("%s"):format(string.sub(item, 3))
+    end,
+  }, function(choice)
+    if choice then
+      vim.cmd("set ft=" .. vals[choice])
+    end
+  end)
+end, { desc = "Set File Type" })
+
 -- 可视化选择搜索
 -- map("v", "//", 'y/<c-r>"<cr>', { desc = "Search By Block", noremap = true })
 map("v", "//", function()
@@ -159,6 +180,7 @@ end, { desc = "Longest Common Substring", noremap = true })
 -- 在tmux下，ctrl-/、ctrl--、ctrl-_等价，都是^_
 map("n", "<c-/>", function() Snacks.terminal() end, { desc = "Terminal (cwd)" })
 map("n", "<c-_>", function() Snacks.terminal() end, { desc = "which_key_ignore" })
+map("n", "<leader>fT", function() Snacks.terminal(nil, { cwd = LazyVim.root() }) end, { desc = "Terminal (Root Dir)" }) -- 原是Terminal (cwd)
 map("n", "<localleader>dd", "<cmd>diffthis<cr>", { desc = "diff this" })
 map("n", "<localleader>do", "<cmd>diffoff!<cr>", { desc = "diff off!" })
 map("n", "<leader>m", "<cmd>messages<cr>", { desc = "Messages" })
