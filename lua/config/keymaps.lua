@@ -52,6 +52,7 @@ map("n", "<leader>ft", function()
   local vals = {
     ["1.python"] = "python",
     ["2.shell script"] = "sh",
+    ["3.other"] = "None",
   }
   local options = vim.tbl_keys(vals)
   table.sort(options)
@@ -62,6 +63,13 @@ map("n", "<leader>ft", function()
     end,
   }, function(choice)
     if choice then
+      if vals[choice] == "None" then
+        local typed = vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
+        if typed ~= "" then
+          vim.cmd("set ft=" .. typed)
+        end
+        return
+      end
       vim.cmd("set ft=" .. vals[choice])
     end
   end)
