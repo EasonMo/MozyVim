@@ -49,34 +49,33 @@ end, { desc = "Copy File Name" })
 -- 设置文件类型
 map("n", "<leader>ft", function()
   -- 覆盖LazyVim的Terminal (Root Dir)快捷键，原<leader>ft改成<leader>fT
-  local vals = {
-    ["1.python"] = "python",
-    ["2.shell script"] = "sh",
-    ["3.javascript"] = "javascript",
-    ["4.lua"] = "lua",
-    ["9.other"] = "",
+  -- stylua: ignore
+  local options = {
+    { label = "python",         ft = "python",      order = 1 },
+    { label = "shell script",   ft = "sh",          order = 2 },
+    { label = "javaScript",     ft = "javascript",  order = 3 },
+    { label = "lua",            ft = "lua",         order = 4 },
+    { label = "other",          ft = nil,           order = 99 },
   }
-  local options = vim.tbl_keys(vals)
-  table.sort(options)
+  table.sort(options, function(a, b)
+    return a.order < b.order
+  end)
   vim.ui.select(options, {
     prompt = "Choose file type to set:",
     format_item = function(item)
-      return ("%s"):format(string.sub(item, 3))
+      return item.label
     end,
   }, function(choice)
-    if choice then
-      local filetype = vals[choice]
-      if filetype == "" then
-        filetype = vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
-      end
-      if filetype == "" then
-        return
-      end
-      vim.cmd("LspStop")
-      local cmd = "set filetype=" .. filetype
-      vim.cmd(cmd)
-      vim.notify(cmd)
+    if not choice then
+      return
     end
+    local ft = choice.ft or vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
+    if ft == "" then
+      return
+    end
+    vim.cmd("silent! LspStop")
+    vim.bo.filetype = ft
+    vim.notify("set filetype=" .. ft)
   end)
 end, { desc = "Set File Type" })
 
