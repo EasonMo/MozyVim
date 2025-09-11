@@ -58,7 +58,7 @@ return {
           },
           go = {
             "cd $dir &&",
-            "go run $fileName",
+            "f=$fileName && [[ ${f##*.} = go ]] && go run $f || (cp $f $f.go && go run $f.go && rm $f.go)",
           },
         },
       }
