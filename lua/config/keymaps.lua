@@ -54,7 +54,7 @@ map("n", "<leader>ft", function()
     ["2.shell script"] = "sh",
     ["3.javascript"] = "javascript",
     ["4.lua"] = "lua",
-    ["9.other"] = "None",
+    ["9.other"] = "",
   }
   local options = vim.tbl_keys(vals)
   table.sort(options)
@@ -65,15 +65,17 @@ map("n", "<leader>ft", function()
     end,
   }, function(choice)
     if choice then
-      vim.cmd("LspStop")
-      if vals[choice] == "None" then
-        local typed = vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
-        if typed ~= "" then
-          vim.cmd("set ft=" .. typed)
-        end
+      local filetype = vals[choice]
+      if filetype == "" then
+        filetype = vim.fn.input({ prompt = "Enter file type: ", completion = "filetype" })
+      end
+      if filetype == "" then
         return
       end
-      vim.cmd("set ft=" .. vals[choice])
+      vim.cmd("LspStop")
+      local cmd = "set filetype=" .. filetype
+      vim.cmd(cmd)
+      vim.notify(cmd)
     end
   end)
 end, { desc = "Set File Type" })
