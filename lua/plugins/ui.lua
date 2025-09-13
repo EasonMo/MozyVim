@@ -7,6 +7,15 @@ local function fix_keymap_desc(desc)
 end
 
 return {
+  -- icons
+  {
+    "echasnovski/mini.icons",
+    opts = {
+      filetype = {
+        curl = { glyph = "󰫰", hl = "MiniIconsRed" },
+      },
+    },
+  },
   -- buffer栏
   {
     "akinsho/bufferline.nvim",
