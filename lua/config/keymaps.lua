@@ -3,21 +3,6 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 local expand = vim.fn.expand
-local exclusive_filetype = {
-  "lazy",
-  "lazy_backdrop",
-  "crunner",
-  "dap-float",
-  "dap-repl",
-  "dapui_console",
-  "gitsigns-blame",
-  "mason",
-  "neo-tree",
-  "Outline",
-  "snacks_terminal",
-  "vim", -- 历史命令窗口
-  "query",
-}
 local function getVisualSelection()
   vim.cmd('noau normal! "vy')
   local text = vim.fn.getreg("v")
@@ -39,6 +24,21 @@ end, { desc = "New Tab" })
 
 -- 复制文件名
 map("n", "<leader>fy", function()
+  local exclusive_filetype = {
+    "lazy",
+    "lazy_backdrop",
+    "crunner",
+    "dap-float",
+    "dap-repl",
+    "dapui_console",
+    "gitsigns-blame",
+    "mason",
+    "neo-tree",
+    "Outline",
+    "snacks_terminal",
+    "vim", -- 历史命令窗口
+    "query",
+  }
   if vim.tbl_contains(exclusive_filetype, vim.bo.filetype) then
     Snacks.notify.warn("not supported filetype", { title = "FilePath Copy Selector" })
     return
