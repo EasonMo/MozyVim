@@ -9,7 +9,7 @@ end
 return {
   -- icons
   {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     opts = {
       filetype = {
         curl = { glyph = "󰫰", hl = "MiniIconsRed" },
