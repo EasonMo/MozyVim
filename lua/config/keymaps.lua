@@ -3,18 +3,6 @@
 -- Add any additional keymaps here
 local map = vim.keymap.set
 local expand = vim.fn.expand
-local function getVisualSelection()
-  vim.cmd('noau normal! "vy')
-  local text = vim.fn.getreg("v")
-  vim.fn.setreg("v", {})
-
-  text = string.gsub(text, "\n", "")
-  if #text > 0 then
-    return text
-  else
-    return ""
-  end
-end
 
 -- 新建tab页，并删除空白页，主要用来调试看代码
 map("n", "<leader><tab><tab>", function()
@@ -83,7 +71,14 @@ end, { desc = "Set File Type" })
 -- 可视化选择搜索
 -- map("v", "//", 'y/<c-r>"<cr>', { desc = "Search By Block", noremap = true })
 map("v", "//", function()
-  local text = getVisualSelection()
+  vim.cmd('noau normal! "vy') -- 复制选区到寄存器v
+  local text = vim.fn.getreg("v")
+  vim.fn.setreg("v", {})
+
+  text = string.gsub(text, "\n", "")
+  if #text == 0 then
+    text = ""
+  end
   -- 实际上不需要转义
   -- text = text:gsub("/", "\\/")
   -- 修改搜索寄存器
