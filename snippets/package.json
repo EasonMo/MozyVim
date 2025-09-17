@@ -4,11 +4,15 @@
     "snippets": [
       {
         "language": "python",
-        "path": "./init/python.json"
+        "path": "./python.json"
       },
       {
         "language": "lua",
-        "path": "./init/lua.json"
+        "path": "./lua.json"
+      },
+      {
+        "language": "sh",
+        "path": "./shell.json"
       }
     ]
   }
