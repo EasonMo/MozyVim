@@ -2,6 +2,10 @@
 
 主要记录自己配置的插件与LazyVim同步的修改
 
+## 2025-09-18
+
+- cmdline补全不能使用noice.nvim的ui，原因是打开了blink.nvim的cmdline补全。blink比原生的更方便
+
 ## 2024-12-16
 
 - 升级LazyVim到14.x
