@@ -1,15 +1,20 @@
-# 参考文档：
-# - https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
-# - https://github.com/LazyVim/LazyVim/discussions/4094#discussioncomment-10178217
+# 参考文档:
+# - 规则说明: https://github.com/DavidAnson/markdownlint/blob/main/doc/Rules.md
+# - 配置模板: https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.yaml
+# - lua改配置参考: https://github.com/LazyVim/LazyVim/discussions/4094#discussioncomment-10178217
 
 # MD009/no-trailing-spaces : Trailing space
 MD009:
   br_spaces: 0
+# MD013/line-length Line length
+MD013: false
 # MD029/ol-prefix Ordered list item prefix
 MD029: false
+# MD033/no-inline-html Inline HTML
+MD033: false
 # MD034/no-bare-urls Bare URL used
 MD034: false
 # MD041/first-line-heading/first-line-h1 First line in a file should be a top-level heading
 MD041: false
-# MD013/line-length Line length
-MD013: false
+# MD045/no-alt-text Images should have alternate text (alt text)
+MD045: false
