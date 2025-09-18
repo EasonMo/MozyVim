@@ -14,6 +14,9 @@ return {
       filetype = {
         curl = { glyph = "󰫰", hl = "MiniIconsRed" },
       },
+      extension = {
+        tmux = { glyph = "󰒓", hl = "MiniIconsGreen" },
+      },
     },
   },
   -- buffer栏
