@@ -344,6 +344,7 @@ return {
       spec = {
         -- group用小写表示, desc以大写开头时则表示实际要执行指令，当指令以group显示时则表示有冲突
         -- stylua: ignore start
+        { "<c-w>p", desc = "Go to the last window" },
         { "<leader>r", group = "refactor/runner", mode = { "n", "v" } },
         { "<leader>s", group = "search/noice" },
         { "<localleader>c", group = function() return fix_keymap_desc("coerce") end, mode = "n" },
@@ -454,7 +455,13 @@ return {
       {
         "<leader>wp",
         function()
-          print("win_id: " .. (require("window-picker").pick_window() or "not pick"))
+          local win_id = require("window-picker").pick_window()
+          if not win_id then
+            vim.notify("not window pick")
+            return
+          end
+          vim.api.nvim_set_current_win(win_id)
+          vim.notify("window picked: " .. win_id)
         end,
         desc = "Window Picker",
       },
