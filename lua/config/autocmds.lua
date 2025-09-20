@@ -107,7 +107,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -----------------------✂---------------------------
 
 -- 获取浮窗类型
-vim.api.nvim_create_user_command("GetWinType", function()
+vim.api.nvim_create_user_command("GetFloatWinType", function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     if vim.api.nvim_win_get_config(win).relative ~= "" then
       -- print(vim.api.nvim_get_option_value(vim.api.nvim_win_get_buf(win), "filetype"))
@@ -121,4 +121,4 @@ vim.api.nvim_create_user_command("ReplaceRequireToImport", function()
   vim.cmd([[
     %s/const \(.*\) = require(\(.*\))/import \1 from \2/g
   ]])
-end, { nargs = 0, desc = "Replace require to import" })
+end, { nargs = 0, desc = "Replace require to import for javaScript" })
