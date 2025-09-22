@@ -165,7 +165,7 @@ vim.api.nvim_create_user_command("GetFloatWinType", function()
 end, { desc = "Print float windows filetype" })
 
 -- 代码处理
-vim.api.nvim_create_user_command("ReplaceRequireToImport", function()
+vim.api.nvim_create_user_command("JSReplaceRequireToImport", function()
   vim.cmd([[
     %s/const \(.*\) = require(\(.*\))/import \1 from \2/g
   ]])
