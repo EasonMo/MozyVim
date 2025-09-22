@@ -303,6 +303,13 @@ return {
   -- noice
   {
     "folke/noice.nvim",
+    opts = {
+      lsp = {
+        hover = {
+          silent = true,
+        },
+      },
+    },
     keys = {
       -- stylua: ignore
       -- 弹窗执行命令行的命令，同shift+回车, 按Esc跳至弹窗
