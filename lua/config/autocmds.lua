@@ -92,6 +92,7 @@ vim.api.nvim_create_autocmd("CmdLineLeave", {
   end,
 })
 
+-- 设置curl文件的属性
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "curl",
   callback = function()
@@ -99,6 +100,53 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.bo.shiftwidth = 2   -- 自动缩进宽度
     vim.bo.tabstop = 2      -- Tab 显示宽度
     vim.bo.expandtab = true -- 用空格代替 Tab
+  end,
+})
+
+-- 新建tab页时，删除多余的空白页
+vim.api.nvim_create_autocmd("TabNewEntered", {
+  group = vim.api.nvim_create_augroup("CloseNoNameOnTabNew", { clear = true }),
+  callback = function()
+    local buf = vim.api.nvim_get_current_buf()
+    local name = vim.api.nvim_buf_get_name(buf)
+    local buftype = vim.bo[buf].buftype
+
+    if name ~= "" and buftype ~= "" then
+      return
+    end
+
+    -- 参考Snacks.bufdelete()
+    ---@diagnostic disable: param-type-mismatch
+    vim.api.nvim_buf_call(buf, function()
+      local fallback = false
+      for _, win in ipairs(vim.fn.win_findbuf(buf)) do
+        vim.api.nvim_win_call(win, function()
+          if not vim.api.nvim_win_is_valid(win) or vim.api.nvim_win_get_buf(win) ~= buf then
+            return
+          end
+
+          -- Try using alternate buffer
+          local alt = vim.fn.bufnr("#")
+          if alt ~= buf and vim.fn.buflisted(alt) == 1 then
+            vim.api.nvim_win_set_buf(win, alt)
+            return
+          end
+
+          -- Try using previous buffer
+          -- 此处能处理gitsigns在新tab页打开的情况：因为commit_buf在tabnew之前创建
+          local has_previous = pcall(vim.cmd, "bprevious")
+          if has_previous and buf ~= vim.api.nvim_win_get_buf(win) then
+            return
+          end
+
+          -- 回滚到默认行为：不删除buffer
+          fallback = true
+        end)
+      end
+      if not fallback and vim.api.nvim_buf_is_valid(buf) then
+        pcall(vim.cmd, "bdelete!" .. buf)
+      end
+    end)
   end,
 })
 

@@ -4,12 +4,6 @@
 local map = vim.keymap.set
 local expand = vim.fn.expand
 
--- 新建tab页，并删除空白页，主要用来调试看代码
-map("n", "<leader><tab><tab>", function()
-  vim.cmd("tabnew")
-  Snacks.bufdelete()
-end, { desc = "New Tab" })
-
 -- 复制文件名
 map("n", "<leader>fy", function()
   local exclusive_filetype = {
