@@ -511,4 +511,13 @@ return {
       },
     },
   },
+  -- 屏幕按键显示
+  {
+    "NStefan002/screenkey.nvim",
+    version = "*",
+    enabled = false,
+    cmd = {
+      "Screenkey",
+    },
+  },
 }
