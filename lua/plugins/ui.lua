@@ -115,10 +115,14 @@ return {
 
           require("util").file_name_copy_selector(filename, filepath)
         end,
+        set_cwd = function(state)
+          vim.cmd.cd(state.tree:get_node():get_id())
+        end,
       },
       window = {
         mappings = {
-          Y = "copy_selector",
+          ["Y"] = "copy_selector",
+          ["="] = "set_cwd",
         },
       },
     },
