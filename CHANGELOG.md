@@ -2,6 +2,10 @@
 
 主要记录自己配置的插件与LazyVim同步的修改
 
+## 2025-09-25
+
+- LazyVim自15.0.0使用nvim-treesitter的main分支，该分支是重写分支，不支持incremental selection。注意：`<tab>`与`ctrl-i`一样，incremental selection不能由`<tab>`键触发。flash.nvim改用`<Enter>`触发时会出现各种冲突。故删除nvim-treesitter相关配置，删除由`<Enter>`触发增量选择的功能。该功能可以用flash.nvim的`S`+`;`/`,`实现
+
 ## 2025-09-18
 
 - cmdline补全不能使用noice.nvim的ui，原因是打开了blink.nvim的cmdline补全。blink比原生的更方便
