@@ -71,14 +71,13 @@ map("v", "//", function()
   local text = vim.fn.getreg("v")
   vim.fn.setreg("v", {})
 
-  text = string.gsub(text, "\n", "")
   if #text == 0 then
     text = ""
   end
-  -- 实际上不需要转义
-  -- text = text:gsub("/", "\\/")
   -- 修改搜索寄存器
-  vim.fn.setreg("/", text)
+  text = string.gsub(text, "\\", "\\\\")
+  text = string.gsub(text, "\n", "\\n")
+  vim.fn.setreg("/", "\\V" .. text)
   vim.cmd("normal! n")
 end, { desc = "Search By Block", noremap = true })
 
