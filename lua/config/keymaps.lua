@@ -121,7 +121,7 @@ map("n", "<localleader>l", function()
     local row, _ = unpack(vim.api.nvim_buf_get_mark(bufnr, mark))
     -- 获取当前缓冲区中指定行的文本
     local lines = vim.api.nvim_buf_get_lines(bufnr, row - 1, row, false)
-    return lines[1]
+    return lines[1]:gsub("^%s*(.-)%s*$", "%1")
   end
 
   -- 求两个字符串的最长公共子串
@@ -173,8 +173,9 @@ map("n", "<localleader>l", function()
   -- 计算并输出最长公共子串
   local lcs = longest_common_substring(text1, text2)
   lcs = string.gsub(lcs, "]", "\\]")
+  lcs = string.gsub(lcs, "\\", "\\\\")
   -- 高亮公共子串
-  vim.fn.setreg("/", lcs)
+  vim.fn.setreg("/", "\\V" .. lcs)
   vim.cmd("normal! n")
 end, { desc = "Longest Common Substring", noremap = true })
 
