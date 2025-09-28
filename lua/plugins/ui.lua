@@ -359,7 +359,7 @@ return {
         { "<leader>r", group = "refactor/runner", mode = { "n", "v" } },
         { "<leader>s", group = "search/noice" },
         { "<localleader>c", group = function() return fix_keymap_desc("coerce") end, mode = "n" },
-        { "<localleader>d", group = "diff", mode = "n" },
+        { "<localleader>d", group = "diff/delete", mode = "n" },
         { "<localleader>r", group = "replace", mode = "n" },
         { "<localleader>s", group = function() return fix_keymap_desc("strip") end, mode = "n" },
       },
