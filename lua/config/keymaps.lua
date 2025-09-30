@@ -56,9 +56,6 @@ map("n", "<leader>ft", function()
     if ft == "" then
       return
     end
-    if vim.fn.getcwd():match("/private/tmp") then
-      vim.cmd("silent! LspStop")
-    end
     vim.bo.filetype = ft
     vim.notify("set filetype=" .. ft)
   end)
