@@ -66,7 +66,7 @@ return {
   },
   -- snacks定制: 图片显示, scratch运行代码
   {
-    "snacks.nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
       -- scratch运行代码
       local python = {
@@ -91,6 +91,7 @@ return {
       if string.find(vim.fn.getenv("TERM"), "kitty") then
         opts.image = {}
       end
+      require("snacks.picker.config.layouts").vscode.layout.backdrop = 60
     end,
   },
   -- 补全
