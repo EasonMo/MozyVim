@@ -442,6 +442,13 @@ return {
             },
           },
         },
+        layouts = {
+          vscode = {
+            layout = {
+              backdrop = 60,
+            },
+          },
+        },
       },
       scratch = {
         filekey = {

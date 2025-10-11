@@ -66,7 +66,7 @@ return {
   },
   -- snacks定制: 图片显示, scratch运行代码
   {
-    "snacks.nvim",
+    "folke/snacks.nvim",
     opts = function(_, opts)
       -- scratch运行代码
       local python = {
