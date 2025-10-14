@@ -72,6 +72,8 @@ map("v", "//", function()
     text = ""
   end
   -- 修改搜索寄存器
+  text = string.gsub(text, "^%s+", "")
+  text = string.gsub(text, "%s+$", "")
   text = string.gsub(text, "\\", "\\\\")
   text = string.gsub(text, "\n", "\\n")
   vim.fn.setreg("/", "\\V" .. text)
