@@ -461,6 +461,9 @@ return {
       },
       -- 取消平滑滚动，影响：查找引用时的picker首个结果的行数定位，搜索次数显示
       scroll = { enabled = false },
+      terminal = {
+        win = { wo = { winbar = "" } }, -- 隐藏winbar标题
+      },
       zen = {
         toggles = {
           dim = false, -- 中心区域以外变暗
