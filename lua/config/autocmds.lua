@@ -158,7 +158,6 @@ vim.api.nvim_create_autocmd("TabNewEntered", {
 vim.api.nvim_create_user_command("GetFloatWinType", function()
   for _, win in ipairs(vim.api.nvim_list_wins()) do
     if vim.api.nvim_win_get_config(win).relative ~= "" then
-      -- print(vim.api.nvim_get_option_value(vim.api.nvim_win_get_buf(win), "filetype"))
       print(vim.api.nvim_get_option_value("filetype", { buf = vim.api.nvim_win_get_buf(win) }))
     end
   end
