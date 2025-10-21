@@ -144,7 +144,7 @@ vim.api.nvim_create_autocmd("TabNewEntered", {
         end)
       end
       if not fallback and vim.api.nvim_buf_is_valid(buf) then
-        pcall(vim.cmd, "bdelete!" .. buf)
+        pcall(vim.cmd, "bdelete! " .. buf)
       end
     end)
   end,
