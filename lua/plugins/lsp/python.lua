@@ -12,15 +12,14 @@ return {
         ---@type fun(bufnr: integer, on_dir:fun(root_dir?:string))
         root_dir = function(bufnr, on_dir)
           local fname = vim.fn.bufname(bufnr)
-          on_dir(
-            require("lspconfig.util").root_pattern(
-              vim.lsp.config["pyright"].root_markers,
-              require("util").general_root,
-              {
-                "venv/",
-              }
-            )(fname) or vim.fs.dirname(fname)
-          )
+          local root = require("lspconfig.util").root_pattern(
+            vim.lsp.config["pyright"].root_markers,
+            require("util").general_root,
+            {
+              "venv/",
+            }
+          )(fname) or vim.fs.dirname(fname)
+          on_dir(vim.fn.fnamemodify(root, ":p:h"))
         end,
         single_file_support = true,
         -- capabilities = {
