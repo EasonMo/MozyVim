@@ -284,6 +284,7 @@ return {
           SnacksPickerListCursorLine = { bg = c.vscPopupHighlightBlue },
           SnacksPickerDir = { fg = c.vscLineNumber },
           SnacksPickerBorder = { link = "WinSeparator" },
+          SnacksTitle = { bg = editerBg },
           SnacksPickerTitle = { bg = editerBg },
           SnacksPickerDimmed = { fg = c.vscFront },
           -- trouble
