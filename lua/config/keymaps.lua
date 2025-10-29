@@ -170,6 +170,8 @@ map("n", "<localleader>l", function()
   end
   -- 计算并输出最长公共子串
   local lcs = longest_common_substring(text1, text2)
+  lcs = string.gsub(lcs, "^%s+", "")
+  lcs = string.gsub(lcs, "%s+$", "")
   lcs = string.gsub(lcs, "]", "\\]")
   lcs = string.gsub(lcs, "\\", "\\\\")
   -- 高亮公共子串
