@@ -172,7 +172,6 @@ map("n", "<localleader>l", function()
   local lcs = longest_common_substring(text1, text2)
   lcs = string.gsub(lcs, "^%s+", "")
   lcs = string.gsub(lcs, "%s+$", "")
-  lcs = string.gsub(lcs, "]", "\\]")
   lcs = string.gsub(lcs, "\\", "\\\\")
   -- 高亮公共子串
   vim.fn.setreg("/", "\\V" .. lcs)
