@@ -196,3 +196,9 @@ map("n", "<leader>qu", "<cmd>q!<cr>", { desc = "Quit without Writing" })
 Snacks.toggle.option("paste", { name = "Paste Mode" }):map("<leader>uP")
 
 -- stylua: ignore end
+
+-- 删除功能
+Snacks.keymap.del("n", "<leader>gi")
+Snacks.keymap.del("n", "<leader>gI")
+Snacks.keymap.del("n", "<leader>gp")
+Snacks.keymap.del("n", "<leader>gP")
