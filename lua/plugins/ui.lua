@@ -449,6 +449,13 @@ return {
             },
           },
         },
+        previewers = {
+          diff = {
+            wo = {
+              wrap = false,
+            },
+          },
+        },
       },
       scratch = {
         filekey = {
