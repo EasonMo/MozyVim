@@ -5,6 +5,19 @@ return {
   opts = {
     servers = {
       vtsls = {
+        -- 原始配置：nvim-lspconfig/lsp/vtsls.lua
+        root_dir = function(bufnr, on_dir)
+          local root_markers = { "package-lock.json", "yarn.lock", "pnpm-lock.yaml", "bun.lockb", "bun.lock" }
+          root_markers = vim.fn.has("nvim-0.11.3") == 1 and { root_markers, { ".git" } }
+            or vim.list_extend(root_markers, { ".git" })
+
+          local project_root = vim.fs.root(bufnr, root_markers)
+          if project_root == vim.fn.expand("~") then
+            project_root = vim.fn.getcwd()
+          end
+
+          on_dir(project_root)
+        end,
         handlers = {
           ["textDocument/publishDiagnostics"] = function(_, result, ctx)
             if result.diagnostics ~= nil then
