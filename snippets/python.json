@@ -14,5 +14,13 @@
       "# fmt: skip"
     ],
     "description": "format skip"
+  },
+  "datetime": {
+    "prefix": "datetime",
+    "body": [
+      "from datetime import datetime",
+      "datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")"
+    ],
+    "description": "datetime"
   }
 }
