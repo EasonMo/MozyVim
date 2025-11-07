@@ -1,16 +1,16 @@
 {
-  "doc":{
+  "doc": {
     "prefix": "docstr",
-    "body":[
+    "body": [
       "\"\"\"",
       "${1}",
       "\"\"\""
     ],
     "description": "document"
   },
-  "format-skip":{
+  "format-skip": {
     "prefix": "fmtskip",
-    "body":[
+    "body": [
       "# fmt: skip"
     ],
     "description": "format skip"
