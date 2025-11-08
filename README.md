@@ -9,7 +9,7 @@ LazyVim官方文档： [https://www.lazyvim.org](https://www.lazyvim.org)
 ## 安装
 
 ```sh
-git clone git@github.com:EasonMo/MozyVim.git  ~/.config/nvim
+git clone git@github.com:EasonMo/MozyVim.git ~/.config/nvim
 ```
 
 ## 寄存器宏分配
