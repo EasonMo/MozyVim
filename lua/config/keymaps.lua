@@ -57,7 +57,7 @@ map("n", "<leader>ft", function()
       return
     end
     vim.bo.filetype = ft
-    vim.notify("set filetype=" .. ft)
+    vim.notify(string.format("set filetype = `%s`", ft))
   end)
 end, { desc = "Set File Type" })
 
