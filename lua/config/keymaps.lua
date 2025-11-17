@@ -38,6 +38,7 @@ map("n", "<leader>ft", function()
     { label = "javaScript",     ft = "javascript",  order = 3 },
     { label = "lua",            ft = "lua",         order = 4 },
     { label = "go",             ft = "go",          order = 5 },
+    { label = "sql",            ft = "sql",         order = 6 },
     { label = "other",          ft = nil,           order = 99 },
   }
   table.sort(options, function(a, b)
