@@ -23,7 +23,6 @@ return {
   {
     "CRAG666/code_runner.nvim",
     config = true,
-    event = "VeryLazy",
     keys = {
       { "<leader>rr", "<cmd>wa | RunCode<CR>", desc = "runner: Run Code" },
       { "<F8>", "<cmd>RunClose<CR><cmd>wa | RunCode<CR>", desc = "runner: Run Code" },

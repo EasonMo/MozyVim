@@ -332,7 +332,6 @@ return {
   -- tmux窗口切换
   {
     "christoomey/vim-tmux-navigator",
-    event = "VeryLazy",
     cmd = {
       "TmuxNavigateLeft",
       "TmuxNavigateDown",
@@ -482,7 +481,6 @@ return {
   {
     "s1n7ax/nvim-window-picker",
     name = "window-picker",
-    event = "VeryLazy",
     version = "2.*",
     keys = {
       {
@@ -510,7 +508,6 @@ return {
   -- treesitter playground
   {
     "nvim-treesitter/playground",
-    lazy = true,
     cmd = { "TSHighlightCapturesUnderCursor", "TSNodeUnderCursor" },
   },
   -- persistence.nvim
