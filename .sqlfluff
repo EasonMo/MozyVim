@@ -1,3 +1,5 @@
 [sqlfluff]
 dialect = mysql
 max_line_length = 0
+# AM04: Query produces an unknown number of result columns
+exclude_rules = AM04
