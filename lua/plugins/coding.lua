@@ -19,6 +19,23 @@ return {
       end
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    opts = {
+      -- log_level = vim.log.levels.DEBUG,
+      formatters = {
+        sqlfluff = {
+          args = {
+            "fix",
+            "--config=" .. vim.fn.expand("~/.config/nvim/.sqlfluff"),
+            "-",
+          },
+          require_cwd = false,
+          exit_codes = { 0, 1 }, -- 设置正确的退出代码
+        },
+      },
+    },
+  },
   -- code runner
   {
     "CRAG666/code_runner.nvim",
