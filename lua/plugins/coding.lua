@@ -220,12 +220,8 @@ return {
     keys = {
       { "<leader>ol", "<cmd>OverseerRestartLast<cr>", desc = "Restart last" },
     },
-    --- @type overseer.Config Configuration options
+    --- @type overseer.SetupOpts Configuration options
     opts = {
-      templates = {
-        "builtin",
-        "user",
-      },
       component_aliases = {
         default_vscode = {
           "default",
