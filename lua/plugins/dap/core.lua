@@ -41,8 +41,9 @@ return {
       { "<leader>dO", function() require("dap").step_out() end,                                           desc = "Step Out (S+F11)" },
       { "<S-F11>",    function() require("dap").step_out() end,                                           desc = "Step Out" },
       { "<F23>",      function() require("dap").step_out() end,                                           desc = "Step Out" },  -- 即shift+F11
-      { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end,       desc = "Clear Breakpoint"},
-      { "<leader>dG", function() require("util").create_launch_json() end,                               desc = "Generate launch.json"},
+      { "<leader>dx", function() require("persistent-breakpoints.api").clear_all_breakpoints() end,       desc = "Clear Breakpoint" },
+      { "<leader>dG", function() require("util").create_launch_json() end,                                desc = "Generate launch.json" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover(nil, { border = "rounded" }) end,        desc = "Widgets", },
     },
   },
   {
