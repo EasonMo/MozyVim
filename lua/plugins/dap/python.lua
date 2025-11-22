@@ -23,6 +23,7 @@ return {
       opts.include_configs = false
     end,
     config = function(_, opts)
+      local python_location = LazyVim.get_pkg_path("debugpy", "/venv/bin/python")
       -- 添加dap的运行配置
       require("dap").configurations.python = {
         {
@@ -37,10 +38,11 @@ return {
           env = {
             PYTHONPATH = get_python_path(),
           },
+          pythonPath = python_location,
         },
       }
       -- nvim-dap-python默认没有使用opts参数，在此处重新setup
-      require("dap-python").setup(LazyVim.get_pkg_path("debugpy", "/venv/bin/python"), opts)
+      require("dap-python").setup(python_location, opts)
     end,
   },
   {
