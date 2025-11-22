@@ -24,6 +24,9 @@ vim.opt.smartindent = false
 -- vim.opt.conceallevel = 0
 vim.opt.backspace = "eol,start,indent"
 
+-- LazyVim设置成300，延迟检测时间长会让gcc失效
+vim.opt.timeoutlen = 200
+
 -- 修正linux下的剪贴板
 if os.getenv("XDG_CURRENT_DESKTOP") == "GNOME" then
   vim.opt.clipboard = "unnamedplus"
