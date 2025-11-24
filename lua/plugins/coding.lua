@@ -107,6 +107,7 @@ return {
       if string.find(vim.fn.getenv("TERM"), "kitty") then
         opts.image = {}
       end
+      opts.dashboard.preset.keys[2] = { icon = " ", key = "n", desc = "New File", action = ":ene" }
     end,
   },
   -- 补全
