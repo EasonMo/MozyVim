@@ -103,6 +103,13 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- 用treesitter处理vim-dadbod-ui的query
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "mysql",
+  callback = function()
+    vim.bo.filetype = "sql"
+  end,
+})
 -- 新建tab页时，删除多余的空白页
 vim.api.nvim_create_autocmd("TabNewEntered", {
   group = vim.api.nvim_create_augroup("CloseNoNameOnTabNew", { clear = true }),
