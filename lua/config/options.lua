@@ -6,6 +6,10 @@
 --                 基础配置
 -----------------------✂---------------------------
 
+-- 关闭vim-dadbod的提示
+vim.g.db_ui_disable_progress_bar = 1
+vim.g.db_ui_disable_info_notifications = 1
+
 -- 缩进配置
 -- 一个 \t 显示为 4 个空格宽度
 vim.opt.ts = 4
