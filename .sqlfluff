@@ -2,4 +2,5 @@
 dialect = mysql
 max_line_length = 0
 # AM04: Query produces an unknown number of result columns
-exclude_rules = AM04
+# L034(Select wildcards then simple targets before calculations and aggregates): 影响列排序
+exclude_rules = AM04,L034
