@@ -2,4 +2,6 @@ if get(g:, 'db_ui_disable_mappings', 0) || get(g:, 'db_ui_disable_mappings_sql',
   finish
 endif
 
-call db_ui#utils#set_mapping('<Leader>S', 'vis<Plug>(DBUI_ExecuteQuery)')
+if exists('*db_ui#utils#set_mapping')
+  call db_ui#utils#set_mapping('<Leader>S', 'vis<Plug>(DBUI_ExecuteQuery)')
+endif
