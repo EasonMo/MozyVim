@@ -52,6 +52,9 @@ vim.fn.setreg("p", "\x1b\x67\x76\x22\x30\x70")
 -- 3. 整词粘贴：viw"0p
 vim.fn.setreg("o", "\x76\x69\x77\x22\x30\x70")
 
+-- 指定treesitter解析器
+vim.treesitter.language.register("sql", "mysql")
+
 -----------------------✂---------------------------
 --                LazyVim配置
 -----------------------✂---------------------------

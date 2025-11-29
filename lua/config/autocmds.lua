@@ -103,17 +103,6 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
--- 修改vim-dadbod-ui默认设置
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "sql", "mysql", "plsql" },
-  callback = function()
-    -- 用treesitter处理vim-dadbod-ui的query
-    vim.bo.filetype = "sql"
-    vim.keymap.del("i", "<left>", { buffer = true })
-    vim.keymap.del("i", "<right>", { buffer = true })
-  end,
-})
-
 -- 新建tab页时，删除多余的空白页
 vim.api.nvim_create_autocmd("TabNewEntered", {
   group = vim.api.nvim_create_augroup("CloseNoNameOnTabNew", { clear = true }),
