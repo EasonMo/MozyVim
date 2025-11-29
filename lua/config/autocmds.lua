@@ -107,8 +107,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "sql", "mysql", "plsql" },
   callback = function()
-    -- 用treesitter处理vim-dadbod-ui的query
-    vim.bo.filetype = "sql"
+    -- 修复在sql文件中左右键报错
     vim.keymap.del("i", "<left>", { buffer = true })
     vim.keymap.del("i", "<right>", { buffer = true })
   end,
