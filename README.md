@@ -40,3 +40,7 @@ lua require"osv".launch({port=8086})
 
 2. 在另一个nvim实例B中启动DAP attach debug，并打上断点
 3. 在实例A中进行操作，实例B就能进入断点，实际就是**远程调试**
+
+## 注意
+
+1. 插件的功能都是绑定到filetype的，修改插件的功能时，最好是把新的特性绑定到当前filetype，不要通过改变filetype去使用其他功能
