@@ -428,16 +428,19 @@ return {
           input = {
             keys = {
               ["<c-l>"] = { "cycle_win", mode = { "i", "n" } },
+              ["<c-h>"] = { "cycle_win", mode = { "i", "n" } },
             },
           },
           list = {
             keys = {
               ["<c-l>"] = "cycle_win",
+              ["<c-h>"] = "cycle_win",
             },
           },
           preview = {
             keys = {
               ["<c-l>"] = "cycle_win",
+              ["<c-h>"] = "cycle_win",
             },
           },
         },
