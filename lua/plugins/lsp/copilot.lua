@@ -12,6 +12,13 @@ return {
   {
     "folke/sidekick.nvim",
     opts = {
+      cli = {
+        win = {
+          keys = {
+            files = { "<c-g>", "files", mode = "nt", desc = "open file picker" },
+          },
+        },
+      },
       nes = { enabled = false },
     },
   },
