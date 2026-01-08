@@ -108,6 +108,25 @@ return {
         opts.image = {}
       end
       opts.dashboard.preset.keys[2] = { icon = " ", key = "n", desc = "New File", action = ":ene" }
+
+      -- 文件对比git历史版本
+      require("snacks.picker.actions").git_split_diff = function(picker, item)
+        picker:close()
+        if item then
+          if not item.commit then
+            Snacks.notify.warn("No commit found", { title = "Snacks Picker" })
+            return
+          end
+          vim.cmd("Gitsigns diffthis " .. item.commit)
+        end
+      end
+      require("snacks.picker.config.sources").git_log_file.win = {
+        input = {
+          keys = {
+            ["<c-v>"] = { "git_split_diff", mode = { "n", "i" }, nowait = true },
+          },
+        },
+      }
     end,
   },
   -- 补全
