@@ -1,4 +1,17 @@
 return {
+  -- ai
+  {
+    "folke/sidekick.nvim",
+    opts = {
+      cli = {
+        prompts = {
+          an = "所有分析、推理、解释必须使用简体中文\n{file}",
+          anf = "所有分析、推理、解释必须使用简体中文\n{function}",
+          ans = "所有分析、推理、解释必须使用简体中文\n{selection}",
+        },
+      },
+    },
+  },
   -- formatter
   {
     "stevearc/conform.nvim",
