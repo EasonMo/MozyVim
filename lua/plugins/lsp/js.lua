@@ -37,4 +37,26 @@ return {
       },
     },
   },
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      kind_filter = {
+        javascriptreact = {
+          "Class",
+          "Constructor",
+          "Enum",
+          -- "Field",
+          "Function",
+          "Interface",
+          "Method",
+          "Module",
+          "Namespace",
+          -- "Package",
+          -- "Property",
+          -- "Struct",
+          -- "Trait",
+        },
+      },
+    },
+  },
 }
