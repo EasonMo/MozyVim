@@ -169,3 +169,44 @@ vim.api.nvim_create_user_command("JSReplaceRequireToImport", function()
     %s/const \(.*\) = require(\(.*\))/import \1 from \2/g
   ]])
 end, { nargs = 0, desc = "Replace require to import for javaScript" })
+
+-- 按文件类型批量格式化当前工作目录文件
+vim.api.nvim_create_user_command("FormatProject", function()
+  local options = {
+    { label = "python", glob = "**/*.py" },
+    { label = "lua", glob = "**/*.lua" },
+    { label = "javascript", glob = "**/*.js" },
+    { label = "typescript", glob = "**/*.ts" },
+    { label = "json", glob = "**/*.json" },
+    { label = "go", glob = "**/*.go" },
+    { label = "rust", glob = "**/*.rs" },
+    { label = "sql", glob = "**/*.sql" },
+    { label = "shell", glob = "**/*.sh" },
+    { label = "markdown", glob = "**/*.md" },
+    { label = "vim", glob = "**/*.vim" },
+  }
+
+  local function run_format(item)
+    vim.cmd("args " .. item.glob)
+    local argc = vim.fn.argc()
+    if argc == 0 then
+      vim.notify(("No %s files found in cwd"):format(item.label), vim.log.levels.WARN)
+      return
+    end
+    vim.cmd([[argdo lua require("conform").format({ async = false, lsp_fallback = true })]])
+    vim.cmd("argdo update")
+    vim.notify(("Formatted %d %s file(s)"):format(argc, item.label), vim.log.levels.INFO)
+  end
+
+  vim.ui.select(options, {
+    prompt = "Choose file type to format:",
+    format_item = function(item)
+      return item.label
+    end,
+  }, function(choice)
+    if not choice then
+      return
+    end
+    run_format(choice)
+  end)
+end, { nargs = 0, desc = "Choose a file type and format files in cwd via conform.nvim" })
