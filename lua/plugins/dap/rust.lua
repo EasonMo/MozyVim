@@ -15,7 +15,7 @@ return {
     "mrcjkb/rustaceanvim",
     opts = {
       server = {
-        status_notify_level = false,  -- 禁止单文件使用时的警告
+        status_notify_level = false, -- 禁止单文件使用时的警告
       },
     },
   },

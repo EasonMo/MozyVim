@@ -10,7 +10,7 @@ return {
           ans = "所有分析、推理、解释必须使用简体中文\n{selection}",
         },
         tools = {
-          codex = { cmd = { "codex" } },
+          codex = { cmd = { "codex" } }, -- web_search在config.toml中配置
         },
       },
     },
