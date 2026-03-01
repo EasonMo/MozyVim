@@ -48,9 +48,6 @@ return {
         show_close_icon = false,
       },
     },
-    keys = {
-      { "<leader>bs", "<Cmd>BufferLinePick<CR>", desc = "Pick Buffer" },
-    },
   },
   -- lualine, 修改状态栏
   {
