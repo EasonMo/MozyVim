@@ -31,11 +31,9 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("close_with_q", { clear = true }),
   pattern = {
-    "dap-float",
     "lazy_backdrop",
     "crunner",
     "vim", -- 历史命令窗口
-    "gitsigns-blame",
     "query",
   },
   callback = function(event)
