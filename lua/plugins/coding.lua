@@ -7,7 +7,8 @@ return {
         prompts = {
           an = "所有分析、推理、解释必须使用简体中文\n{file}",
           anf = "所有分析、推理、解释必须使用简体中文\n{function}",
-          ans = "所有分析、推理、解释必须使用简体中文\n{selection}",
+          codex = "在实现需求时，同步更新README.codex.md：以当前日期（YYYY-MM-DD）作为一级标题，若已存在则复用，在该标题下新增当前需求的小标题并补充简洁的需求说明（包含背景、实现要点或关键逻辑），文档与注释保持简洁，非必要位置不使用句号",
+          codexsel = '将前面所做的需求，在README.codex.md，补充需求说明到标题"{selection}"下面',
         },
         tools = {
           codex = { cmd = { "codex" } }, -- web_search在config.toml中配置
