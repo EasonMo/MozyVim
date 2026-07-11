@@ -175,6 +175,7 @@ vim.api.nvim_create_user_command("FormatProject", function()
     { label = "lua", glob = "**/*.lua" },
     { label = "javascript", glob = "**/*.js" },
     { label = "typescript", glob = "**/*.ts" },
+    { label = "react", glob = "**/*.jsx" },
     { label = "json", glob = "**/*.json" },
     { label = "go", glob = "**/*.go" },
     { label = "rust", glob = "**/*.rs" },
