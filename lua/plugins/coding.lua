@@ -13,6 +13,23 @@ return {
         tools = {
           codex = { cmd = { "codex" } }, -- web_search在config.toml中配置
         },
+        win = {
+          keys = {
+            nav_right = { -- 已在最右侧或浮动窗口：吞掉 <C-l>，不再清屏
+              "<c-l>",
+              function(terminal)
+                if not terminal:is_float() and vim.fn.winnr() ~= vim.fn.winnr("l") then
+                  vim.schedule(function()
+                    vim.cmd.wincmd("l")
+                  end)
+                end
+                return ""
+              end,
+              expr = true,
+              desc = "navigate to the right window",
+            },
+          },
+        },
       },
     },
   },
