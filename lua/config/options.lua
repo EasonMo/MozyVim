@@ -19,6 +19,8 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.smartindent = false
 
+vim.opt.breakat = " ^I!@*-+;:,./?；，。：、"
+
 -- 显示空白字符
 -- vim.opt.list = true
 -- vim.opt.listchars = { space = "·" }
