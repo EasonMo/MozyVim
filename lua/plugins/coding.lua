@@ -111,6 +111,7 @@ return {
             "f=$fileName && [[ ${f##*.} = go ]] && go run $f || (cp $f $f.go && go run $f.go && rm $f.go)",
           },
         },
+        root_markers = {},
       }
     end,
   },
